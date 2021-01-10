@@ -1,17 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import CalculateTree from "./CalculateTree/CalculateTree.js"
+import d3AnimationView from "./view/View.d3Animation.js"
+import ReactiveTextarea from "./view/elements/ReactiveTextarea.js"
+import createStore from "./createStore.js"
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export default {
+  CalculateTree,
+  d3AnimationView,
+  ReactiveTextarea,
+  createStore
+}
