@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/genealogie/static/css/main.a617e044.chunk.css",
+    "main.js": "/genealogie/static/js/main.f723b1a4.chunk.js",
+    "main.js.map": "/genealogie/static/js/main.f723b1a4.chunk.js.map",
+    "runtime-main.js": "/genealogie/static/js/runtime-main.882328a5.js",
+    "runtime-main.js.map": "/genealogie/static/js/runtime-main.882328a5.js.map",
+    "static/js/2.0c8e2414.chunk.js": "/genealogie/static/js/2.0c8e2414.chunk.js",
+    "static/js/2.0c8e2414.chunk.js.map": "/genealogie/static/js/2.0c8e2414.chunk.js.map",
+    "static/js/3.b1af08e4.chunk.js": "/genealogie/static/js/3.b1af08e4.chunk.js",
+    "static/js/3.b1af08e4.chunk.js.map": "/genealogie/static/js/3.b1af08e4.chunk.js.map",
+    "index.html": "/genealogie/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/genealogie/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.0c8e2414.chunk.js.LICENSE.txt": "/genealogie/static/js/2.0c8e2414.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/genealogie/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.882328a5.js",
+    "static/js/2.0c8e2414.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.f723b1a4.chunk.js"
+  ]
+}
