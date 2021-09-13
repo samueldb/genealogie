@@ -1,3 +1,10 @@
+# What ? 
+In this repo, I will build the current features of samueldb.github.io : 
+> - genealogic tree, 
+> - create a new person page,
+> - map of the family (extended with map from geneanet ? https://www.geneanet.org/nom-de-famille/DESCHAMPS-BERGER )
+> *current page of montfort through time will go to the geoMontfort repo* 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
