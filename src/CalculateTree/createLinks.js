@@ -16,11 +16,11 @@ export function createLinks({d, tree, is_vertical}) {
     links.push({
       d: Link(d, p),
       _d: () => {
-        const _d = {x: d.x, y: d.y},
-          _p = {x: d.x, y: d.y}
+        const _d = {x: _or(d, 'x'), y: _or(d, 'y')},
+          _p = {x: getMid(p1, p2, 'x', true), y: getMid(p1, p2, 'y', true)}
         return Link(_d, _p)
       },
-      curve: true, id: linkId(d, d.parents[0], d.parents[1]), depth: d.depth+1, is_ancestry: true
+      curve: true, id: linkId(d, d.parents[0], d.parents[1]), depth: d.depth+1
     })
   }
 
@@ -34,7 +34,7 @@ export function createLinks({d, tree, is_vertical}) {
 
       links.push({
         d: Link(child, {x: sx, y: d.y}),
-        _d: () => Link({x: sx, y: d.y}, {x: _or(child, 'x'), y: _or(child, 'y')}),
+        _d: () => Link({x: _or(child, 'x'), y: _or(child, 'y')}, {x: _or(d, 'x'), y: _or(d, 'y')}),
         curve: true, id: linkId(child, d, other_parent), depth: d.depth+1
       })
     })
@@ -44,14 +44,14 @@ export function createLinks({d, tree, is_vertical}) {
   function handleSpouse({d}) {
     d.data.rels.spouses.forEach(sp_id => {
       const spouse = tree.find(d0 => d0.data.id === sp_id);
-      if (!spouse || d.spouse) return
+      if (!spouse) return
       links.push({
-        d: [[d.x, d.y], [spouse.x, spouse.y]],
+        d: [[d.x, d.y], [getMid(d, spouse, 'x', false), spouse.y]],
         _d: () => [
-          d.is_ancestry ? [_or(d, 'x')-.0001, _or(d, 'y')] : [d.x, d.y], // add -.0001 to line to have some length if d.x === spouse.x
-          d.is_ancestry ? [_or(spouse, 'x', true), _or(spouse, 'y')] : [d.x-.0001, d.y]
+          [_or(d, 'x')-.0001, _or(d, 'y')], // add -.0001 to line to have some length if d.x === spouse.x
+          [getMid(d, spouse, 'x', true), _or(spouse, 'y')]
         ],
-        curve: false, id: [d.data.id, spouse.data.id].join(", "), depth: d.depth, spouse: true, is_ancestry: spouse.is_ancestry
+        curve: false, id: [d.data.id, spouse.data.id].join(", "), depth: d.depth
       })
     })
   }
