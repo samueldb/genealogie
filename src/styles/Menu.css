@@ -1,0 +1,8 @@
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+nav.a {
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+}
