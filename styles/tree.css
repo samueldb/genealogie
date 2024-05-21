@@ -1,0 +1,29 @@
+/*CSS*/
+html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica;
+    overflow: hidden;
+}
+
+#tree {
+    width:100%;
+    height:100%;
+}
+
+svg.john .node.male>circle {
+    fill: blue;
+}
+
+svg.john .node.female>circle {
+    fill: #FF46A3;
+}
+
+/*color of the tree add button*/
+#base_tree_menu path, #base_tree_menu ellipse {
+    fill: lightgrey;
+}
+
+
