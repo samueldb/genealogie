@@ -157,6 +157,7 @@ var family = new FamilyTree(document.getElementById("tree"), {
     nodeBinding: {
         field_0: "name",
         field_1: "born",
+        field_2: "id",
         id: "id",
         father: "fid",
         mother: "mid",

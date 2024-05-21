@@ -25,19 +25,29 @@ function findAllNodes(){
             else if (data_json.rows.length > 0) {
                 // Pour chaque ligne, on vérifie
                 for (var r of data_json.rows) {
-                    noeuds.push({ "id": r.own_id,
-                        // "parent": null,
-                        "name":formatNames(r.nom, r.prenom),
-                        "mid": r.mother_id, "fid": r.father_id,
-                        "pids": [r.couple_id],
-                        "gender": r.genre == "F" ? "female":"male",
-                        // "job": r.profession,
+                    var newPerson = {
+                        "id": r.own_id,
+                        "name": formatNames(r.nom, r.prenom),
+                        "gender": r.genre == "F" ? "female" : "male",
                         "born": formatDate(r.date_naissance),
-                        "img": r.adr_photo == null ? "images/no_photo.png": "images/portraits/" + r.own_id + ".jpg",
-                        // "date_die": formatDate(r.date_deces),
-                        // "date_mariage": formatDate(r.date_mariage),
-                        // "geom": r.the_geom, "arbre": r.arbre
-                    });
+                        "img": r.adr_photo == null ? "images/no_photo.png" : "images/portraits/" + r.own_id + ".jpg",
+                        "job": r.profession,
+                        "date_die": formatDate(r.date_deces),
+                        "date_mariage": formatDate(r.date_mariage),
+                    }
+                    if(r.couple_id !== 172){
+                        newPerson.pids = [r.couple_id];
+                    }
+                    if (r.father_id !== null) {
+                        if (r.father_id !== 172) {
+                            newPerson.fid = r.father_id;
+                        }
+                    }
+                    if (r.mother_id !== null) {
+                        newPerson.mid = r.mother_id;
+                    }
+
+                    noeuds.push(newPerson);
                     if (aNames.find(function (a) { return a == r.nom; })) { }
                     else { aNames.push(r.nom); }
                 }
@@ -47,4 +57,3 @@ function findAllNodes(){
     console.log("got all nodes i need")
     return [noeuds, aNames];
 }
-
