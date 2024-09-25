@@ -39,9 +39,9 @@ function findAllNodes(){
                         newPerson.pids = [r.couple_id];
                     }
                     if (r.father_id !== null) {
-                        if (r.father_id !== 172) {
+                        // if (r.father_id !== 172) {
                             newPerson.fid = r.father_id;
-                        }
+                        // }
                     }
                     if (r.mother_id !== null) {
                         newPerson.mid = r.mother_id;

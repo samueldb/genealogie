@@ -8,4 +8,5 @@ In this repo, I will build the current features of samueldb.github.io :
 # state of work
 19.05.2024
 try to use the now free balkan library. 
-Works fine but problems with the top of pyramid (cousins that married eachother ?) => must not been good defined when getting the nodes from database
+Works fine but problems with the top of pyramid (cousins that married eachother ?) 
+=> must not been good defined when getting the nodes from database
