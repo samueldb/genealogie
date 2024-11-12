@@ -16,11 +16,11 @@ export function createLinks({d, tree, is_vertical}) {
     links.push({
       d: Link(d, p),
       _d: () => {
-        const _d = {x: _or(d, 'x'), y: _or(d, 'y')},
-          _p = {x: getMid(p1, p2, 'x', true), y: getMid(p1, p2, 'y', true)}
+        const _d = {x: d.x, y: d.y},
+          _p = {x: d.x, y: d.y}
         return Link(_d, _p)
       },
-      curve: true, id: linkId(d, d.parents[0], d.parents[1]), depth: d.depth+1
+      curve: true, id: linkId(d, d.parents[0], d.parents[1]), depth: d.depth+1, is_ancestry: true
     })
   }
 
@@ -34,7 +34,7 @@ export function createLinks({d, tree, is_vertical}) {
 
       links.push({
         d: Link(child, {x: sx, y: d.y}),
-        _d: () => Link({x: _or(child, 'x'), y: _or(child, 'y')}, {x: _or(d, 'x'), y: _or(d, 'y')}),
+        _d: () => Link({x: sx, y: d.y}, {x: _or(child, 'x'), y: _or(child, 'y')}),
         curve: true, id: linkId(child, d, other_parent), depth: d.depth+1
       })
     })
@@ -43,15 +43,15 @@ export function createLinks({d, tree, is_vertical}) {
 
   function handleSpouse({d}) {
     d.data.rels.spouses.forEach(sp_id => {
-      const spouse = tree.find(d0 => d0.data.id === sp_id);
-      if (!spouse) return
+      const spouse = getRel(tree, d0 => d0.data.id === sp_id)
+      if (!spouse || d.spouse) return
       links.push({
-        d: [[d.x, d.y], [getMid(d, spouse, 'x', false), spouse.y]],
+        d: [[d.x, d.y], [spouse.x, spouse.y]],
         _d: () => [
-          [_or(d, 'x')-.0001, _or(d, 'y')], // add -.0001 to line to have some length if d.x === spouse.x
-          [getMid(d, spouse, 'x', true), _or(spouse, 'y')]
+          d.is_ancestry ? [_or(d, 'x')-.0001, _or(d, 'y')] : [d.x, d.y], // add -.0001 to line to have some length if d.x === spouse.x
+          d.is_ancestry ? [_or(spouse, 'x', true), _or(spouse, 'y')] : [d.x-.0001, d.y]
         ],
-        curve: false, id: [d.data.id, spouse.data.id].join(", "), depth: d.depth
+        curve: false, id: [d.data.id, spouse.data.id].join(", "), depth: d.depth, spouse: true, is_ancestry: spouse.is_ancestry
       })
     })
   }
@@ -83,7 +83,15 @@ export function createLinks({d, tree, is_vertical}) {
   }
 
   function otherParent(d, p1, data) {
-    return data.find(d0 => (d0.data.id !== p1.data.id) && ((d0.data.id === d.data.rels.mother) || (d0.data.id === d.data.rels.father)))
+    const condition = d0 => (d0.data.id !== p1.data.id) && ((d0.data.id === d.data.rels.mother) || (d0.data.id === d.data.rels.father))
+    return getRel(data, condition)
+  }
+
+  // if there is overlapping of personas in different branches of same family tree, return the closest one
+  function getRel(data, condition) {
+    const rels = data.filter(condition)
+    if (rels.length > 1) return rels.sort((d0, d1) => Math.abs(d0.x - d.x) - Math.abs(d1.x - d.x))[0]
+    else return rels[0]
   }
 }
 
