@@ -12,8 +12,8 @@ function CreateChart(cont, data) {
   this.node_separation = 250
   this.level_separation = 150
   this.is_horizontal = false
-  this.single_parent_empty_card = true
-  this.transition_time = 2000
+  this.single_parent_empty_card = false
+  this.transition_time = 500
 
   this.is_card_html = false
 
