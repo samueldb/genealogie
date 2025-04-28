@@ -2,7 +2,6 @@ import f3 from '../../src/index.js'
 import * as utils from '../utils/utils_dates.js'
 import * as custom_Card from '../utils/Card.js'
 
-
 fetch("./data_db.json")
     .then(r => r.json())
     .then(data => {
@@ -16,7 +15,7 @@ fetch("./data_db.json")
         single_parent_empty_card: false
       })
 
-        const Card = custom_Card.CustomCard(store, svg, null);
+        const Card = custom_Card.CustomCard(store, svg, onCardClick, data);
 
         store.setOnUpdate(props => f3.view(store.getTree(), svg, Card, props || {}))
 
@@ -31,7 +30,7 @@ fetch("./data_db.json")
 
         // zoom to my card
         const datum = data.find(d=>d.data['first name']=='Samuel')
-        updateTreeWithNewMainPerson(datum, false)
+        updateTreeWithNewMainPerson(datum.id, false)
 
       // function updateTree(props) {
       //   tree = f3.CalculateTree({ data, main_id })
@@ -47,8 +46,8 @@ fetch("./data_db.json")
       }
 
       function onCardClick(e, d) {
-        updateMainId(d.data.id)
-        updateTree()
+            updateMainId(d.data.id)
+          updateTreeWithNewMainPerson(d.data.id, false)
       }
 
 
@@ -95,7 +94,7 @@ fetch("./data_db.json")
             dropdown.selectAll("div").data(filtered_options).join("div")
                 .attr("style", "padding: 5px;cursor: pointer;border-bottom: .5px solid currentColor;")
                 .on("click", (e, d) => {
-                    updateTreeWithNewMainPerson(d.value, true)
+                    updateTreeWithNewMainPerson(d.value, false)
                 })
                 .text(d => d.label)
         }

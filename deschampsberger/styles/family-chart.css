@@ -79,3 +79,11 @@
   -webkit-transform: translateY(-8px) scale(0.8);
   transform: translateY(-8px) scale(0.8);
 }
+
+.customAddBtn {
+  color: rgba(123, 250, 246, 0.94);
+}
+
+.editBtn_add{
+  color: #3b5560;
+}
