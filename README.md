@@ -1,77 +1,155 @@
-# What ? 
-In this repo, I will build the current features of samueldb.github.io : 
-> - genealogic tree, 
-> - create a new person page,
-> - map of the family (extended with map from geneanet ? https://www.geneanet.org/nom-de-famille/DESCHAMPS-BERGER )
-> *current page of montfort through time will go to the geoMontfort repo* 
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/donatso/family-chart">
+    <img src="examples/logo.svg" alt="Logo" width="80" height="50">
+  </a>
 
-In the project directory, you can run:
+<h3 align="center">Family Chart</h3>
 
-### `npm start`
+  <p align="center">
+    Create beautiful, interactive family trees with this powerful D3.js-based visualization library
+    <br />
+    <a href="https://github.com/donatso/family-chart"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://donatso.github.io/family-chart-doc/wiki-tree?wiki_id=Q43274">View Demo</a>
+    ·
+    <a href="https://github.com/donatso/family-chart/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/donatso/family-chart/issues">Request Feature</a>
+  </p>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![Product Name Screen Shot][product-screenshot]](https://donatso.github.io/family-chart-doc/wiki-tree/?wiki_id=Q43274)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Family Chart is a powerful D3.js-based visualization library for creating beautiful, interactive family trees. The library offers:
 
-### `npm run eject`
+- **Example-based Learning**: Explore pre-built examples and customize them to match your needs
+- **Create from Scratch**: Build your family tree from the ground up with an intuitive interface
+- **Full Customization**: Complete control over your tree's structure and styling
+- **Interactive Features**: Built-in interactivity
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!-- GETTING STARTED -->
+## Getting Started
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[![Create tree][create-tree-screenshot]](https://donatso.github.io/family-chart-doc/create-tree)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Visit [doc/create-tree](https://donatso.github.io/family-chart-doc/create-tree/) 
+2. Create your family tree
+3. Copy/paste generated code for Vanila, Vue or React.
+4. Give me some github stars (:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- USAGE EXAMPLES -->
+## Usage
 
-## Learn More
+### [Static](https://codepen.io/donatso/pen/ExqJVEQ?editors=1000)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### [React](https://codepen.io/donatso/pen/mdNgeQN?editors=0010)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [Vue](https://codepen.io/donatso/pen/poMBjZe)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Examples
 
-### Analyzing the Bundle Size
+### 1. WikiData Integration
+Explore our interactive family tree viewer that connects to the WikiData database, allowing you to visualize family relationships for millions of historical figures and notable people. Simply enter a WikiData ID to generate a complete family tree.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[![WikiData Family Tree Example][product-wiki-tree-screenshot]](https://donatso.github.io/family-chart-doc/wiki-tree/?wiki_id=Q43274)
 
-### Making a Progressive Web App
+Try it with:
+- [British Royal Family (Q43274)](https://donatso.github.io/family-chart-doc/wiki-tree/?wiki_id=Q43274)
+- [Albert Einstein (Q937)](https://donatso.github.io/family-chart-doc/wiki-tree/?wiki_id=Q937)
+- [Leonardo da Vinci (Q762)](https://donatso.github.io/family-chart-doc/wiki-tree/?wiki_id=Q762)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2. Basic Implementation
+A simple example showing how to create a custom family tree from scratch. This demo features Aristotle's family tree with basic styling and interactions.
 
-### Advanced Configuration
+[![Basic Family Tree Example][product-basic-tree-screenshot]](https://donatso.github.io/family-chart-doc/examples/1-basic-tree)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+<!-- CONTACT -->
+## Contact
+
+Project Link: [https://github.com/donatso/family-chart](https://github.com/donatso/family-chart)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/donatso/family-chart.svg?style=for-the-badge
+[contributors-url]: https://github.com/donatso/family-chart/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/donatso/family-chart.svg?style=for-the-badge
+[forks-url]: https://github.com/donatso/family-chart/network/members
+[stars-shield]: https://img.shields.io/github/stars/donatso/family-chart.svg?style=for-the-badge
+[stars-url]: https://github.com/donatso/family-chart/stargazers
+[issues-shield]: https://img.shields.io/github/issues/donatso/family-chart.svg?style=for-the-badge
+[issues-url]: https://github.com/donatso/family-chart/issues
+[license-shield]: https://img.shields.io/github/license/donatso/family-chart.svg?style=for-the-badge
+[license-url]: https://github.com/donatso/family-chart/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/donat-sorić-342a92161
+[product-screenshot]: https://github.com/user-attachments/assets/a4f8a9c0-c327-45fa-90bc-23d73578a304
+[product-basic-tree-screenshot]: https://github.com/user-attachments/assets/7e231e53-9230-49f9-ae93-8125096237dc
+[product-wiki-tree-screenshot]: https://github.com/user-attachments/assets/4e2dc169-4b43-46f3-b31c-db17f4d489da
+[create-tree-screenshot]: https://github.com/user-attachments/assets/ce5c4b33-48dd-441c-aa2f-f581b57ddcb7
+

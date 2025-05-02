@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import CalculateTree from "./CalculateTree/CalculateTree.js"
+import createStore from "./createStore.js"
+import view from "./view/view.js"
+import createSvg from "./view/view.svg.js"
+import * as handlers from './handlers.js'
+import * as elements from './elements.js'
+import * as htmlHandlers from './view/view.html.handlers.js'
+import * as icons from './view/elements/Card.icons.js'
+import createChart from './createChart.js'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import CardSvg from './Cards/CardSvg.js'
+import CardHtml from './Cards/CardHtml.js'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export default {
+  CalculateTree,
+  createStore,
+  view,
+  createSvg,
+  handlers,
+  elements,
+  htmlHandlers,
+  icons,
+  createChart,
+
+  CardSvg,
+  CardHtml,
+}
