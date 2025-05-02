@@ -63,7 +63,7 @@ fetch("./data_db.json")
             all_select_options.push({label: `${d.data["first name"]+' '+d.data["last name"]+' né(e) le '+utils.default.formatDate(d.data["birthday"])}`, value: d["id"]})
         })
         const search_cont = d3.select(document.querySelector("#RecherchePersonne")).append("div")
-            // .attr("style", "position: absolute; top: 10px; left: 10px; width: 150px; z-index: 1000;")
+            .attr("style", "margin: 10px;")
             .on("focusout", () => {
                 setTimeout(() => {
                     if (!search_cont.node().contains(document.activeElement)) {
@@ -74,7 +74,7 @@ fetch("./data_db.json")
         const search_input = search_cont.append("input")
             .attr("style", "width: 100%;")
             .attr("type", "text")
-            .attr("placeholder", "Search")
+            .attr("placeholder", "Nom ou Prénom de la personne")
             .on("focus", activateDropdown)
             .on("input", activateDropdown)
 
