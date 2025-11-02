@@ -1,56 +1,35 @@
-import f3 from '../../src/index.js'
-import * as utils from '../utils/utils_dates.js'
-import * as custom_Card from '../utils/Card.js'
-
-
 fetch("./data_db.json")
-    .then(r => r.json())
-    .then(data => {
-      let tree, main_id;
+  .then(res => res.json())
+  .then(data => create(data))
+  .catch(err => console.error(err))
 
-      const svg = f3.createSvg(document.querySelector("#FamilyChart"))
-      const store = f3.createStore({
-        data,
-        node_separation: 250,
-        level_separation: 150,
-        single_parent_empty_card: false
-      })
+    function create(data){
 
-        const Card = custom_Card.CustomCard(store, svg, null);
+      const f3Chart = f3.createChart('#FamilyChart', data)
+              .setTransitionTime(100)
+              .setCardXSpacing(250)
+              .setCardYSpacing(150)
 
-        store.setOnUpdate(props => f3.view(store.getTree(), svg, Card, props || {}))
+      const f3Card = f3Chart.setCardHtml()
+        .setCardDisplay([["first name","last name"],["birthday"]])
 
+      const f3EditTree = f3Chart.editTree()
+        .setFields(["first name","last name","birthday"])
+        .setEditFirst(true)  // true = open form on click, false = open info in click
+        .setCardClickOpen(f3Card)
+        .setOnChange(() => {
+               const updated_data = f3EditTree.exportData()
+               console.log(updated_data)
+             })
+        // .setNoEdit()  // if you want to just see info form
 
-        store.updateTree({initial: true})
-
-        // with person_id this function will update the tree
-        function updateTreeWithNewMainPerson(person_id, animation_initial = true) {
-            store.updateMainId(person_id)
-            store.updateTree({initial: animation_initial})
-        }
+      f3Chart.updateTree({initial: true})
+      f3EditTree.open(f3Chart.getMainDatum())
+      f3Chart.updateTree({initial: true})
 
         // zoom to my card
         const datum = data.find(d=>d.data['first name']=='Samuel')
-        updateTreeWithNewMainPerson(datum, false)
-
-      // function updateTree(props) {
-      //   tree = f3.CalculateTree({ data, main_id })
-      //   f3.view(tree, svg, Card(tree, svg, onCardClick), props || {})
-      //   const datum = tree.data.find(d=>d.data.data['first name']=='Samuel')  // zoom to my card
-      //
-      //   f3.handlers.cardToMiddle({datum, svg, svg_dim: svg.getBoundingClientRect(),  transition_time: 2000})
-      // }
-      // need to update main_id to follow click, if not, the svg always zoom on me ^^"
-      // Follow this to search and zoom : https://donatso.github.io/family-chart-doc/examples/9-big-tree
-      function updateMainId(_main_id) {
-        main_id = _main_id
-      }
-
-      function onCardClick(e, d) {
-        updateMainId(d.data.id)
-        updateTree()
-      }
-
+        f3Chart.updateMainId(datum.id)
 
       /*
       DROPDOWN SEARCH
@@ -99,4 +78,4 @@ fetch("./data_db.json")
                 })
                 .text(d => d.label)
         }
-    })
+    }
