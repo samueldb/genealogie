@@ -1,0 +1,43 @@
+name: Deploy dev preview
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Assemble preview bundle
+        run: |
+          mkdir -p preview-site
+          cp -R deschampsberger preview-site/deschampsberger
+          cp -R dist preview-site/dist
+          cp data_db.json preview-site/data_db.json
+          cp index.html preview-site/index.html
+
+      - name: Publish preview to gh-pages-dev
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages-dev
+          publish_dir: preview-site
+          commit_message: "Deploy dev preview: ${{ github.sha }}"
