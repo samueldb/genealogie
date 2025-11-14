@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8' http-equiv="Content-Type">
+  <meta Access-Control-Allow-Origin: */>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Travaux Genea</title>
+  <script src="deschampsberger/plugins/d3.v6.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./src/styles/family-chart.css">
+  <link rel="stylesheet" type="text/css" href="./deschampsberger/styles/decorum.css">
+
+
+  <script>
+    $(function () {
+      $("#header").load("./deschampsberger/includes/header.html");
+      $("#menu").load("./deschampsberger/includes/menu.html");
+    });
+  </script>
+</head>
+<body>
+  <header id="header"></header>
+  <div id="menu"></div>
+  <div id="content-wrapper">
+    <div class="inner clearfix">
+      <section id="main-content">
+        <div id="FamilyChart" class="f3" style="width:100%;height:600px;margin:auto;background-color:rgba(250,250,250,1);color:#fff;"></div>
+      </section>
+      <aside id="sidebar">
+        <fieldset style="border:solid 1px black;width:390px">
+          <legend>Recherche</legend>
+          <div id="RecherchePersonne"></div>
+          <div id="sideTooltip"></div>
+        </fieldset>
+      </aside>
+  <script src="deschampsberger/index/index.js" type="module"></script>
+</body>
+</html>
