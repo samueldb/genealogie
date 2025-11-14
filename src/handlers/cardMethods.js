@@ -2,10 +2,16 @@ import {toggleAllRels, toggleRels} from "../CalculateTree/CalculateTree.handlers
 import {deletePerson, moveToAddToAdded} from "../CreateTree/form.js"
 
 export function cardChangeMain(store, {d}) {
-  toggleAllRels(store.getTree().data, false)
-  store.updateMainId(d.data.id)
-  store.updateTree({tree_position: store.state.tree_fit_on_change})
-  return true
+  // Add error handling and ensure store is initialized
+  if (!store || !store.getTree) {
+    console.error('Store or getTree method not available');
+    return false;
+  }
+
+  toggleAllRels(store.getTree().data, false);
+  store.updateMainId(d.data.id);
+  store.updateTree({tree_position: store.state.tree_fit_on_change});
+  return true;
 }
 
 export function cardEdit(store, {d, cardEditForm}) {
@@ -24,5 +30,6 @@ export function cardEdit(store, {d, cardEditForm}) {
 export function cardShowHideRels(store, {d}) {
   d.data.hide_rels = !d.data.hide_rels
   toggleRels(d, d.data.hide_rels)
-  store.updateTree({tree_position: store.state.tree_fit_on_change})
+  store.updateTree({tree_position: store.state.tree_fit_on_change});
+  return true;
 }
