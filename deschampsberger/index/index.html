@@ -13,7 +13,59 @@
   <link rel="stylesheet" href="https://unpkg.com/family-chart@0.9.0/dist/styles/family-chart.css">
 
     <link rel="stylesheet" type="text/css" href="/deschampsberger/styles/decorum.css">
-    <style> body { font-family: 'Arial', sans-serif; } </style>
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        #sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        #EditPanel {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        #EditPanelFormHost .f3-form-cont {
+            width: 100%;
+            height: auto;
+            box-shadow: none;
+        }
+        #EditPanelFormHost .f3-form-cont.opened {
+            width: 100%;
+        }
+        .save-status {
+            font-size: 0.85rem;
+            color: #333;
+            min-height: 1.2rem;
+        }
+        .save-status.saving {
+            color: #444;
+        }
+        .save-status.error {
+            color: #a94442;
+        }
+        .save-status.success {
+            color: #007c48;
+        }
+        #EditPanel .lastname-suggestions {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 4px;
+            max-height: 180px;
+            overflow-y: auto;
+            display: none;
+            position: relative;
+            z-index: 5;
+        }
+        #EditPanel .lastname-suggestions div {
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+        #EditPanel .lastname-suggestions div:hover {
+            background: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
 <header id="header"></header>
@@ -25,6 +77,10 @@
         </section>
         <aside id="sidebar">
             <div id="RecherchePersonne"></div>
+            <div id="EditPanel">
+                <div id="EditPanelFormHost"></div>
+                <div id="SaveDataStatus" class="save-status" aria-live="polite"></div>
+            </div>
             Légende
             <div id="sideTooltip"></div>
         </aside>

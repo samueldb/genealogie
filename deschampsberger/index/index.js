@@ -5,6 +5,11 @@ fetch("./data_db.json")
 
     function create(data){
 
+      let lastNameSuggestions = extractLastNames(data)
+      let saveTimeoutId = null
+      let pendingSavePayload = null
+      const saveStatusElement = document.getElementById("SaveDataStatus")
+
       const f3Chart = f3.createChart('#FamilyChart', data)
               .setTransitionTime(100)
               .setCardXSpacing(250)
@@ -18,10 +23,12 @@ fetch("./data_db.json")
         .setEditFirst(true)  // true = open form on click, false = open info in click
         .setCardClickOpen(f3Card)
         .setOnChange(() => {
-               const updated_data = f3EditTree.exportData()
-               console.log(updated_data)
+               const updated_data = getCurrentDataset()
+               lastNameSuggestions = extractLastNames(updated_data)
+               queueDataPersistence()
              })
         // .setNoEdit()  // if you want to just see info form
+      setupEditPanel()
 
       f3Chart.updateTree({initial: true})
       f3EditTree.open(f3Chart.getMainDatum())
@@ -77,5 +84,155 @@ fetch("./data_db.json")
                     updateTreeWithNewMainPerson(d.value, true)
                 })
                 .text(d => d.label)
+        }
+
+        function setupEditPanel() {
+          const editPanelWrapper = document.getElementById("EditPanelFormHost") || document.getElementById("EditPanel") || document.getElementById("sidebar")
+          const currentFormCont = document.querySelector("#FamilyChart .f3-form-cont")
+          if (editPanelWrapper && currentFormCont) {
+            editPanelWrapper.prepend(currentFormCont)
+            f3EditTree.form_cont = currentFormCont
+            f3EditTree.fixed()
+            initLastNameAutocomplete(editPanelWrapper)
+          }
+        }
+
+        function initLastNameAutocomplete(panel) {
+          if (!panel || panel.dataset.lastnameAutocomplete === 'true') return
+          panel.dataset.lastnameAutocomplete = 'true'
+          panel.addEventListener('focusin', (event) => {
+            const target = event.target
+            if (target.matches('input[name="last name"]')) {
+              attachAutocompleteToInput(target)
+            }
+          })
+        }
+
+        function attachAutocompleteToInput(input) {
+          if (input.dataset.autocompleteAttached) return
+          const fieldWrapper = input.closest('.f3-form-field') || input.parentElement
+          const suggestionBox = document.createElement('div')
+          suggestionBox.className = 'lastname-suggestions'
+          fieldWrapper.appendChild(suggestionBox)
+
+          input.setAttribute('autocomplete', 'off')
+          input.dataset.autocompleteAttached = 'true'
+
+          const render = () => renderSuggestions(input, suggestionBox)
+          input.addEventListener('input', render)
+          input.addEventListener('focus', render)
+          input.addEventListener('blur', () => {
+            setTimeout(() => hideSuggestions(suggestionBox), 150)
+          })
+
+          suggestionBox.addEventListener('mousedown', (event) => {
+            const value = event.target.getAttribute('data-value')
+            if (value) {
+              input.value = value
+              hideSuggestions(suggestionBox)
+            }
+          })
+        }
+
+        function renderSuggestions(input, suggestionBox) {
+          if (!f3EditTree.isAddingRelative()) {
+            hideSuggestions(suggestionBox)
+            return
+          }
+          const suggestions = filterLastNames(input.value)
+          if (!suggestions.length) {
+            hideSuggestions(suggestionBox)
+            return
+          }
+          suggestionBox.innerHTML = suggestions.map(name => `<div data-value="${name}">${name}</div>`).join('')
+          suggestionBox.style.display = 'block'
+        }
+
+        function hideSuggestions(box) {
+          box.innerHTML = ''
+          box.style.display = 'none'
+        }
+
+        function filterLastNames(value = '') {
+          const query = value.trim().toLowerCase()
+          if (query.length < 3) return []
+          return lastNameSuggestions
+            .filter(name => name && name.toLowerCase().includes(query))
+            .slice(0, 10)
+        }
+
+        function extractLastNames(dataset = []) {
+          const names = new Set()
+          dataset.forEach(person => {
+            const name = person?.data?.["last name"]
+            if (name) names.add(name)
+          })
+          return Array.from(names).sort((a, b) => a.localeCompare(b))
+        }
+        function getCurrentDataset() {
+          if (typeof f3EditTree.getStoreData === 'function') {
+            return f3EditTree.getStoreData()
+          }
+          const dataJson = typeof f3EditTree.getDataJson === 'function' ? f3EditTree.getDataJson() : '[]'
+          const parsed = safeParseDataJson(dataJson)
+          return Array.isArray(parsed) ? parsed : []
+        }
+
+        function queueDataPersistence() {
+          pendingSavePayload = safeParseDataJson(typeof f3EditTree.getDataJson === 'function' ? f3EditTree.getDataJson() : '[]')
+          if (!pendingSavePayload) return
+          if (saveTimeoutId) clearTimeout(saveTimeoutId)
+          updateSaveStatus('saving')
+          saveTimeoutId = window.setTimeout(() => {
+            saveTimeoutId = null
+            persistDataset(pendingSavePayload)
+          }, 800)
+        }
+
+        function safeParseDataJson(dataJson) {
+          try {
+            return JSON.parse(dataJson)
+          } catch (error) {
+            console.error("Unable to parse chart data", error)
+            return null
+          }
+        }
+
+        function persistDataset(dataset) {
+          fetch("/api/family-data", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({data: dataset})
+          })
+            .then(res => {
+              if (!res.ok) throw new Error("Server rejected save request")
+              return res.json()
+            })
+            .then(() => {
+              updateSaveStatus('success')
+              window.setTimeout(() => updateSaveStatus('idle'), 2500)
+            })
+            .catch(error => {
+              console.error("Failed to persist data_db.json", error)
+              updateSaveStatus('error', error.message)
+            })
+        }
+
+        function updateSaveStatus(state, message) {
+          if (!saveStatusElement) return
+          saveStatusElement.classList.remove("saving", "success", "error")
+          if (state === 'saving') {
+            saveStatusElement.textContent = "Saving changes…"
+            saveStatusElement.classList.add("saving")
+          } else if (state === 'success') {
+            saveStatusElement.textContent = "All changes saved"
+            saveStatusElement.classList.add("success")
+          } else if (state === 'error') {
+            const errorMsg = message ? `Save failed: ${message}` : "Save failed"
+            saveStatusElement.textContent = errorMsg
+            saveStatusElement.classList.add("error")
+          } else {
+            saveStatusElement.textContent = ""
+          }
         }
     }

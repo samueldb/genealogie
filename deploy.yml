@@ -1,0 +1,41 @@
+name: Deploy Deschampsberger site
+
+on:
+  push:
+    branches:
+      - from_donatso
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build library
+        run: npm run build
+
+      - name: Prepare GitHub Pages bundle
+        run: |
+          mkdir -p public-site
+          cp -R deschampsberger public-site/deschampsberger
+          cp -R dist public-site/dist
+          cp data_db.json public-site/data_db.json
+          cp index.html public-site/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public-site
