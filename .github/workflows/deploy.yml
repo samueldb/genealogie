@@ -3,7 +3,6 @@ name: Deploy Deschampsberger site
 on:
   push:
     branches:
-      - from_donatso
       - main
   workflow_dispatch:
 
