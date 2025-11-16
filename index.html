@@ -9,7 +9,9 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/family-chart@0.9.0"></script>
-    <link rel="stylesheet" href="./dist/styles/family-chart.css">
+    <link rel="stylesheet" href="https://unpkg.com/family-chart@0.9.0/dist/styles/family-chart.css">
+    <link rel="stylesheet" href="styles/family-chart.css">
+
 
     <link rel="stylesheet" type="text/css" href="styles/decorum.css">
     <style>
@@ -65,6 +67,12 @@
             background: #f0f0f0;
         }
     </style>
+    <script>
+        window.GENEA_API_CONFIG = window.GENEA_API_CONFIG || {
+            baseUrl: "",
+            apiKey: "mon_token_pour_ajouter_des_personnes_pls_dont_hack"
+        };
+    </script>
 </head>
 <body>
 <header id="header"></header>
@@ -87,8 +95,8 @@
 </div>
 <script>
     $(function () {
-      $("#header").load("deschampsberger/includes/header.html");
-      $("#menu").load("deschampsberger/includes/menu.html");
+      $("#header").load("includes/header.html");
+      $("#menu").load("includes/menu.html");
     });
 </script>
 <script src="index/index.js" type="module"></script>

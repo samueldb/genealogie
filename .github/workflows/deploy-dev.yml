@@ -23,6 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build project
+        run: npm run build
 
       - name: Assemble preview bundle
         run: |
@@ -35,9 +37,6 @@ jobs:
           cp -R utils preview-site/utils
           cp data_db.json preview-site/data_db.json
           cp index.html preview-site/index.html
-
-      - name: Build project
-        run: npm run build
 
       - name: Publish preview to gh-pages-dev
         uses: peaceiris/actions-gh-pages@v4

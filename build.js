@@ -11,7 +11,7 @@ function rollup() {
 
 function afterRollup() {
   // copy styles directory
-  fs.cpSync('./src/styles', './dist/styles', {recursive: true});
+  fs.cpSync('./styles', './dist/styles', {recursive: true});
 }
 
 beforeRollup();

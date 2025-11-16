@@ -1,3 +1,18 @@
+const FALLBACK_MONTHS = {
+  "01": "Janvier",
+  "02": "Fevrier",
+  "03": "Mars",
+  "04": "Avril",
+  "05": "Mai",
+  "06": "Juin",
+  "07": "Juillet",
+  "08": "Aout",
+  "09": "Septembre",
+  "10": "Octobre",
+  "11": "Novembre",
+  "12": "Decembre"
+}
+
 fetch("./data_db.json")
   .then(res => res.json())
   .then(data => create(data))
@@ -47,7 +62,8 @@ fetch("./data_db.json")
         const all_select_options = []
         data.forEach(d => {
             if (all_select_options.find(d0 => d0.value === d["id"])) return
-            all_select_options.push({label: `${d.data["first name"]+' '+d.data["last name"]+' né(e) le '+utils.default.formatDate(d.data["birthday"])}`, value: d["id"]})
+            const birthDate = formatBirthDate(d.data["birthday"])
+            all_select_options.push({label: `${d.data["first name"]+' '+d.data["last name"]+' né(e) le '+birthDate}`, value: d["id"]})
         })
         const search_cont = d3.select(document.querySelector("#RecherchePersonne")).append("div")
             // .attr("style", "position: absolute; top: 10px; left: 10px; width: 150px; z-index: 1000;")
@@ -199,9 +215,15 @@ fetch("./data_db.json")
         }
 
         function persistDataset(dataset) {
-          fetch("/api/family-data", {
+          const { endpoint, apiKey } = getPersistenceConfig()
+          const headers = {"Content-Type": "application/json"}
+          if (apiKey) {
+            headers["x-api-key"] = apiKey
+          }
+
+          fetch(endpoint, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers,
             body: JSON.stringify({data: dataset})
           })
             .then(res => {
@@ -235,4 +257,43 @@ fetch("./data_db.json")
             saveStatusElement.textContent = ""
           }
         }
+    }
+
+    function getPersistenceConfig() {
+      if (typeof window === "undefined") {
+        return { endpoint: "/api/family-data", apiKey: "" }
+      }
+      const rawConfig = window.GENEA_API_CONFIG || {}
+      const baseUrl = typeof rawConfig.baseUrl === "string" ? rawConfig.baseUrl.trim().replace(/\/$/, "") : ""
+      const apiKey = typeof rawConfig.apiKey === "string" ? rawConfig.apiKey : ""
+      const endpoint = baseUrl ? `${baseUrl}/api/family-data` : "api/family-data"
+      return { endpoint, apiKey }
+    }
+
+    function formatBirthDate(value) {
+      const externalFormatter = getExternalFormatter()
+      if (externalFormatter) {
+        try {
+          return externalFormatter(value)
+        } catch (err) {
+          console.warn("External formatter failed, falling back to default", err)
+        }
+      }
+      if (!value || typeof value !== "string") return "inconnue"
+      const date = value.trim()
+      if (!date || date === "null") return "inconnue"
+      if (/^\d{4}-\d{2}-\d{2}/.test(date)) {
+        const year = date.substring(0, 4)
+        const month = FALLBACK_MONTHS[date.substring(5, 7)] || date.substring(5, 7)
+        const day = date.substring(8, 10)
+        return `${day} ${month} ${year}`
+      }
+      return date
+    }
+
+    function getExternalFormatter() {
+      if (typeof window === "undefined") return null
+      const maybeUtils = window.utils || window.utils_dates
+      const candidate = maybeUtils && (maybeUtils.default?.formatDate || maybeUtils.formatDate)
+      return typeof candidate === "function" ? candidate.bind(maybeUtils.default || maybeUtils) : null
     }
