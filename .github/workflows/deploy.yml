@@ -29,6 +29,7 @@ jobs:
         run: |
           mkdir -p public-site
           cp -R deschampsberger public-site/deschampsberger
+          cp -R index public-site/index
           cp -R styles public-site/styles
           cp -R dist public-site/dist
           cp data_db.json public-site/data_db.json

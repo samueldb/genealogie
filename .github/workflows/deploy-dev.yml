@@ -30,6 +30,7 @@ jobs:
         run: |
           mkdir -p preview-site
           cp -R deschampsberger preview-site/deschampsberger
+          cp -R index preview-site/index
           cp -R styles preview-site/styles
           cp -R dist preview-site/dist
           cp data_db.json preview-site/data_db.json
