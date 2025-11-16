@@ -32,6 +32,8 @@ jobs:
           cp -R index public-site/index
           cp -R styles public-site/styles
           cp -R dist public-site/dist
+          cp -R includes preview-site/includes
+          cp -R utils preview-site/utils
           cp data_db.json public-site/data_db.json
           cp index.html public-site/index.html
 

@@ -33,6 +33,8 @@ jobs:
           cp -R index preview-site/index
           cp -R styles preview-site/styles
           cp -R dist preview-site/dist
+          cp -R includes preview-site/includes
+          cp -R utils preview-site/utils
           cp data_db.json preview-site/data_db.json
           cp index.html preview-site/index.html
 
