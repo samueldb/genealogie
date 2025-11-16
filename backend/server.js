@@ -147,7 +147,7 @@ function formatDataset(dataset) {
 
 function buildCommitMessage(count) {
   const timestamp = new Date().toISOString();
-  return `chore: update data_db.json (${count} entries @ ${timestamp})`;
+  return `database: 🗞️ update data_db.json (${count} entries`;
 }
 
 app.listen(PORT, () => {
