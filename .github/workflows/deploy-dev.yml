@@ -38,10 +38,12 @@ jobs:
           cp data_db.json preview-site/data_db.json
           cp index.html preview-site/index.html
 
-      - name: Publish preview to gh-pages-dev
+      - name: Publish preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages-dev
+          publish_branch: gh-pages
           publish_dir: preview-site
+          destination_dir: preview-site
+          keep_files: true
           commit_message: "Deploy dev preview: ${{ github.sha }}"
