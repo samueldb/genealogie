@@ -289,6 +289,9 @@
   {
     "id": 15,
     "rels": {
+      "spouses": [
+        "e9530863-3010-46e5-a9ec-e23813e1e4d0"
+      ],
       "father": 17,
       "mother": 14
     },
@@ -4096,6 +4099,20 @@
     "rels": {
       "father": 4,
       "mother": 223
+    }
+  },
+  {
+    "id": "e9530863-3010-46e5-a9ec-e23813e1e4d0",
+    "data": {
+      "gender": "M",
+      "first name": "Robin",
+      "last name": "ETIEVENT",
+      "birthday": ""
+    },
+    "rels": {
+      "spouses": [
+        15
+      ]
     }
   }
 ]
