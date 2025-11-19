@@ -1829,12 +1829,16 @@ function CardBody({d,card_dim,card_display}) {
 }
 
 function CardText({d,card_dim,card_display}) {
+  const displayValues = getDisplayValues(card_display, d.data);
+  const textContent = Array.isArray(card_display)
+    ? displayValues.map(cd => `<tspan x="${0}" dy="${14}">${cd}</tspan>`).join('\n')
+    : (displayValues[0] || '');
   return {template: (`
     <g>
       <g class="card-text" clip-path="url(#card_text_clip)">
         <g transform="translate(${card_dim.text_x}, ${card_dim.text_y})">
           <text>
-            ${Array.isArray(card_display) ? card_display.map(cd => `<tspan x="${0}" dy="${14}">${cd(d.data)}</tspan>`).join('\n') : card_display(d.data)}
+            ${textContent}
           </text>
         </g>
       </g>
@@ -1910,6 +1914,19 @@ function PlusIcon({d,card_dim,x,y}) {
       </g>
     </g>
   `)})
+}
+
+function getDisplayValues(card_display, datum) {
+  const list = Array.isArray(card_display) ? card_display : [card_display];
+  return list
+    .map(item => (typeof item === 'function' ? item(datum) : item))
+    .filter(isMeaningfulDisplayValue)
+}
+
+function isMeaningfulDisplayValue(value) {
+  if (value === undefined || value === null) return false
+  if (typeof value === 'string') return value.trim().length > 0
+  return true
 }
 
 function LinkBreakIcon({x,y,rt,closed}) {
@@ -2207,9 +2224,11 @@ function CardHtml$1(props) {
   function textDisplay(d) {
     if (d.data._new_rel_data) return newRelDataDisplay(d)
     if (d.data.to_add) return `<div>${props.empty_card_label || 'ADD'}</div>`
-    return (`
-      ${props.card_display.map(display => `<div>${display(d.data)}</div>`).join('')}
-    `)
+    const displayValues = props.card_display
+      .map(display => display(d.data))
+      .filter(isMeaningfulDisplayValue);
+    if (!displayValues.length) return ''
+    return displayValues.map(value => `<div>${value}</div>`).join('')
   }
 
   function newRelDataDisplay(d) {
@@ -2290,6 +2309,12 @@ function CardHtml$1(props) {
   function noImageIcon(d) {
     if (d.data._new_rel_data) return `<div class="person-icon" ${getCardImageStyle()}>${plusSvgIcon()}</div>`
     return `<div class="person-icon" ${getCardImageStyle()}>${personSvgIcon()}</div>`
+  }
+
+  function isMeaningfulDisplayValue(value) {
+    if (value === undefined || value === null) return false
+    if (typeof value === 'string') return value.trim().length > 0
+    return true
   }
 }
 
