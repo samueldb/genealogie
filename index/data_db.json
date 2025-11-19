@@ -3273,6 +3273,9 @@
       "spouses": [
         "91859cf8-c6ae-472d-9d42-3d054140b02f"
       ],
+      "children": [
+        "169f1fb4-4acd-40f4-8c60-4f80a39b1b54"
+      ],
       "father": 89,
       "mother": 83
     },
@@ -4219,9 +4222,25 @@
       "birthday": ""
     },
     "rels": {
+      "children": [
+        "169f1fb4-4acd-40f4-8c60-4f80a39b1b54"
+      ],
       "spouses": [
         90
       ]
+    }
+  },
+  {
+    "id": "169f1fb4-4acd-40f4-8c60-4f80a39b1b54",
+    "data": {
+      "gender": "M",
+      "first name": "Liam",
+      "last name": "MUZULLIER",
+      "birthday": "10/06/2024"
+    },
+    "rels": {
+      "father": "91859cf8-c6ae-472d-9d42-3d054140b02f",
+      "mother": 90
     }
   }
 ]
