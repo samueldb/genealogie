@@ -1,18 +1,3 @@
-const FALLBACK_MONTHS = {
-  "01": "Janvier",
-  "02": "Fevrier",
-  "03": "Mars",
-  "04": "Avril",
-  "05": "Mai",
-  "06": "Juin",
-  "07": "Juillet",
-  "08": "Aout",
-  "09": "Septembre",
-  "10": "Octobre",
-  "11": "Novembre",
-  "12": "Decembre"
-}
-
 fetch("./data_db.json")
   .then(res => res.json())
   .then(data => create(data))
@@ -31,7 +16,10 @@ fetch("./data_db.json")
               .setCardYSpacing(150)
 
       const f3Card = f3Chart.setCardHtml()
-        .setCardDisplay([["first name","last name"],["birthday"]])
+        .setCardDisplay([
+          ["first name","last name"],
+          d => formatBirthDate(d.data["birthday"])
+        ])
 
       const f3EditTree = f3Chart.editTree()
         .setFields(["first name","last name","birthday"])
@@ -63,7 +51,8 @@ fetch("./data_db.json")
         data.forEach(d => {
             if (all_select_options.find(d0 => d0.value === d["id"])) return
             const birthDate = formatBirthDate(d.data["birthday"])
-            all_select_options.push({label: `${d.data["first name"]+' '+d.data["last name"]+' né(e) le '+birthDate}`, value: d["id"]})
+            const labelSuffix = birthDate ? ` né(e) le ${birthDate}` : ''
+            all_select_options.push({label: `${d.data["first name"]+' '+d.data["last name"]}${labelSuffix}`, value: d["id"]})
         })
         const search_cont = d3.select(document.querySelector("#RecherchePersonne")).append("div")
             // .attr("style", "position: absolute; top: 10px; left: 10px; width: 150px; z-index: 1000;")
@@ -271,24 +260,25 @@ fetch("./data_db.json")
     }
 
     function formatBirthDate(value) {
+      const normalized = normalizeBirthDateInput(value)
+      if (!normalized) return ""
+      if (isPlaceholderBirthDate(normalized)) return ""
+
       const externalFormatter = getExternalFormatter()
       if (externalFormatter) {
         try {
-          return externalFormatter(value)
+          return externalFormatter(normalized)
         } catch (err) {
           console.warn("External formatter failed, falling back to default", err)
         }
       }
-      if (!value || typeof value !== "string") return "inconnue"
-      const date = value.trim()
-      if (!date || date === "null") return "inconnue"
-      if (/^\d{4}-\d{2}-\d{2}/.test(date)) {
-        const year = date.substring(0, 4)
-        const month = FALLBACK_MONTHS[date.substring(5, 7)] || date.substring(5, 7)
-        const day = date.substring(8, 10)
-        return `${day} ${month} ${year}`
+      if (/^\d{4}-\d{2}-\d{2}/.test(normalized)) {
+        const year = normalized.substring(0, 4)
+        const month = normalized.substring(5, 7)
+        const day = normalized.substring(8, 10)
+        return `${day}/${month}/${year}`
       }
-      return date
+      return normalized
     }
 
     function getExternalFormatter() {
@@ -296,4 +286,19 @@ fetch("./data_db.json")
       const maybeUtils = window.utils || window.utils_dates
       const candidate = maybeUtils && (maybeUtils.default?.formatDate || maybeUtils.formatDate)
       return typeof candidate === "function" ? candidate.bind(maybeUtils.default || maybeUtils) : null
+    }
+
+    function normalizeBirthDateInput(value) {
+      if (!value || typeof value !== "string") return ""
+      const trimmed = value.trim()
+      if (!trimmed || trimmed === "null") return ""
+      return trimmed
+    }
+
+    function isPlaceholderBirthDate(value) {
+      const canonical = value
+        .replace(/T.+$/, '')
+        .replace(/\s.+$/, '')
+        .replace(/\//g, '-')
+      return canonical === '1970-01-01'
     }

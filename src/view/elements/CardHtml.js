@@ -52,9 +52,11 @@ export function CardHtml(props) {
   function textDisplay(d) {
     if (d.data._new_rel_data) return newRelDataDisplay(d)
     if (d.data.to_add) return `<div>${props.empty_card_label || 'ADD'}</div>`
-    return (`
-      ${props.card_display.map(display => `<div>${display(d.data)}</div>`).join('')}
-    `)
+    const displayValues = props.card_display
+      .map(display => display(d.data))
+      .filter(isMeaningfulDisplayValue)
+    if (!displayValues.length) return ''
+    return displayValues.map(value => `<div>${value}</div>`).join('')
   }
 
   function newRelDataDisplay(d) {
@@ -135,5 +137,11 @@ export function CardHtml(props) {
   function noImageIcon(d) {
     if (d.data._new_rel_data) return `<div class="person-icon" ${getCardImageStyle()}>${plusSvgIcon()}</div>`
     return `<div class="person-icon" ${getCardImageStyle()}>${personSvgIcon()}</div>`
+  }
+
+  function isMeaningfulDisplayValue(value) {
+    if (value === undefined || value === null) return false
+    if (typeof value === 'string') return value.trim().length > 0
+    return true
   }
 }
