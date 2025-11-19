@@ -292,6 +292,9 @@
       "spouses": [
         "e9530863-3010-46e5-a9ec-e23813e1e4d0"
       ],
+      "children": [
+        "ad497424-6a07-449a-8fe3-ef85ea796081"
+      ],
       "father": 17,
       "mother": 14
     },
@@ -4110,9 +4113,25 @@
       "birthday": ""
     },
     "rels": {
+      "children": [
+        "ad497424-6a07-449a-8fe3-ef85ea796081"
+      ],
       "spouses": [
         15
       ]
+    }
+  },
+  {
+    "id": "ad497424-6a07-449a-8fe3-ef85ea796081",
+    "data": {
+      "gender": "F",
+      "first name": "Jade",
+      "last name": "ETIEVENT",
+      "birthday": "26/10/2025"
+    },
+    "rels": {
+      "father": "e9530863-3010-46e5-a9ec-e23813e1e4d0",
+      "mother": 15
     }
   }
 ]
