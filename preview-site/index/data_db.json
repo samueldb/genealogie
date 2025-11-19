@@ -3270,6 +3270,9 @@
   {
     "id": 90,
     "rels": {
+      "spouses": [
+        "91859cf8-c6ae-472d-9d42-3d054140b02f"
+      ],
       "father": 89,
       "mother": 83
     },
@@ -4205,6 +4208,20 @@
     "rels": {
       "father": 220,
       "mother": 62
+    }
+  },
+  {
+    "id": "91859cf8-c6ae-472d-9d42-3d054140b02f",
+    "data": {
+      "gender": "M",
+      "first name": "Bastien",
+      "last name": "MUZULLIER",
+      "birthday": ""
+    },
+    "rels": {
+      "spouses": [
+        90
+      ]
     }
   }
 ]
