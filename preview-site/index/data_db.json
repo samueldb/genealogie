@@ -3183,6 +3183,9 @@
       "spouses": [
         "a7914050-72b4-4433-aa48-7fa30e71bb17"
       ],
+      "children": [
+        "d087723f-5ac3-436f-a2c1-cab83c2db58b"
+      ],
       "father": 87,
       "mother": 93
     },
@@ -4153,9 +4156,25 @@
       "birthday": ""
     },
     "rels": {
+      "children": [
+        "d087723f-5ac3-436f-a2c1-cab83c2db58b"
+      ],
       "spouses": [
         94
       ]
+    }
+  },
+  {
+    "id": "d087723f-5ac3-436f-a2c1-cab83c2db58b",
+    "data": {
+      "gender": "F",
+      "first name": "Elise",
+      "last name": "DEBEIRE",
+      "birthday": "12/04/2025"
+    },
+    "rels": {
+      "father": "a7914050-72b4-4433-aa48-7fa30e71bb17",
+      "mother": 94
     }
   }
 ]
