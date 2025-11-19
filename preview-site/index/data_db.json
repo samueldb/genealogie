@@ -371,7 +371,8 @@
         220
       ],
       "children": [
-        65
+        65,
+        "055e8d90-9ea6-4c88-a8a4-def82156bcbe"
       ],
       "father": 59,
       "mother": 60
@@ -708,7 +709,8 @@
         62
       ],
       "children": [
-        65
+        65,
+        "055e8d90-9ea6-4c88-a8a4-def82156bcbe"
       ]
     },
     "data": {
@@ -4190,6 +4192,19 @@
     "rels": {
       "father": 219,
       "mother": 63
+    }
+  },
+  {
+    "id": "055e8d90-9ea6-4c88-a8a4-def82156bcbe",
+    "data": {
+      "gender": "M",
+      "first name": "Emile",
+      "last name": "PELLOUX",
+      "birthday": "01/01/2018"
+    },
+    "rels": {
+      "father": 220,
+      "mother": 62
     }
   }
 ]
