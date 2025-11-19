@@ -394,7 +394,8 @@
       ],
       "children": [
         64,
-        205
+        205,
+        "e795cdac-b4a7-4444-80d7-9de8d26a4bc7"
       ],
       "father": 59,
       "mother": 60
@@ -831,7 +832,8 @@
       ],
       "children": [
         64,
-        205
+        205,
+        "e795cdac-b4a7-4444-80d7-9de8d26a4bc7"
       ]
     },
     "data": {
@@ -4175,6 +4177,19 @@
     "rels": {
       "father": "a7914050-72b4-4433-aa48-7fa30e71bb17",
       "mother": 94
+    }
+  },
+  {
+    "id": "e795cdac-b4a7-4444-80d7-9de8d26a4bc7",
+    "data": {
+      "gender": "F",
+      "first name": "RODRIGUEZ",
+      "last name": "Inès",
+      "birthday": "27/06/2024"
+    },
+    "rels": {
+      "father": 219,
+      "mother": 63
     }
   }
 ]
