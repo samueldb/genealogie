@@ -1841,7 +1841,10 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "expert comptable",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/1.jpg",
-      "gender": "M"
+      "gender": "M",
+      "address": "169 rue du paradis, 74800 La roche sur foron",
+      "geometry_lat": "",
+      "geometry_lng": ""
     }
   },
   {
