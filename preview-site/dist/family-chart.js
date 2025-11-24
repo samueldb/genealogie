@@ -159,7 +159,7 @@ function createForm({datum, store, fields, postSubmit, addRelative, deletePerson
       id: d.id,
       type: d.type,
       label: d.label,
-      initial_value: datum.data[d.id],
+      initial_value: getInitialValue(d.id, datum),
     };
     form_creator.fields.push(field);
   });
@@ -170,6 +170,7 @@ function createForm({datum, store, fields, postSubmit, addRelative, deletePerson
     e.preventDefault();
     const form_data = new FormData(e.target);
     form_data.forEach((v, k) => datum.data[k] = v);
+    applyGeometryFields(datum);
     if (datum.to_add) delete datum.to_add;
     postSubmit();
   }
@@ -177,6 +178,38 @@ function createForm({datum, store, fields, postSubmit, addRelative, deletePerson
   function deletePersonWithPostSubmit() {
     deletePerson();
     postSubmit({delete: true});
+  }
+
+  function getInitialValue(fieldId, datum) {
+    if (fieldId === 'geometry_lat') {
+      const coords = datum?.data?.geometry?.coordinates;
+      const mapPoint = datum?.data?.map_point;
+      if (Array.isArray(coords)) return coords[1]
+      if (mapPoint && Number.isFinite(mapPoint.lat)) return mapPoint.lat
+      return datum?.data?.geometry_lat
+    }
+    if (fieldId === 'geometry_lng') {
+      const coords = datum?.data?.geometry?.coordinates;
+      const mapPoint = datum?.data?.map_point;
+      if (Array.isArray(coords)) return coords[0]
+      if (mapPoint && Number.isFinite(mapPoint.lng)) return mapPoint.lng
+      return datum?.data?.geometry_lng
+    }
+    return datum.data[fieldId]
+  }
+
+  function applyGeometryFields(datum) {
+    const lat = parseFloat(datum.data.geometry_lat);
+    const lng = parseFloat(datum.data.geometry_lng);
+    if (Number.isFinite(lat) && Number.isFinite(lng)) {
+      datum.data.geometry = {type: 'Point', coordinates: [lng, lat]};
+      datum.data.map_point = {lat, lng};
+    } else {
+      delete datum.data.geometry;
+      delete datum.data.map_point;
+    }
+    delete datum.data.geometry_lat;
+    delete datum.data.geometry_lng;
   }
 }
 
