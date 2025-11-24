@@ -88,15 +88,15 @@ function serveStaticFile(requestPath, res) {
   if (safePath.includes('\0')) {
     return send404(res)
   }
-  if (safePath.endsWith('/')) safePath += 'index.html'
-  if (safePath === '/' || safePath === '') safePath = '/index.html'
+  if (safePath.endsWith('/')) safePath += 'index.old.html'
+  if (safePath === '/' || safePath === '') safePath = '/index.old.html'
 
   safePath = path.normalize(safePath).replace(/^(\.\.[\\/])+/, '')
   let filePath = path.join(ROOT_DIR, safePath)
 
   fs.stat(filePath, (err, stats) => {
     if (!err && stats.isDirectory()) {
-      const directoryIndex = path.join(filePath, 'index.html')
+      const directoryIndex = path.join(filePath, 'index.old.html')
       return streamFile(directoryIndex, res)
     }
     if (err) {

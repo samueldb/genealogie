@@ -305,7 +305,10 @@
   width: 200px;
   min-height: 70px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 8px;
   border-radius: 5px;
 }
 
@@ -315,7 +318,7 @@
   object-fit: cover;
   flex: 0 0 auto;
   padding: 5px;
-  margin-right: 10px;
+  border-radius: 8px;
 }
 
 .f3 div.card-image-rect img {
@@ -324,7 +327,6 @@
   object-fit: cover;
   flex: 0 0 auto;
   padding: 5px;
-  margin-right: 10px;
   border-radius: 8px;
 }
 
@@ -341,7 +343,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
 }
 
 .f3 div.mini-tree {
