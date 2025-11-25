@@ -4977,7 +4977,11 @@
       "last name": "ETIEVENT",
       "birthday": "",
       "geom": "",
-      "commentaire": ""
+      "commentaire": "",
+      "avatar": "",
+      "address": "route du villard, 73550 Les Allues",
+      "geometry_lat": "",
+      "geometry_lng": ""
     },
     "rels": {
       "children": [
