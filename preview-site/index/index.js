@@ -207,6 +207,7 @@ fetch("./data_db.json")
             f3EditTree.fixed()
             initLastNameAutocomplete(editPanelWrapper)
             hookPersonFormEnhancer(currentFormCont)
+            hookSearchMasking(currentFormCont)
           }
         }
 
@@ -218,6 +219,18 @@ fetch("./data_db.json")
           })
           observer.observe(formCont, {childList: true, subtree: true})
           enhancePersonForm(formCont)
+        }
+
+        function hookSearchMasking(formCont) {
+          const searchContainer = document.getElementById("RecherchePersonne")
+          if (!searchContainer) return
+          const updateMask = () => {
+            const hasOpenForm = formCont.classList.contains("opened") && !!formCont.querySelector("form")
+            searchContainer.classList.toggle("is-masked", hasOpenForm)
+          }
+          const observer = new MutationObserver(updateMask)
+          observer.observe(formCont, {attributes: true, attributeFilter: ["class"], childList: true})
+          updateMask()
         }
 
         function enhancePersonForm(formHost) {
