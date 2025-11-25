@@ -365,8 +365,9 @@
       "gender": "F",
       "geom": "POINT(6.564245 45.402488)",
       "commentaire": "",
-      "geometry_lng": 6.564245,
-      "geometry_lat": 45.402488
+      "geometry_lng": "",
+      "geometry_lat": "",
+      "address": "route du villard, 73550 Les Allues"
     }
   },
   {
