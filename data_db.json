@@ -5000,7 +5000,11 @@
       "last name": "ETIEVENT",
       "birthday": "26/10/2025",
       "geom": "",
-      "commentaire": ""
+      "commentaire": "",
+      "avatar": "",
+      "address": "route du villard, 73550 Les Allues",
+      "geometry_lat": "",
+      "geometry_lng": ""
     },
     "rels": {
       "father": "e9530863-3010-46e5-a9ec-e23813e1e4d0",
