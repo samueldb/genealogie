@@ -34,8 +34,10 @@ fetch("./data_db.json")
           "birthday",
           { id: "avatar", label: "Photo URL", type: "text" },
           { id: "address", label: "Adresse", type: "text" },
-          { id: "geometry_lat", label: "Latitude", type: "text" },
-          { id: "geometry_lng", label: "Longitude", type: "text" }
+          // { id: "geometry_lat", label: "Latitude", type: "text" },
+          // { id: "geometry_lng", label: "Longitude", type: "text" },
+          // { id: "geom", label: "Geom", type: "text" },
+          { id: "commentaire", label: "Commentaire", type: "textarea" }
         ])
         .setEditFirst(false)  // true = open form on click, false = open info in click
         .setCardClickOpen(f3Card)

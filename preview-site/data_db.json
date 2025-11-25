@@ -12,7 +12,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(0.906799 47.355845)",
+      "commentaire": "",
+      "geometry_lng": 0.906799,
+      "geometry_lat": 47.355845
     }
   },
   {
@@ -32,7 +36,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Viticultrice",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(0.902671 47.357254)",
+      "commentaire": "",
+      "geometry_lng": 0.902671,
+      "geometry_lat": 47.357254
     }
   },
   {
@@ -53,7 +61,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.618611 45.330656)",
+      "commentaire": "",
+      "geometry_lng": 5.618611,
+      "geometry_lat": 45.330656
     }
   },
   {
@@ -70,7 +82,11 @@
       "lastday": "1921-02-05T00:00:00.000Z",
       "job": "instituteur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568429 45.489705)",
+      "commentaire": "",
+      "geometry_lng": 6.568429,
+      "geometry_lat": 45.489705
     }
   },
   {
@@ -91,7 +107,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.559704 45.497241)",
+      "commentaire": "nommée Berger ? ",
+      "geometry_lng": 6.559704,
+      "geometry_lat": 45.497241
     }
   },
   {
@@ -113,7 +133,11 @@
       "lastday": "1678-04-09T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.559704 45.497241)",
+      "commentaire": "",
+      "geometry_lng": 6.559704,
+      "geometry_lat": 45.497241
     }
   },
   {
@@ -135,7 +159,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(5.38048 45.1827)",
+      "commentaire": "",
+      "geometry_lng": 5.38048,
+      "geometry_lat": 45.1827
     }
   },
   {
@@ -157,7 +185,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(4.896555 44.932663)",
+      "commentaire": "",
+      "geometry_lng": 4.896555,
+      "geometry_lat": 44.932663
     }
   },
   {
@@ -178,7 +210,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.019821 46.531469)",
+      "commentaire": "",
+      "geometry_lng": 6.019821,
+      "geometry_lat": 46.531469
     }
   },
   {
@@ -200,7 +236,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/27.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.566605 45.399064)",
+      "commentaire": "",
+      "geometry_lng": 6.566605,
+      "geometry_lat": 45.399064
     }
   },
   {
@@ -223,7 +263,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "ingénieur mécanique",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/4.jpg",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(5.618477 45.331151)",
+      "commentaire": "",
+      "geometry_lng": 5.618477,
+      "geometry_lat": 45.331151
     }
   },
   {
@@ -246,7 +290,11 @@
       "job": "ingénieur géomatique",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/3.jpg",
       "gender": "M",
-      "address": "59 rue de tours, 37270 Saint Martin le beau"
+      "address": "59 rue de tours, 37270 Saint Martin le beau",
+      "geom": "POINT(0.684586 47.398814)",
+      "commentaire": "ras",
+      "geometry_lng": 0.684586,
+      "geometry_lat": 47.398814
     }
   },
   {
@@ -262,7 +310,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/13.jpg",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.567955 45.489306)",
+      "commentaire": "",
+      "geometry_lng": 6.567955,
+      "geometry_lat": 45.489306
     }
   },
   {
@@ -284,7 +336,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "comptable - gestionnaire restaurant altitude",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/18.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.771588 45.619476)",
+      "commentaire": "",
+      "geometry_lng": 6.771588,
+      "geometry_lat": 45.619476
     }
   },
   {
@@ -306,7 +362,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/15.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.564245 45.402488)",
+      "commentaire": "",
+      "geometry_lng": 6.564245,
+      "geometry_lat": 45.402488
     }
   },
   {
@@ -330,7 +390,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "chef entreprise vente (PHILIA)",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/16.jpg",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.566606 45.398992)",
+      "commentaire": "",
+      "geometry_lng": 6.566606,
+      "geometry_lat": 45.398992
     }
   },
   {
@@ -346,7 +410,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/21.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.293431 48.777449)",
+      "commentaire": "",
+      "geometry_lng": 2.293431,
+      "geometry_lat": 48.777449
     }
   },
   {
@@ -362,7 +430,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/20.jpg",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.293431 48.777449)",
+      "commentaire": "",
+      "geometry_lng": 2.293431,
+      "geometry_lat": 48.777449
     }
   },
   {
@@ -385,7 +457,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.627545 45.537377)",
+      "commentaire": "",
+      "geometry_lng": 6.627545,
+      "geometry_lat": 45.537377
     }
   },
   {
@@ -409,7 +485,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Chargée d'étude économique",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(4.360069 43.837425)",
+      "commentaire": "",
+      "geometry_lng": 4.360069,
+      "geometry_lat": 43.837425
     }
   },
   {
@@ -425,7 +505,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Doctorant",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.074017 45.495252)",
+      "commentaire": "",
+      "geometry_lng": 6.074017,
+      "geometry_lat": 45.495252
     }
   },
   {
@@ -448,7 +532,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "gardien du refuge du laisonnay",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.694493 45.455314)",
+      "commentaire": "",
+      "geometry_lng": 6.694493,
+      "geometry_lat": 45.455314
     }
   },
   {
@@ -472,7 +560,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.896469 44.933879)",
+      "commentaire": "",
+      "geometry_lng": 4.896469,
+      "geometry_lat": 44.933879
     }
   },
   {
@@ -492,7 +584,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Pompier",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.508379 45.501689)",
+      "commentaire": "",
+      "geometry_lng": 6.508379,
+      "geometry_lat": 45.501689
     }
   },
   {
@@ -508,7 +604,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.727472 45.182151)",
+      "commentaire": "",
+      "geometry_lng": 5.727472,
+      "geometry_lat": 45.182151
     }
   },
   {
@@ -531,7 +631,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "artisan chauffagiste",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.102712 49.079244)",
+      "commentaire": "",
+      "geometry_lng": 2.102712,
+      "geometry_lat": 49.079244
     }
   },
   {
@@ -555,7 +659,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.38048 45.1827)",
+      "commentaire": "",
+      "geometry_lng": 5.38048,
+      "geometry_lat": 45.1827
     }
   },
   {
@@ -577,7 +685,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -598,7 +710,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -622,7 +738,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "capitaine de police",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.010002 49.431805)",
+      "commentaire": "",
+      "geometry_lng": 2.010002,
+      "geometry_lat": 49.431805
     }
   },
   {
@@ -641,7 +761,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.08667 49.4409)",
+      "commentaire": "",
+      "geometry_lng": 2.08667,
+      "geometry_lat": 49.4409
     }
   },
   {
@@ -656,7 +780,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568499 45.489274)",
+      "commentaire": "",
+      "geometry_lng": 6.568499,
+      "geometry_lat": 45.489274
     }
   },
   {
@@ -678,7 +806,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "patissier",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.023254 46.530524)",
+      "commentaire": "",
+      "geometry_lng": 6.023254,
+      "geometry_lat": 46.530524
     }
   },
   {
@@ -700,7 +832,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.010002 49.431805)",
+      "commentaire": "",
+      "geometry_lng": 2.010002,
+      "geometry_lat": 49.431805
     }
   },
   {
@@ -721,7 +857,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Architecte",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.648626 45.555557)",
+      "commentaire": "",
+      "geometry_lng": 6.648626,
+      "geometry_lat": 45.555557
     }
   },
   {
@@ -741,7 +881,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "guide de haute montagne",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.772259 45.616552)",
+      "commentaire": "",
+      "geometry_lng": 6.772259,
+      "geometry_lat": 45.616552
     }
   },
   {
@@ -761,7 +905,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(0.718441 45.190936)",
+      "commentaire": "",
+      "geometry_lng": 0.718441,
+      "geometry_lat": 45.190936
     }
   },
   {
@@ -782,7 +930,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(5.369953 43.296174)",
+      "commentaire": "",
+      "geometry_lng": 5.369953,
+      "geometry_lat": 43.296174
     }
   },
   {
@@ -803,7 +955,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.037927 45.429342)",
+      "commentaire": "",
+      "geometry_lng": 6.037927,
+      "geometry_lat": 45.429342
     }
   },
   {
@@ -824,7 +980,9 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "",
+      "commentaire": ""
     }
   },
   {
@@ -846,7 +1004,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Photographe",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.678477 43.889776)",
+      "commentaire": "",
+      "geometry_lng": 4.678477,
+      "geometry_lat": 43.889776
     }
   },
   {
@@ -863,7 +1025,11 @@
       "lastday": "1917-12-30T15:36:59.000Z",
       "job": "cultivateur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -880,7 +1046,11 @@
       "lastday": "1865-10-08T15:31:45.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568413 45.489645)",
+      "commentaire": "",
+      "geometry_lng": 6.568413,
+      "geometry_lat": 45.489645
     }
   },
   {
@@ -907,7 +1077,11 @@
       "lastday": "1909-10-16T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568374 45.48918)",
+      "commentaire": "",
+      "geometry_lng": 6.568374,
+      "geometry_lat": 45.48918
     }
   },
   {
@@ -924,7 +1098,11 @@
       "lastday": "1902-03-20T11:04:21.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -943,7 +1121,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -959,7 +1141,11 @@
       "lastday": "1898-04-04T15:38:17.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "ou Josephte ?",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -975,7 +1161,11 @@
       "lastday": "1862-04-14T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -991,7 +1181,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -1010,7 +1204,11 @@
       "lastday": "1848-07-06T11:41:41.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568574 45.489505)",
+      "commentaire": "",
+      "geometry_lng": 6.568574,
+      "geometry_lat": 45.489505
     }
   },
   {
@@ -1039,7 +1237,11 @@
       "lastday": "1905-09-04T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568369 45.489193)",
+      "commentaire": "",
+      "geometry_lng": 6.568369,
+      "geometry_lat": 45.489193
     }
   },
   {
@@ -1058,7 +1260,11 @@
       "lastday": "1872-05-05T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568891 45.489727)",
+      "commentaire": "",
+      "geometry_lng": 6.568891,
+      "geometry_lat": 45.489727
     }
   },
   {
@@ -1074,7 +1280,11 @@
       "lastday": "1846-03-12T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568361 45.489186)",
+      "commentaire": "",
+      "geometry_lng": 6.568361,
+      "geometry_lat": 45.489186
     }
   },
   {
@@ -1090,7 +1300,11 @@
       "lastday": "1837-04-20T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568816 45.489554)",
+      "commentaire": "morte au lieu dit La Vigne du Séminaire",
+      "geometry_lng": 6.568816,
+      "geometry_lat": 45.489554
     }
   },
   {
@@ -1106,7 +1320,11 @@
       "lastday": "1834-08-07T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568826 45.489611)",
+      "commentaire": "",
+      "geometry_lng": 6.568826,
+      "geometry_lat": 45.489611
     }
   },
   {
@@ -1122,7 +1340,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568698 45.489663)",
+      "commentaire": "https://gw.geneanet.org/jacqedoua?lang=fr&pz=edouard+jacques&nz=floriant&ocz=0&p=jean+alphonse+1&n=deschamps+berger",
+      "geometry_lng": 6.568698,
+      "geometry_lat": 45.489663
     }
   },
   {
@@ -1148,7 +1370,11 @@
       "lastday": "1831-02-22T00:00:00.000Z",
       "job": "laboureur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568966 45.489569)",
+      "commentaire": "",
+      "geometry_lng": 6.568966,
+      "geometry_lat": 45.489569
     }
   },
   {
@@ -1165,7 +1391,11 @@
       "lastday": "1841-07-31T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.72856 45.5888)",
+      "commentaire": "",
+      "geometry_lng": 6.72856,
+      "geometry_lat": 45.5888
     }
   },
   {
@@ -1182,7 +1412,11 @@
       "lastday": "1823-10-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568666 45.489434)",
+      "commentaire": "",
+      "geometry_lng": 6.568666,
+      "geometry_lat": 45.489434
     }
   },
   {
@@ -1211,7 +1445,11 @@
       "lastday": "1844-01-09T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568531 45.489558)",
+      "commentaire": "",
+      "geometry_lng": 6.568531,
+      "geometry_lat": 45.489558
     }
   },
   {
@@ -1242,7 +1480,11 @@
       "lastday": "1827-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -1258,7 +1500,11 @@
       "lastday": "1775-12-05T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568885 45.489487)",
+      "commentaire": "ou Marie-Joseph ? ",
+      "geometry_lng": 6.568885,
+      "geometry_lat": 45.489487
     }
   },
   {
@@ -1277,7 +1523,11 @@
       "lastday": "1842-08-27T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568928 45.48969)",
+      "commentaire": "",
+      "geometry_lng": 6.568928,
+      "geometry_lat": 45.48969
     }
   },
   {
@@ -1293,7 +1543,11 @@
       "lastday": "1759-05-19T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568939 45.48952)",
+      "commentaire": "",
+      "geometry_lng": 6.568939,
+      "geometry_lat": 45.48952
     }
   },
   {
@@ -1319,7 +1573,11 @@
       "lastday": "1798-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "décès dans l'année 1798. Habitait à Montmagny",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -1335,7 +1593,11 @@
       "lastday": "1759-06-04T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -1351,7 +1613,11 @@
       "lastday": "1791-03-21T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568301 45.489201)",
+      "commentaire": "",
+      "geometry_lng": 6.568301,
+      "geometry_lat": 45.489201
     }
   },
   {
@@ -1367,7 +1633,11 @@
       "lastday": "1801-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568896 45.489569)",
+      "commentaire": "",
+      "geometry_lng": 6.568896,
+      "geometry_lat": 45.489569
     }
   },
   {
@@ -1395,7 +1665,11 @@
       "lastday": "1828-10-22T00:00:00.000Z",
       "job": "laboureur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568821 45.489449)",
+      "commentaire": "mort d'une chute à cheval",
+      "geometry_lng": 6.568821,
+      "geometry_lat": 45.489449
     }
   },
   {
@@ -1411,7 +1685,11 @@
       "lastday": "1747-08-08T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568612 45.489562)",
+      "commentaire": "Fils posthume de son père",
+      "geometry_lng": 6.568612,
+      "geometry_lat": 45.489562
     }
   },
   {
@@ -1427,7 +1705,11 @@
       "lastday": "1745-04-17T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568655 45.489814)",
+      "commentaire": "",
+      "geometry_lng": 6.568655,
+      "geometry_lat": 45.489814
     }
   },
   {
@@ -1449,7 +1731,11 @@
       "lastday": "1795-07-17T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568746 45.489434)",
+      "commentaire": "",
+      "geometry_lng": 6.568746,
+      "geometry_lat": 45.489434
     }
   },
   {
@@ -1465,7 +1751,11 @@
       "lastday": "1765-03-08T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568891 45.489633)",
+      "commentaire": "",
+      "geometry_lng": 6.568891,
+      "geometry_lat": 45.489633
     }
   },
   {
@@ -1481,7 +1771,11 @@
       "lastday": "1776-01-16T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568853 45.489686)",
+      "commentaire": "",
+      "geometry_lng": 6.568853,
+      "geometry_lat": 45.489686
     }
   },
   {
@@ -1497,7 +1791,11 @@
       "lastday": "1773-08-19T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568322 45.489411)",
+      "commentaire": "",
+      "geometry_lng": 6.568322,
+      "geometry_lat": 45.489411
     }
   },
   {
@@ -1513,7 +1811,11 @@
       "lastday": "1765-06-17T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568784 45.48966)",
+      "commentaire": "",
+      "geometry_lng": 6.568784,
+      "geometry_lat": 45.48966
     }
   },
   {
@@ -1529,7 +1831,11 @@
       "lastday": "1762-01-14T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568521 45.489479)",
+      "commentaire": "",
+      "geometry_lng": 6.568521,
+      "geometry_lat": 45.489479
     }
   },
   {
@@ -1553,7 +1859,11 @@
       "lastday": "1834-03-11T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -1575,7 +1885,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.509528 45.511595)",
+      "commentaire": "",
+      "geometry_lng": 6.509528,
+      "geometry_lat": 45.511595
     }
   },
   {
@@ -1595,7 +1909,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.567941 45.489315)",
+      "commentaire": "",
+      "geometry_lng": 6.567941,
+      "geometry_lat": 45.489315
     }
   },
   {
@@ -1616,7 +1934,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Chercheuse en robotique",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/22.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.293431 48.777449)",
+      "commentaire": "",
+      "geometry_lng": 2.293431,
+      "geometry_lat": 48.777449
     }
   },
   {
@@ -1637,7 +1959,11 @@
       "lastday": "2017-08-18T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.08667 49.4409)",
+      "commentaire": "",
+      "geometry_lng": 2.08667,
+      "geometry_lat": 49.4409
     }
   },
   {
@@ -1658,7 +1984,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568725 45.489483)",
+      "commentaire": "",
+      "geometry_lng": 6.568725,
+      "geometry_lat": 45.489483
     }
   },
   {
@@ -1681,7 +2011,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.56287 45.504901)",
+      "commentaire": "",
+      "geometry_lng": 6.56287,
+      "geometry_lat": 45.504901
     }
   },
   {
@@ -1705,7 +2039,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "gardien du refuge du Laisonnay",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.694201 45.455151)",
+      "commentaire": "",
+      "geometry_lng": 6.694201,
+      "geometry_lat": 45.455151
     }
   },
   {
@@ -1729,7 +2067,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "Enseignant",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.074017 45.495252)",
+      "commentaire": "",
+      "geometry_lng": 6.074017,
+      "geometry_lat": 45.495252
     }
   },
   {
@@ -1750,7 +2092,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "infirmière",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/2.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.3077 46.067749)",
+      "commentaire": "",
+      "geometry_lng": 6.3077,
+      "geometry_lat": 46.067749
     }
   },
   {
@@ -1772,7 +2118,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.769653 45.584424)",
+      "commentaire": "",
+      "geometry_lng": 4.769653,
+      "geometry_lat": 45.584424
     }
   },
   {
@@ -1795,7 +2145,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(5.952071 45.535837)",
+      "commentaire": "",
+      "geometry_lng": 5.952071,
+      "geometry_lat": 45.535837
     }
   },
   {
@@ -1818,7 +2172,11 @@
       "lastday": "2018-09-02T17:41:18.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.08667 49.4409)",
+      "commentaire": "",
+      "geometry_lng": 2.08667,
+      "geometry_lat": 49.4409
     }
   },
   {
@@ -1843,8 +2201,10 @@
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/1.jpg",
       "gender": "M",
       "address": "169 rue du paradis, 74800 La roche sur foron",
-      "geometry_lat": "",
-      "geometry_lng": ""
+      "geometry_lat": 46.067749,
+      "geometry_lng": 6.3077,
+      "geom": "POINT(6.3077 46.067749)",
+      "commentaire": ""
     }
   },
   {
@@ -1867,7 +2227,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "chef d'entreprise informatique (HORUS)",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/19.jpg",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.293431 48.777449)",
+      "commentaire": "",
+      "geometry_lng": 2.293431,
+      "geometry_lat": 48.777449
     }
   },
   {
@@ -1889,7 +2253,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.567944 45.489314)",
+      "commentaire": "",
+      "geometry_lng": 6.567944,
+      "geometry_lat": 45.489314
     }
   },
   {
@@ -1913,7 +2281,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.50955 45.511625)",
+      "commentaire": "",
+      "geometry_lng": 6.50955,
+      "geometry_lat": 45.511625
     }
   },
   {
@@ -1933,7 +2305,11 @@
       "lastday": "2015-11-15T00:00:10.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/9.jpg",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568471 45.489277)",
+      "commentaire": "",
+      "geometry_lng": 6.568471,
+      "geometry_lat": 45.489277
     }
   },
   {
@@ -1953,7 +2329,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(4.769653 45.584424)",
+      "commentaire": "",
+      "geometry_lng": 4.769653,
+      "geometry_lat": 45.584424
     }
   },
   {
@@ -1975,7 +2355,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "gardienne du refuge du Laisonnay",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.694201 45.455151)",
+      "commentaire": "",
+      "geometry_lng": 6.694201,
+      "geometry_lat": 45.455151
     }
   },
   {
@@ -1997,7 +2381,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.074017 45.495252)",
+      "commentaire": "",
+      "geometry_lng": 6.074017,
+      "geometry_lat": 45.495252
     }
   },
   {
@@ -2014,7 +2402,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.369953 43.296174)",
+      "commentaire": "",
+      "geometry_lng": 5.369953,
+      "geometry_lat": 43.296174
     }
   },
   {
@@ -2039,7 +2431,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568601 45.489675)",
+      "commentaire": "",
+      "geometry_lng": 6.568601,
+      "geometry_lat": 45.489675
     }
   },
   {
@@ -2060,7 +2456,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568767 45.489757)",
+      "commentaire": "dispense pr consanguinité au 4è degréplusieurs dates de naissance trouvée (fichier Richard DB), aucune date de décès (> 1747)",
+      "geometry_lng": 6.568767,
+      "geometry_lat": 45.489757
     }
   },
   {
@@ -2088,7 +2488,11 @@
       "lastday": "1792-10-19T15:45:23.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.556385 45.430798)",
+      "commentaire": "",
+      "geometry_lng": 6.556385,
+      "geometry_lat": 45.430798
     }
   },
   {
@@ -2105,7 +2509,11 @@
       "lastday": "1771-09-07T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "nombreuse descendance : http://gw.geneanet.org/jhelenerue?lang=fr&pz=xavier+henri&nz=ruedin&ocz=0&p=jean+pierre&n=bornet&oc=5",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -2128,7 +2536,11 @@
       "lastday": "1747-05-21T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568451 45.489441)",
+      "commentaire": "militaire mort au combat  contre les espagnolsdispense pr consanguinité au 4è degré pour le mariage",
+      "geometry_lng": 6.568451,
+      "geometry_lat": 45.489441
     }
   },
   {
@@ -2155,7 +2567,11 @@
       "lastday": "1783-07-03T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568735 45.489806)",
+      "commentaire": "mariage le 7 Nov. 1747 annulé, puis 29 Avril 1750",
+      "geometry_lng": 6.568735,
+      "geometry_lat": 45.489806
     }
   },
   {
@@ -2185,7 +2601,11 @@
       "lastday": "1798-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568671 45.489535)",
+      "commentaire": "décès en 1798 ou 1801 ? ",
+      "geometry_lng": 6.568671,
+      "geometry_lat": 45.489535
     }
   },
   {
@@ -2204,7 +2624,11 @@
       "lastday": "1792-12-30T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "nombreuse descendance : http://gw.geneanet.org/jhelenerue?lang=fr&pz=xavier+henri&nz=ruedin&ocz=0&p=jean+pierre&n=bornet&oc=5",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -2220,7 +2644,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568767 45.489705)",
+      "commentaire": "",
+      "geometry_lng": 6.568767,
+      "geometry_lat": 45.489705
     }
   },
   {
@@ -2239,7 +2667,11 @@
       "lastday": "1771-10-27T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.584662 45.492319)",
+      "commentaire": "",
+      "geometry_lng": 6.584662,
+      "geometry_lat": 45.492319
     }
   },
   {
@@ -2255,7 +2687,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.584662 45.492319)",
+      "commentaire": "",
+      "geometry_lng": 6.584662,
+      "geometry_lat": 45.492319
     }
   },
   {
@@ -2271,7 +2707,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.584662 45.492319)",
+      "commentaire": "Pb sur date de naissance supérieur à la mort de sa mère",
+      "geometry_lng": 6.584662,
+      "geometry_lat": 45.492319
     }
   },
   {
@@ -2287,7 +2727,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.584662 45.492319)",
+      "commentaire": "Pb sur date de naissance supérieur à date de la mort de sa mère",
+      "geometry_lng": 6.584662,
+      "geometry_lat": 45.492319
     }
   },
   {
@@ -2303,7 +2747,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.58493 45.492871)",
+      "commentaire": "date de bapteme trouvée en ligne : 12 novembre 1695",
+      "geometry_lng": 6.58493,
+      "geometry_lat": 45.492871
     }
   },
   {
@@ -2320,7 +2768,11 @@
       "lastday": "1770-12-23T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.5441 45.499197)",
+      "commentaire": "",
+      "geometry_lng": 6.5441,
+      "geometry_lat": 45.499197
     }
   },
   {
@@ -2340,7 +2792,11 @@
       "lastday": "1711-12-02T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.5688 45.48949)",
+      "commentaire": "enfants : Bernard et Jean Pierre",
+      "geometry_lng": 6.5688,
+      "geometry_lat": 45.48949
     }
   },
   {
@@ -2367,7 +2823,11 @@
       "lastday": "1741-04-05T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.584673 45.492315)",
+      "commentaire": "mariée à Benoit puis à Etienne",
+      "geometry_lng": 6.584673,
+      "geometry_lat": 45.492315
     }
   },
   {
@@ -2393,7 +2853,11 @@
       "lastday": "1744-05-30T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568687 45.489701)",
+      "commentaire": "2 mariages : Bartholomée Martin, puis Jeanne-Francoise DB",
+      "geometry_lng": 6.568687,
+      "geometry_lat": 45.489701
     }
   },
   {
@@ -2419,7 +2883,11 @@
       "lastday": "1708-11-22T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.584673 45.492315)",
+      "commentaire": "",
+      "geometry_lng": 6.584673,
+      "geometry_lat": 45.492315
     }
   },
   {
@@ -2441,7 +2909,11 @@
       "lastday": "2010-12-21T16:56:03.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568746 45.489532)",
+      "commentaire": "",
+      "geometry_lng": 6.568746,
+      "geometry_lat": 45.489532
     }
   },
   {
@@ -2461,7 +2933,11 @@
       "lastday": "2010-11-30T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -2478,7 +2954,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568864 45.489524)",
+      "commentaire": "",
+      "geometry_lng": 6.568864,
+      "geometry_lat": 45.489524
     }
   },
   {
@@ -2502,7 +2982,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/7.jpg",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568344 45.489178)",
+      "commentaire": "",
+      "geometry_lng": 6.568344,
+      "geometry_lat": 45.489178
     }
   },
   {
@@ -2519,7 +3003,11 @@
       "lastday": "1961-03-25T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568494 45.489746)",
+      "commentaire": "",
+      "geometry_lng": 6.568494,
+      "geometry_lat": 45.489746
     }
   },
   {
@@ -2535,7 +3023,11 @@
       "lastday": "1936-05-30T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.351074 48.850258)",
+      "commentaire": "Décédée à Paris",
+      "geometry_lng": 2.351074,
+      "geometry_lat": 48.850258
     }
   },
   {
@@ -2551,7 +3043,9 @@
       "lastday": "1996-11-19T00:00:00.000Z",
       "job": "missionnaire",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "",
+      "commentaire": ""
     }
   },
   {
@@ -2577,7 +3071,11 @@
       "lastday": "1982-03-23T16:09:58.000Z",
       "job": "cultivateur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568373 45.489186)",
+      "commentaire": "membre du 6e bataillon de Armée secrète (AS) de Savoie du 20 octobre 1943 au 20 septembre 1944. Démobilisé le 1er octobre 1944. Qualité de deuxième classe.Cote de l'acte : Service historique de la Défense, Vincennes GR 16 P 178421",
+      "geometry_lng": 6.568373,
+      "geometry_lat": 45.489186
     }
   },
   {
@@ -2593,7 +3091,11 @@
       "lastday": "1918-09-04T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.333219 48.859329)",
+      "commentaire": "décédé à Paris dans le 15ème arrondissement. inhumée au Cimetière parisien de Bagneux, 90ème division, 21ème ligne",
+      "geometry_lng": 2.333219,
+      "geometry_lat": 48.859329
     }
   },
   {
@@ -2609,7 +3111,11 @@
       "lastday": "1905-08-14T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.333219 48.859329)",
+      "commentaire": "Décès à 6 ans d'une pneumonieondoyée à Paris",
+      "geometry_lng": 2.333219,
+      "geometry_lat": 48.859329
     }
   },
   {
@@ -2632,7 +3138,11 @@
       "lastday": "1907-12-23T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568564 45.489799)",
+      "commentaire": "",
+      "geometry_lng": 6.568564,
+      "geometry_lat": 45.489799
     }
   },
   {
@@ -2648,7 +3158,11 @@
       "lastday": "1902-12-04T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568826 45.489754)",
+      "commentaire": "",
+      "geometry_lng": 6.568826,
+      "geometry_lat": 45.489754
     }
   },
   {
@@ -2672,7 +3186,11 @@
       "lastday": "1967-01-01T16:56:40.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.569132 45.489833)",
+      "commentaire": "membre des forces françaises de l’intérieur (FFI). cote Service historique de la Défense, Vincennes GR 16 P 178690",
+      "geometry_lng": 6.569132,
+      "geometry_lat": 45.489833
     }
   },
   {
@@ -2694,7 +3212,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": "scieur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.529055 45.485173)",
+      "commentaire": "membre du  6e bataillon de Armée secrète (AS) de Savoie du 1er janvier 1943 au 20 septembre 1944. Démobilisé le 30 septembre 1944. Qualité de sous-lieutenant des Forces françaises de l'intérieur (FFI)",
+      "geometry_lng": 6.529055,
+      "geometry_lat": 45.485173
     }
   },
   {
@@ -2713,7 +3235,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -2732,7 +3258,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -2753,7 +3283,11 @@
       "lastday": "1984-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.59428 45.5114)",
+      "commentaire": "",
+      "geometry_lng": 6.59428,
+      "geometry_lat": 45.5114
     }
   },
   {
@@ -2770,7 +3304,11 @@
       "lastday": "1691-10-03T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568649 45.489614)",
+      "commentaire": "goneta, ou ginette. Fille de Michael (1615) et de Aimée Vivet (1615-1678) ?",
+      "geometry_lng": 6.568649,
+      "geometry_lat": 45.489614
     }
   },
   {
@@ -2789,7 +3327,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.59428 45.5114)",
+      "commentaire": "habite à \"Le bois\" ",
+      "geometry_lng": 6.59428,
+      "geometry_lat": 45.5114
     }
   },
   {
@@ -2812,7 +3354,11 @@
       "lastday": "1718-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568966 45.489622)",
+      "commentaire": "nom trouvé : \"Berger deschamps\"",
+      "geometry_lng": 6.568966,
+      "geometry_lat": 45.489622
     }
   },
   {
@@ -2831,7 +3377,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -2848,7 +3398,11 @@
       "lastday": "1718-08-22T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.559704 45.497241)",
+      "commentaire": "mariage le 23 juillet 1662",
+      "geometry_lng": 6.559704,
+      "geometry_lat": 45.497241
     }
   },
   {
@@ -2865,7 +3419,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.59428 45.5114)",
+      "commentaire": "",
+      "geometry_lng": 6.59428,
+      "geometry_lat": 45.5114
     }
   },
   {
@@ -2881,7 +3439,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.360069 43.837425)",
+      "commentaire": "",
+      "geometry_lng": 4.360069,
+      "geometry_lat": 43.837425
     }
   },
   {
@@ -2897,7 +3459,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.070548 46.492503)",
+      "commentaire": "",
+      "geometry_lng": 6.070548,
+      "geometry_lat": 46.492503
     }
   },
   {
@@ -2913,7 +3479,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.020508 46.531469)",
+      "commentaire": "",
+      "geometry_lng": 6.020508,
+      "geometry_lat": 46.531469
     }
   },
   {
@@ -2929,7 +3499,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.566605 45.399064)",
+      "commentaire": "",
+      "geometry_lng": 6.566605,
+      "geometry_lat": 45.399064
     }
   },
   {
@@ -2945,7 +3519,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.555814 45.432417)",
+      "commentaire": "naissance pendant que toute la famille réveillonait =)",
+      "geometry_lng": 6.555814,
+      "geometry_lat": 45.432417
     }
   },
   {
@@ -2961,7 +3539,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.566605 45.399064)",
+      "commentaire": "",
+      "geometry_lng": 6.566605,
+      "geometry_lat": 45.399064
     }
   },
   {
@@ -2977,7 +3559,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.374199 43.296359)",
+      "commentaire": "",
+      "geometry_lng": 5.374199,
+      "geometry_lat": 43.296359
     }
   },
   {
@@ -2993,7 +3579,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(5.374199 43.296359)",
+      "commentaire": "",
+      "geometry_lng": 5.374199,
+      "geometry_lat": 43.296359
     }
   },
   {
@@ -3008,7 +3598,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(0.084618 43.698595)",
+      "commentaire": "",
+      "geometry_lng": 0.084618,
+      "geometry_lat": 43.698595
     }
   },
   {
@@ -3024,7 +3618,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.772259 45.616552)",
+      "commentaire": "",
+      "geometry_lng": 6.772259,
+      "geometry_lat": 45.616552
     }
   },
   {
@@ -3040,7 +3638,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.627502 45.537377)",
+      "commentaire": "",
+      "geometry_lng": 6.627502,
+      "geometry_lat": 45.537377
     }
   },
   {
@@ -3055,7 +3657,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.565704 45.40062)",
+      "commentaire": "",
+      "geometry_lng": 6.565704,
+      "geometry_lat": 45.40062
     }
   },
   {
@@ -3070,7 +3676,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.508379 45.501689)",
+      "commentaire": "",
+      "geometry_lng": 6.508379,
+      "geometry_lat": 45.501689
     }
   },
   {
@@ -3086,7 +3696,9 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "",
+      "commentaire": ""
     }
   },
   {
@@ -3102,7 +3714,9 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "",
+      "commentaire": ""
     }
   },
   {
@@ -3118,7 +3732,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.872437 44.933696)",
+      "commentaire": "",
+      "geometry_lng": 4.872437,
+      "geometry_lat": 44.933696
     }
   },
   {
@@ -3134,7 +3752,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.872437 44.933696)",
+      "commentaire": "",
+      "geometry_lng": 4.872437,
+      "geometry_lat": 44.933696
     }
   },
   {
@@ -3150,7 +3772,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.86969 44.931752)",
+      "commentaire": "",
+      "geometry_lng": 4.86969,
+      "geometry_lat": 44.931752
     }
   },
   {
@@ -3166,7 +3792,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.102712 49.079244)",
+      "commentaire": "",
+      "geometry_lng": 2.102712,
+      "geometry_lat": 49.079244
     }
   },
   {
@@ -3182,7 +3812,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.102712 49.079244)",
+      "commentaire": "",
+      "geometry_lng": 2.102712,
+      "geometry_lat": 49.079244
     }
   },
   {
@@ -3204,7 +3838,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.010002 49.431805)",
+      "commentaire": "",
+      "geometry_lng": 2.010002,
+      "geometry_lat": 49.431805
     }
   },
   {
@@ -3220,7 +3858,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.010002 49.431805)",
+      "commentaire": "",
+      "geometry_lng": 2.010002,
+      "geometry_lat": 49.431805
     }
   },
   {
@@ -3236,7 +3878,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.010002 49.431805)",
+      "commentaire": "",
+      "geometry_lng": 2.010002,
+      "geometry_lat": 49.431805
     }
   },
   {
@@ -3252,7 +3898,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.38048 45.1827)",
+      "commentaire": "",
+      "geometry_lng": 5.38048,
+      "geometry_lat": 45.1827
     }
   },
   {
@@ -3268,7 +3918,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(5.38048 45.1827)",
+      "commentaire": "",
+      "geometry_lng": 5.38048,
+      "geometry_lat": 45.1827
     }
   },
   {
@@ -3290,7 +3944,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(5.38048 45.1827)",
+      "commentaire": "",
+      "geometry_lng": 5.38048,
+      "geometry_lat": 45.1827
     }
   },
   {
@@ -3306,7 +3964,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.293053 48.777913)",
+      "commentaire": "",
+      "geometry_lng": 2.293053,
+      "geometry_lat": 48.777913
     }
   },
   {
@@ -3322,7 +3984,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.360069 43.837425)",
+      "commentaire": "",
+      "geometry_lng": 4.360069,
+      "geometry_lat": 43.837425
     }
   },
   {
@@ -3347,7 +4013,11 @@
       "lastday": "1892-07-25T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.56835 45.489199)",
+      "commentaire": "ML Tardivet mariage le 01/02/1882, Claudine Séraphine Cochet mariage le 28/01/1909. ",
+      "geometry_lng": 6.56835,
+      "geometry_lat": 45.489199
     }
   },
   {
@@ -3364,7 +4034,11 @@
       "lastday": "1899-09-29T00:00:00.000Z",
       "job": "cultivatrice",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.590313 45.535653)",
+      "commentaire": "Union: registre M 1882 - arrondissement de Moûtiers - 3E 2809",
+      "geometry_lng": 6.590313,
+      "geometry_lat": 45.535653
     }
   },
   {
@@ -3385,7 +4059,11 @@
       "lastday": "1922-05-10T00:00:00.000Z",
       "job": "cuisinière",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(2.333219 48.859329)",
+      "commentaire": "elle existe sur Geneanet",
+      "geometry_lng": 2.333219,
+      "geometry_lat": 48.859329
     }
   },
   {
@@ -3408,7 +4086,11 @@
       "lastday": "1945-08-23T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568364 45.489191)",
+      "commentaire": "",
+      "geometry_lng": 6.568364,
+      "geometry_lat": 45.489191
     }
   },
   {
@@ -3424,7 +4106,11 @@
       "lastday": "1893-09-13T00:00:00.000Z",
       "job": "homme d\\'église",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568374 45.489203)",
+      "commentaire": "ou Joseph Onésime, \"Frére Valèry Jérome\" entré au Petit Novicial d'Annecy le 22 Juin 1886, mort à 20 ans accident en forêt ",
+      "geometry_lng": 6.568374,
+      "geometry_lat": 45.489203
     }
   },
   {
@@ -3447,7 +4133,11 @@
       "lastday": "1907-12-20T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(2.333219 48.859329)",
+      "commentaire": "Naissance: registre N 1865 - arrondissement de Moûtiers - 3E 2235. Militaire : classe 1885 - matricule 1715 - image 261/478 - (registre 1 R 57 volume 4 matricules 1473-1927) taille 1,69m degré d'instruction générale : 3 (sait lire écrire et compter)",
+      "geometry_lng": 2.333219,
+      "geometry_lat": 48.859329
     }
   },
   {
@@ -3466,7 +4156,11 @@
       "lastday": "1907-11-09T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.590313 45.535653)",
+      "commentaire": "",
+      "geometry_lng": 6.590313,
+      "geometry_lat": 45.535653
     }
   },
   {
@@ -3482,7 +4176,11 @@
       "lastday": "1928-04-28T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.56837 45.489172)",
+      "commentaire": "Naissance: registre B 1842-1860 - paroisse de Saint Marcel - 3E 2185",
+      "geometry_lng": 6.56837,
+      "geometry_lat": 45.489172
     }
   },
   {
@@ -3506,7 +4204,11 @@
       "lastday": "1938-06-18T16:50:05.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568358 45.489197)",
+      "commentaire": "Militaire : classe 1888 - matricule 1460 - image 505/529 - (registre 1 R 73 volume 3 matricules 988-1482) taille 1,64m degré d'instruction générale : 2 (sait lire et écrire)",
+      "geometry_lng": 6.568358,
+      "geometry_lat": 45.489197
     }
   },
   {
@@ -3533,7 +4235,11 @@
       "lastday": "1934-02-01T00:00:00.000Z",
       "job": "Cultivateur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.56837 45.489186)",
+      "commentaire": "Union: registre M 1882 - arrondissement de Moûtiers - 3E 2809",
+      "geometry_lng": 6.56837,
+      "geometry_lat": 45.489186
     }
   },
   {
@@ -3549,7 +4255,11 @@
       "lastday": "1869-04-30T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568639 45.489487)",
+      "commentaire": "",
+      "geometry_lng": 6.568639,
+      "geometry_lat": 45.489487
     }
   },
   {
@@ -3565,7 +4275,9 @@
       "lastday": "1900-07-24T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "",
+      "commentaire": ""
     }
   },
   {
@@ -3582,7 +4294,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.512146 45.519579)",
+      "commentaire": "",
+      "geometry_lng": 6.512146,
+      "geometry_lat": 45.519579
     }
   },
   {
@@ -3599,7 +4315,11 @@
       "lastday": "1890-02-19T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568472 45.489517)",
+      "commentaire": "dispense d'un ban et dempêchement du second degré de consanguinité égal",
+      "geometry_lng": 6.568472,
+      "geometry_lat": 45.489517
     }
   },
   {
@@ -3616,7 +4336,11 @@
       "lastday": "1837-04-21T13:56:46.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(4.452082 46.403446)",
+      "commentaire": "tous les enfants sont nés à Hautecour",
+      "geometry_lng": 4.452082,
+      "geometry_lat": 46.403446
     }
   },
   {
@@ -3633,7 +4357,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.567678 45.454592)",
+      "commentaire": "",
+      "geometry_lng": 6.567678,
+      "geometry_lat": 45.454592
     }
   },
   {
@@ -3659,7 +4387,11 @@
       "lastday": "1855-06-06T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568358 45.489179)",
+      "commentaire": "charvet ou charvey ? trouvé Charvaz sur généanet...",
+      "geometry_lng": 6.568358,
+      "geometry_lat": 45.489179
     }
   },
   {
@@ -3676,7 +4408,11 @@
       "lastday": "1856-12-25T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568676 45.489754)",
+      "commentaire": "",
+      "geometry_lng": 6.568676,
+      "geometry_lat": 45.489754
     }
   },
   {
@@ -3695,7 +4431,11 @@
       "lastday": "1871-04-20T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568574 45.489611)",
+      "commentaire": "",
+      "geometry_lng": 6.568574,
+      "geometry_lat": 45.489611
     }
   },
   {
@@ -3711,7 +4451,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -3727,7 +4471,11 @@
       "lastday": "1798-12-08T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "jumeau avec Charles",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -3746,7 +4494,11 @@
       "lastday": "1865-09-05T11:13:07.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.566823 45.454714)",
+      "commentaire": "",
+      "geometry_lng": 6.566823,
+      "geometry_lat": 45.454714
     }
   },
   {
@@ -3762,7 +4514,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.59428 45.5114)",
+      "commentaire": "Baptisé à notre dame du pré",
+      "geometry_lng": 6.59428,
+      "geometry_lat": 45.5114
     }
   },
   {
@@ -3778,7 +4534,11 @@
       "lastday": "1806-02-24T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "\"5 nivose an XIV\"",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -3806,7 +4566,11 @@
       "lastday": "1860-04-15T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568366 45.489177)",
+      "commentaire": "",
+      "geometry_lng": 6.568366,
+      "geometry_lat": 45.489177
     }
   },
   {
@@ -3822,7 +4586,11 @@
       "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "jumeau de Jean-Marie",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -3838,7 +4606,11 @@
       "lastday": "1795-01-17T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568744 45.489582)",
+      "commentaire": "",
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -3857,7 +4629,11 @@
       "lastday": "1838-09-22T08:58:41.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.512103 45.519519)",
+      "commentaire": "",
+      "geometry_lng": 6.512103,
+      "geometry_lat": 45.519519
     }
   },
   {
@@ -3882,7 +4658,11 @@
       "lastday": "1884-10-18T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -3898,7 +4678,11 @@
       "lastday": "1853-03-23T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -3914,7 +4698,11 @@
       "lastday": "1854-01-11T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -3930,7 +4718,11 @@
       "lastday": "1847-04-08T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -3946,7 +4738,11 @@
       "lastday": "1840-07-11T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -3962,7 +4758,11 @@
       "lastday": "1887-01-22T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.569121 45.489787)",
+      "commentaire": "",
+      "geometry_lng": 6.569121,
+      "geometry_lat": 45.489787
     }
   },
   {
@@ -3978,7 +4778,11 @@
       "lastday": "1887-01-22T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568719 45.489614)",
+      "commentaire": "ondoyée à la maison",
+      "geometry_lng": 6.568719,
+      "geometry_lat": 45.489614
     }
   },
   {
@@ -3997,7 +4801,11 @@
       "lastday": "1837-03-26T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.56859 45.489739)",
+      "commentaire": "",
+      "geometry_lng": 6.56859,
+      "geometry_lat": 45.489739
     }
   },
   {
@@ -4013,7 +4821,11 @@
       "lastday": "1809-09-15T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568505 45.489629)",
+      "commentaire": "",
+      "geometry_lng": 6.568505,
+      "geometry_lat": 45.489629
     }
   },
   {
@@ -4032,7 +4844,11 @@
       "lastday": "1890-02-19T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568553 45.489723)",
+      "commentaire": "dispense d'un ban et dempêchement du second degré de consanguinité égal",
+      "geometry_lng": 6.568553,
+      "geometry_lat": 45.489723
     }
   },
   {
@@ -4048,7 +4864,11 @@
       "lastday": "1872-06-17T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568531 45.489686)",
+      "commentaire": "",
+      "geometry_lng": 6.568531,
+      "geometry_lat": 45.489686
     }
   },
   {
@@ -4064,7 +4884,11 @@
       "lastday": "1879-05-26T00:00:00.000Z",
       "job": "Cultivatrice",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.568446 45.489581)",
+      "commentaire": "",
+      "geometry_lng": 6.568446,
+      "geometry_lat": 45.489581
     }
   },
   {
@@ -4079,7 +4903,11 @@
       "lastday": "1821-01-19T00:00:00.000Z",
       "job": "laboureur",
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "M"
+      "gender": "M",
+      "geom": "POINT(6.568585 45.489441)",
+      "commentaire": "",
+      "geometry_lng": 6.568585,
+      "geometry_lat": 45.489441
     }
   },
   {
@@ -4102,7 +4930,11 @@
       "lastday": "1862-08-29T00:00:00.000Z",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/no_photo.png",
-      "gender": "F"
+      "gender": "F",
+      "geom": "POINT(6.583892 45.512358)",
+      "commentaire": "habite à Montmagny",
+      "geometry_lng": 6.583892,
+      "geometry_lat": 45.512358
     }
   },
   {
@@ -4111,7 +4943,9 @@
       "gender": "F",
       "first name": "Agathe",
       "last name": "DESCHAMPS-BERGER",
-      "birthday": "28/06/2021"
+      "birthday": "28/06/2021",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": 4,
@@ -4124,7 +4958,9 @@
       "gender": "F",
       "first name": "Ophélie",
       "last name": "DESCHAMPS-BERGER",
-      "birthday": "18/08/2022"
+      "birthday": "18/08/2022",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": 4,
@@ -4137,7 +4973,9 @@
       "gender": "M",
       "first name": "Robin",
       "last name": "ETIEVENT",
-      "birthday": ""
+      "birthday": "",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "children": [
@@ -4154,7 +4992,9 @@
       "gender": "F",
       "first name": "Jade",
       "last name": "ETIEVENT",
-      "birthday": "26/10/2025"
+      "birthday": "26/10/2025",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": "e9530863-3010-46e5-a9ec-e23813e1e4d0",
@@ -4167,7 +5007,9 @@
       "gender": "M",
       "first name": "Antoine",
       "last name": "DEBEIRE",
-      "birthday": ""
+      "birthday": "",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "children": [
@@ -4184,7 +5026,9 @@
       "gender": "F",
       "first name": "Elise",
       "last name": "DEBEIRE",
-      "birthday": "12/04/2025"
+      "birthday": "12/04/2025",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": "a7914050-72b4-4433-aa48-7fa30e71bb17",
@@ -4197,7 +5041,9 @@
       "gender": "F",
       "first name": "RODRIGUEZ",
       "last name": "Inès",
-      "birthday": "27/06/2024"
+      "birthday": "27/06/2024",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": 219,
@@ -4210,7 +5056,9 @@
       "gender": "M",
       "first name": "Emile",
       "last name": "PELLOUX",
-      "birthday": "01/01/2018"
+      "birthday": "01/01/2018",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": 220,
@@ -4223,7 +5071,9 @@
       "gender": "M",
       "first name": "Bastien",
       "last name": "MUZULLIER",
-      "birthday": ""
+      "birthday": "",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "children": [
@@ -4240,7 +5090,9 @@
       "gender": "M",
       "first name": "Liam",
       "last name": "MUZULLIER",
-      "birthday": "10/06/2024"
+      "birthday": "10/06/2024",
+      "geom": "",
+      "commentaire": ""
     },
     "rels": {
       "father": "91859cf8-c6ae-472d-9d42-3d054140b02f",
