@@ -13,7 +13,9 @@ function EditTree(cont, store) {
     {type: 'text', label: 'first name', id: 'first name'},
     {type: 'text', label: 'last name', id: 'last name'},
     {type: 'text', label: 'birthday', id: 'birthday'},
-    {type: 'text', label: 'avatar', id: 'avatar'}
+    {type: 'text', label: 'avatar', id: 'avatar'},
+    {type: 'text', label: 'geom', id: 'geom'},
+    {type: 'textarea', label: 'commentaire', id: 'commentaire'}
   ]
 
   this.form_cont = null
