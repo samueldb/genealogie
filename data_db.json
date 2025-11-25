@@ -3074,8 +3074,9 @@
       "gender": "M",
       "geom": "POINT(6.568373 45.489186)",
       "commentaire": "membre du 6e bataillon de Armée secrète (AS) de Savoie du 20 octobre 1943 au 20 septembre 1944. Démobilisé le 1er octobre 1944. Qualité de deuxième classe.Cote de l'acte : Service historique de la Défense, Vincennes GR 16 P 178421",
-      "geometry_lng": 6.568373,
-      "geometry_lat": 45.489186
+      "geometry_lng": "",
+      "geometry_lat": "",
+      "address": "montfort, 73600 pomblère saint marcel"
     }
   },
   {
