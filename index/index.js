@@ -41,6 +41,8 @@ fetch("./data_db.json")
 
     function create(data){
 
+      data = applyAvatarFallback(data)
+
       let lastNameSuggestions = extractLastNames(data)
       let saveTimeoutId = null
       let pendingSavePayload = null
@@ -74,7 +76,7 @@ fetch("./data_db.json")
           "birthday",
           { id: "weddingday", label: "Date de mariage", type: "text" },
           { id: "lastday", label: "Date de décès", type: "text" },
-          { id: "avatar", label: "Photo URL", type: "text" },
+          { id: "avatar", label: "Photo URL", type: "img" },
           { id: "address", label: "Adresse", type: "text" },
           // { id: "geometry_lat", label: "Latitude", type: "text" },
           // { id: "geometry_lng", label: "Longitude", type: "text" },
@@ -309,7 +311,7 @@ fetch("./data_db.json")
           mediaWrapper.className = "person-media"
           mediaWrapper.innerHTML = `
             <div class="person-media__preview">
-              <img src="${getAvatarValue() || 'https://via.placeholder.com/260x180?text=Portrait'}" alt="Portrait" />
+              <img src="${getAvatarValue() || "deschampsberger/images/profil_court.png"}" alt="Portrait" />
             </div>
             <div class="person-media__actions">
               ${avatarInput ? `
@@ -318,7 +320,7 @@ fetch("./data_db.json")
                   <span>Importer une photo</span>
                 </label>
                 <span class="person-media__hint">ou coller une URL</span>
-              ` : `<span class="person-media__hint">Photo non modifiable</span>`}
+              ` : ``}
             </div>
           `
 
@@ -355,7 +357,7 @@ fetch("./data_db.json")
 
           function updatePreview(url) {
             const img = mediaWrapper.querySelector("img")
-            img.src = url || "https://via.placeholder.com/260x180?text=Portrait"
+            img.src = url || "deschampsberger/images/profil_base.svg"
           }
         }
 
@@ -746,11 +748,11 @@ fetch("./data_db.json")
         }
         function getCurrentDataset() {
           if (typeof f3EditTree.getStoreData === 'function') {
-            return f3EditTree.getStoreData()
+            return applyAvatarFallback(f3EditTree.getStoreData())
           }
           const dataJson = typeof f3EditTree.getDataJson === 'function' ? f3EditTree.getDataJson() : '[]'
           const parsed = safeParseDataJson(dataJson)
-          return Array.isArray(parsed) ? parsed : []
+          return Array.isArray(parsed) ? applyAvatarFallback(parsed) : []
         }
 
         function queueDataPersistence() {
@@ -893,4 +895,28 @@ fetch("./data_db.json")
     function truncateFirstWords(value = "") {
       if (typeof value !== "string") return ""
       return value.trim().split(/\s+/).slice(0, 2).join(" ")
+    }
+
+    // function resolveAvatar(datum) {
+    //   const img = datum?.data?.avatar
+    //   if (img && img !== "null" && img !== "") return img
+    //   return "deschampsberger/images/profil_base.svg"
+    // }
+
+    function resolveAvatar(datum) {
+      const img = datum?.data?.avatar
+      if (img && img !== "null" && img !== "") return img
+      return "deschampsberger/images/profil_base.svg"
+    }
+
+    function applyAvatarFallback(dataset = []) {
+      const fallback = "deschampsberger/images/profil_base.svg"
+      dataset.forEach(person => {
+        if (!person || !person.data) return
+        const avatar = person.data.avatar
+        if (!avatar || avatar === "null" || avatar === "") {
+          person.data.avatar = fallback
+        }
+      })
+      return dataset
     }
