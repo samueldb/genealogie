@@ -1,3 +1,39 @@
+const FAMILY_CHART_SELECTOR = "#FamilyChart"
+const FAMILY_CHART_BOTTOM_PADDING = 16
+
+const resizeFamilyChartHeight = () => {
+  const chart = document.querySelector(FAMILY_CHART_SELECTOR)
+  if (!chart) return
+
+  const { top } = chart.getBoundingClientRect()
+  const availableHeight = window.innerHeight - top - FAMILY_CHART_BOTTOM_PADDING
+
+  if (availableHeight > 0) {
+    chart.style.height = `${availableHeight}px`
+  }
+}
+
+const setupFamilyChartHeight = () => {
+  const observerTargets = ["header", "menu", "content-wrapper"]
+    .map(id => document.getElementById(id))
+    .filter(Boolean)
+
+  if (typeof ResizeObserver !== "undefined") {
+    observerTargets.forEach(node => {
+      const observer = new ResizeObserver(resizeFamilyChartHeight)
+      observer.observe(node)
+    })
+  }
+
+  window.addEventListener("resize", resizeFamilyChartHeight)
+  window.addEventListener("orientationchange", resizeFamilyChartHeight)
+  window.addEventListener("load", resizeFamilyChartHeight)
+
+  resizeFamilyChartHeight()
+}
+
+setupFamilyChartHeight()
+
 fetch("./data_db.json")
   .then(res => res.json())
   .then(data => create(data))
@@ -12,7 +48,7 @@ fetch("./data_db.json")
 
       const f3Chart = f3.createChart('#FamilyChart', data)
               .setTransitionTime(100)
-              .setCardXSpacing(250)
+              .setCardXSpacing(300)
               .setCardYSpacing(150)
 
       const initialMainId = 3
@@ -23,15 +59,21 @@ fetch("./data_db.json")
 
       const f3Card = f3Chart.setCardHtml()
         .setCardDisplay([
-          ["first name","last name"],
-          d => formatBirthDate(d.data["birthday"])
+          d => `${truncateFirstWords(d.data["first name"])}`.trim() ,
+          d => `${d.data["last name"]}`.trim(),
+          d => formatDateLine("Naissance", d.data["birthday"]),
+          //d => formatDateLine("Mariage", d.data["weddingday"]),
+          d => formatDateLine("Décès", d.data["lastday"])
         ])
+        .setOnCardClick(handleCardClick)
 
       const f3EditTree = f3Chart.editTree()
         .setFields([
           "first name",
           "last name",
           "birthday",
+          { id: "weddingday", label: "Date de mariage", type: "text" },
+          { id: "lastday", label: "Date de décès", type: "text" },
           { id: "avatar", label: "Photo URL", type: "text" },
           { id: "address", label: "Adresse", type: "text" },
           // { id: "geometry_lat", label: "Latitude", type: "text" },
@@ -40,7 +82,6 @@ fetch("./data_db.json")
           { id: "commentaire", label: "Commentaire", type: "textarea" }
         ])
         .setEditFirst(false)  // true = open form on click, false = open info in click
-        .setCardClickOpen(f3Card)
         .setOnChange(() => {
                const updated_data = getCurrentDataset()
                lastNameSuggestions = extractLastNames(updated_data)
@@ -52,6 +93,22 @@ fetch("./data_db.json")
       f3Chart.updateTree({initial: true})
       f3EditTree.open(f3Chart.getMainDatum())
       f3Chart.updateTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
+
+      function handleCardClick(e, d) {
+        const datum = d?.data || d
+        if (!datum?.id) return
+
+        const now = Date.now()
+        const last = handleCardClick.lastClick || 0
+        const isDouble = now - last < 300
+        handleCardClick.lastClick = now
+
+        if (isDouble) {
+          updateTreeWithNewMainPerson(datum.id, true)
+        } else {
+          f3EditTree.open(datum)
+        }
+      }
 
       /*
       DROPDOWN SEARCH
@@ -773,9 +830,18 @@ fetch("./data_db.json")
     }
 
     function formatBirthDate(value) {
-      const normalized = normalizeBirthDateInput(value)
+      return formatDateValue(value)
+    }
+
+    function formatDateLine(label, value) {
+      const formatted = formatDateValue(value)
+      return formatted ? `${label} : ${formatted}` : ""
+    }
+
+    function formatDateValue(value) {
+      const normalized = normalizeDateInput(value)
       if (!normalized) return ""
-      if (isPlaceholderBirthDate(normalized)) return ""
+      if (isPlaceholderDate(normalized)) return ""
 
       const externalFormatter = getExternalFormatter()
       if (externalFormatter) {
@@ -801,17 +867,30 @@ fetch("./data_db.json")
       return typeof candidate === "function" ? candidate.bind(maybeUtils.default || maybeUtils) : null
     }
 
-    function normalizeBirthDateInput(value) {
+    function normalizeDateInput(value) {
       if (!value || typeof value !== "string") return ""
       const trimmed = value.trim()
       if (!trimmed || trimmed === "null") return ""
       return trimmed
     }
 
-    function isPlaceholderBirthDate(value) {
+    function normalizeBirthDateInput(value) {
+      return normalizeDateInput(value)
+    }
+
+    function isPlaceholderDate(value) {
       const canonical = value
         .replace(/T.+$/, '')
         .replace(/\s.+$/, '')
         .replace(/\//g, '-')
       return canonical === '1970-01-01'
+    }
+
+    function isPlaceholderBirthDate(value) {
+      return isPlaceholderDate(value)
+    }
+
+    function truncateFirstWords(value = "") {
+      if (typeof value !== "string") return ""
+      return value.trim().split(/\s+/).slice(0, 2).join(" ")
     }

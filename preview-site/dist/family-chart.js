@@ -2573,6 +2573,8 @@ function EditTree(cont, store) {
     {type: 'text', label: 'first name', id: 'first name'},
     {type: 'text', label: 'last name', id: 'last name'},
     {type: 'text', label: 'birthday', id: 'birthday'},
+    {type: 'text', label: 'weddingday', id: 'weddingday'},
+    {type: 'text', label: 'lastday', id: 'lastday'},
     {type: 'text', label: 'avatar', id: 'avatar'},
     {type: 'text', label: 'geom', id: 'geom'},
     {type: 'textarea', label: 'commentaire', id: 'commentaire'}
@@ -3037,6 +3039,8 @@ function processCardDisplay(card_display) {
   return card_display_arr
 }
 
+const ZERO_DATE$1 = '1970-01-01T00:00:00.000Z';
+
 CardSvgWrapper.is_html = false;
 function CardSvgWrapper(...args) { return new CardSvg(...args) }
 
@@ -3046,7 +3050,7 @@ function CardSvg(cont, store) {
   this.svg = null;
   this.getCard = null;
   this.card_dim = {w:220,h:70,text_x:75,text_y:15,img_w:60,img_h:60,img_x:5,img_y:5};
-  this.card_display = [d => `${d.data["first name"]} ${d.data["last name"]}`];
+  this.card_display = defaultCardDisplay$1();
   this.mini_tree = true;
   this.link_break = false;
   this.onCardClick = this.onCardClickDefault;
@@ -3139,6 +3143,31 @@ CardSvg.prototype.setOnCardClick = function(onCardClick) {
   return this
 };
 
+function defaultCardDisplay$1() {
+  return [
+    d => `${d.data["first name"]} ${d.data["last name"]}`,
+    d => formatDateLine$1('Né(e)', d.data["birthday"]),
+    d => formatDateLine$1('Marié(e)', d.data["weddingday"]),
+    d => formatDateLine$1('Décès', d.data["lastday"])
+  ]
+}
+
+function formatDateLine$1(label, raw) {
+  const formatted = formatDate$1(raw);
+  return formatted ? `${label} le ${formatted}` : ''
+}
+
+function formatDate$1(value) {
+  if (!value || value === ZERO_DATE$1) return ''
+  const datePart = value.split('T')[0];
+  const parts = datePart.split('-');
+  if (parts.length !== 3) return ''
+  const [year, month, day] = parts;
+  return `${day}/${month}/${year}`
+}
+
+const ZERO_DATE = '1970-01-01T00:00:00.000Z';
+
 CardHtmlWrapper.is_html = true;
 function CardHtmlWrapper(...args) { return new CardHtml(...args) }
 
@@ -3147,7 +3176,7 @@ function CardHtml(cont, store) {
   this.cont = cont;
   this.store = store;
   this.getCard = null;
-  this.card_display = [d => `${d.data["first name"]} ${d.data["last name"]}`];
+  this.card_display = defaultCardDisplay();
   this.onCardClick = this.onCardClickDefault;
   this.style = 'default';
   this.mini_tree = false;
@@ -3277,6 +3306,29 @@ CardHtml.prototype.onLeavePathToMain = function(e, d) {
 
   return this
 };
+
+function defaultCardDisplay() {
+  return [
+    d => `${d.data["first name"]} ${d.data["last name"]}`,
+    d => formatDateLine('Né(e)', d.data["birthday"]),
+    d => formatDateLine('Marié(e)', d.data["weddingday"]),
+    d => formatDateLine('Décès', d.data["lastday"])
+  ]
+}
+
+function formatDateLine(label, raw) {
+  const formatted = formatDate(raw);
+  return formatted ? `${label} le ${formatted}` : ''
+}
+
+function formatDate(value) {
+  if (!value || value === ZERO_DATE) return ''
+  const datePart = value.split('T')[0];
+  const parts = datePart.split('-');
+  if (parts.length !== 3) return ''
+  const [year, month, day] = parts;
+  return `${day}/${month}/${year}`
+}
 
 var f3 = {
   CalculateTree,
