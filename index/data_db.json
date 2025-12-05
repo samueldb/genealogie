@@ -86,7 +86,8 @@
       "geom": "POINT(6.568429 45.489705)",
       "commentaire": "",
       "geometry_lng": 6.568429,
-      "geometry_lat": 45.489705
+      "geometry_lat": 45.489705,
+      "weddingday": "1871-06-07T00:00:00.000Z"
     }
   },
   {
@@ -240,7 +241,8 @@
       "geom": "POINT(6.566605 45.399064)",
       "commentaire": "",
       "geometry_lng": 6.566605,
-      "geometry_lat": 45.399064
+      "geometry_lat": 45.399064,
+      "weddingday": "2007-10-06T15:58:32.000Z"
     }
   },
   {
@@ -395,7 +397,8 @@
       "geom": "POINT(6.566606 45.398992)",
       "commentaire": "",
       "geometry_lng": 6.566606,
-      "geometry_lat": 45.398992
+      "geometry_lat": 45.398992,
+      "weddingday": "2007-10-06T15:57:58.000Z"
     }
   },
   {
@@ -1030,7 +1033,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1878-07-30T00:00:00.000Z"
     }
   },
   {
@@ -1051,7 +1055,8 @@
       "geom": "POINT(6.568413 45.489645)",
       "commentaire": "",
       "geometry_lng": 6.568413,
-      "geometry_lat": 45.489645
+      "geometry_lat": 45.489645,
+      "weddingday": "1860-10-24T00:00:00.000Z"
     }
   },
   {
@@ -1082,7 +1087,8 @@
       "geom": "POINT(6.568374 45.48918)",
       "commentaire": "",
       "geometry_lng": 6.568374,
-      "geometry_lat": 45.48918
+      "geometry_lat": 45.48918,
+      "weddingday": "1849-07-10T00:00:00.000Z"
     }
   },
   {
@@ -1103,7 +1109,8 @@
       "geom": "POINT(6.568744 45.489582)",
       "commentaire": "",
       "geometry_lng": 6.568744,
-      "geometry_lat": 45.489582
+      "geometry_lat": 45.489582,
+      "weddingday": "1846-06-23T00:00:00.000Z"
     }
   },
   {
@@ -1126,7 +1133,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1878-07-30T00:00:00.000Z"
     }
   },
   {
@@ -1209,7 +1217,8 @@
       "geom": "POINT(6.568574 45.489505)",
       "commentaire": "",
       "geometry_lng": 6.568574,
-      "geometry_lat": 45.489505
+      "geometry_lat": 45.489505,
+      "weddingday": "1846-06-23T00:00:00.000Z"
     }
   },
   {
@@ -1242,7 +1251,8 @@
       "geom": "POINT(6.568369 45.489193)",
       "commentaire": "",
       "geometry_lng": 6.568369,
-      "geometry_lat": 45.489193
+      "geometry_lat": 45.489193,
+      "weddingday": "1849-07-10T00:00:00.000Z"
     }
   },
   {
@@ -1265,7 +1275,8 @@
       "geom": "POINT(6.568891 45.489727)",
       "commentaire": "",
       "geometry_lng": 6.568891,
-      "geometry_lat": 45.489727
+      "geometry_lat": 45.489727,
+      "weddingday": "1860-10-24T00:00:00.000Z"
     }
   },
   {
@@ -1375,7 +1386,8 @@
       "geom": "POINT(6.568966 45.489569)",
       "commentaire": "",
       "geometry_lng": 6.568966,
-      "geometry_lat": 45.489569
+      "geometry_lat": 45.489569,
+      "weddingday": "1801-04-15T00:00:00.000Z"
     }
   },
   {
@@ -1396,7 +1408,8 @@
       "geom": "POINT(6.72856 45.5888)",
       "commentaire": "",
       "geometry_lng": 6.72856,
-      "geometry_lat": 45.5888
+      "geometry_lat": 45.5888,
+      "weddingday": "1801-10-25T00:00:00.000Z"
     }
   },
   {
@@ -1417,7 +1430,8 @@
       "geom": "POINT(6.568666 45.489434)",
       "commentaire": "",
       "geometry_lng": 6.568666,
-      "geometry_lat": 45.489434
+      "geometry_lat": 45.489434,
+      "weddingday": "1782-07-02T00:00:00.000Z"
     }
   },
   {
@@ -1450,7 +1464,8 @@
       "geom": "POINT(6.568531 45.489558)",
       "commentaire": "",
       "geometry_lng": 6.568531,
-      "geometry_lat": 45.489558
+      "geometry_lat": 45.489558,
+      "weddingday": "1788-07-22T00:00:00.000Z"
     }
   },
   {
@@ -1485,7 +1500,8 @@
       "geom": "POINT(6.568744 45.489582)",
       "commentaire": "",
       "geometry_lng": 6.568744,
-      "geometry_lat": 45.489582
+      "geometry_lat": 45.489582,
+      "weddingday": "1788-07-22T00:00:00.000Z"
     }
   },
   {
@@ -1528,7 +1544,8 @@
       "geom": "POINT(6.568928 45.48969)",
       "commentaire": "",
       "geometry_lng": 6.568928,
-      "geometry_lat": 45.48969
+      "geometry_lat": 45.48969,
+      "weddingday": "1801-10-25T00:00:00.000Z"
     }
   },
   {
@@ -1578,7 +1595,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "décès dans l'année 1798. Habitait à Montmagny",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1777-05-16T00:00:00.000Z"
     }
   },
   {
@@ -1670,7 +1688,8 @@
       "geom": "POINT(6.568821 45.489449)",
       "commentaire": "mort d'une chute à cheval",
       "geometry_lng": 6.568821,
-      "geometry_lat": 45.489449
+      "geometry_lat": 45.489449,
+      "weddingday": "1801-04-15T00:00:00.000Z"
     }
   },
   {
@@ -1736,7 +1755,8 @@
       "geom": "POINT(6.568746 45.489434)",
       "commentaire": "",
       "geometry_lng": 6.568746,
-      "geometry_lat": 45.489434
+      "geometry_lat": 45.489434,
+      "weddingday": "1782-07-02T00:00:00.000Z"
     }
   },
   {
@@ -1864,7 +1884,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1777-05-08T00:00:00.000Z"
     }
   },
   {
@@ -1914,7 +1935,8 @@
       "geom": "POINT(6.567941 45.489315)",
       "commentaire": "",
       "geometry_lng": 6.567941,
-      "geometry_lat": 45.489315
+      "geometry_lat": 45.489315,
+      "weddingday": "1988-12-01T00:00:00.000Z"
     }
   },
   {
@@ -1939,7 +1961,8 @@
       "geom": "POINT(2.293431 48.777449)",
       "commentaire": "",
       "geometry_lng": 2.293431,
-      "geometry_lat": 48.777449
+      "geometry_lat": 48.777449,
+      "weddingday": "1993-08-07T11:42:25.000Z"
     }
   },
   {
@@ -2097,7 +2120,8 @@
       "geom": "POINT(6.3077 46.067749)",
       "commentaire": "",
       "geometry_lng": 6.3077,
-      "geometry_lat": 46.067749
+      "geometry_lat": 46.067749,
+      "weddingday": "1988-10-29T11:41:04.000Z"
     }
   },
   {
@@ -2205,7 +2229,8 @@
       "geometry_lat": 46.067749,
       "geometry_lng": 6.3077,
       "geom": "POINT(6.3077 46.067749)",
-      "commentaire": ""
+      "commentaire": "",
+      "weddingday": "1988-10-29T11:40:46.000Z"
     }
   },
   {
@@ -2232,7 +2257,8 @@
       "geom": "POINT(2.293431 48.777449)",
       "commentaire": "",
       "geometry_lng": 2.293431,
-      "geometry_lat": 48.777449
+      "geometry_lat": 48.777449,
+      "weddingday": "1993-08-07T11:41:28.000Z"
     }
   },
   {
@@ -2258,7 +2284,8 @@
       "geom": "POINT(6.567944 45.489314)",
       "commentaire": "",
       "geometry_lng": 6.567944,
-      "geometry_lat": 45.489314
+      "geometry_lat": 45.489314,
+      "weddingday": "1988-12-01T00:00:00.000Z"
     }
   },
   {
@@ -2436,7 +2463,8 @@
       "geom": "POINT(6.568601 45.489675)",
       "commentaire": "",
       "geometry_lng": 6.568601,
-      "geometry_lat": 45.489675
+      "geometry_lat": 45.489675,
+      "weddingday": "1750-04-29T00:00:00.000Z"
     }
   },
   {
@@ -2461,7 +2489,8 @@
       "geom": "POINT(6.568767 45.489757)",
       "commentaire": "dispense pr consanguinité au 4è degréplusieurs dates de naissance trouvée (fichier Richard DB), aucune date de décès (> 1747)",
       "geometry_lng": 6.568767,
-      "geometry_lat": 45.489757
+      "geometry_lat": 45.489757,
+      "weddingday": "1744-04-28T00:00:00.000Z"
     }
   },
   {
@@ -2493,7 +2522,8 @@
       "geom": "POINT(6.556385 45.430798)",
       "commentaire": "",
       "geometry_lng": 6.556385,
-      "geometry_lat": 45.430798
+      "geometry_lat": 45.430798,
+      "weddingday": "1751-04-20T00:00:00.000Z"
     }
   },
   {
@@ -2514,7 +2544,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "nombreuse descendance : http://gw.geneanet.org/jhelenerue?lang=fr&pz=xavier+henri&nz=ruedin&ocz=0&p=jean+pierre&n=bornet&oc=5",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1732-06-30T00:00:00.000Z"
     }
   },
   {
@@ -2541,7 +2572,8 @@
       "geom": "POINT(6.568451 45.489441)",
       "commentaire": "militaire mort au combat  contre les espagnolsdispense pr consanguinité au 4è degré pour le mariage",
       "geometry_lng": 6.568451,
-      "geometry_lat": 45.489441
+      "geometry_lat": 45.489441,
+      "weddingday": "1744-04-28T00:00:00.000Z"
     }
   },
   {
@@ -2572,7 +2604,8 @@
       "geom": "POINT(6.568735 45.489806)",
       "commentaire": "mariage le 7 Nov. 1747 annulé, puis 29 Avril 1750",
       "geometry_lng": 6.568735,
-      "geometry_lat": 45.489806
+      "geometry_lat": 45.489806,
+      "weddingday": "1750-04-29T00:00:00.000Z"
     }
   },
   {
@@ -2606,7 +2639,8 @@
       "geom": "POINT(6.568671 45.489535)",
       "commentaire": "décès en 1798 ou 1801 ? ",
       "geometry_lng": 6.568671,
-      "geometry_lat": 45.489535
+      "geometry_lat": 45.489535,
+      "weddingday": "1788-04-20T00:00:00.000Z"
     }
   },
   {
@@ -2629,7 +2663,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "nombreuse descendance : http://gw.geneanet.org/jhelenerue?lang=fr&pz=xavier+henri&nz=ruedin&ocz=0&p=jean+pierre&n=bornet&oc=5",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1732-06-30T00:00:00.000Z"
     }
   },
   {
@@ -2672,7 +2707,8 @@
       "geom": "POINT(6.584662 45.492319)",
       "commentaire": "",
       "geometry_lng": 6.584662,
-      "geometry_lat": 45.492319
+      "geometry_lat": 45.492319,
+      "weddingday": "1738-01-23T00:00:00.000Z"
     }
   },
   {
@@ -2773,7 +2809,8 @@
       "geom": "POINT(6.5441 45.499197)",
       "commentaire": "",
       "geometry_lng": 6.5441,
-      "geometry_lat": 45.499197
+      "geometry_lat": 45.499197,
+      "weddingday": "1738-01-23T00:00:00.000Z"
     }
   },
   {
@@ -2797,7 +2834,8 @@
       "geom": "POINT(6.5688 45.48949)",
       "commentaire": "enfants : Bernard et Jean Pierre",
       "geometry_lng": 6.5688,
-      "geometry_lat": 45.48949
+      "geometry_lat": 45.48949,
+      "weddingday": "1696-07-03T00:00:00.000Z"
     }
   },
   {
@@ -2828,7 +2866,8 @@
       "geom": "POINT(6.584673 45.492315)",
       "commentaire": "mariée à Benoit puis à Etienne",
       "geometry_lng": 6.584673,
-      "geometry_lat": 45.492315
+      "geometry_lat": 45.492315,
+      "weddingday": "1712-04-05T00:00:00.000Z"
     }
   },
   {
@@ -2858,7 +2897,8 @@
       "geom": "POINT(6.568687 45.489701)",
       "commentaire": "2 mariages : Bartholomée Martin, puis Jeanne-Francoise DB",
       "geometry_lng": 6.568687,
-      "geometry_lat": 45.489701
+      "geometry_lat": 45.489701,
+      "weddingday": "1696-07-03T00:00:00.000Z"
     }
   },
   {
@@ -2888,7 +2928,8 @@
       "geom": "POINT(6.584673 45.492315)",
       "commentaire": "",
       "geometry_lng": 6.584673,
-      "geometry_lat": 45.492315
+      "geometry_lat": 45.492315,
+      "weddingday": "1694-01-03T00:00:00.000Z"
     }
   },
   {
@@ -3008,7 +3049,8 @@
       "geom": "POINT(6.568494 45.489746)",
       "commentaire": "",
       "geometry_lng": 6.568494,
-      "geometry_lat": 45.489746
+      "geometry_lat": 45.489746,
+      "weddingday": "1906-07-29T00:00:00.000Z"
     }
   },
   {
@@ -3241,7 +3283,8 @@
       "geom": "POINT(6.568744 45.489582)",
       "commentaire": "",
       "geometry_lng": 6.568744,
-      "geometry_lat": 45.489582
+      "geometry_lat": 45.489582,
+      "weddingday": "1906-07-29T00:00:00.000Z"
     }
   },
   {
@@ -3289,7 +3332,8 @@
       "geom": "POINT(6.59428 45.5114)",
       "commentaire": "",
       "geometry_lng": 6.59428,
-      "geometry_lat": 45.5114
+      "geometry_lat": 45.5114,
+      "weddingday": "1932-09-24T00:00:00.000Z"
     }
   },
   {
@@ -3310,7 +3354,8 @@
       "geom": "POINT(6.568649 45.489614)",
       "commentaire": "goneta, ou ginette. Fille de Michael (1615) et de Aimée Vivet (1615-1678) ?",
       "geometry_lng": 6.568649,
-      "geometry_lat": 45.489614
+      "geometry_lat": 45.489614,
+      "weddingday": "1678-09-10T00:00:00.000Z"
     }
   },
   {
@@ -3360,7 +3405,8 @@
       "geom": "POINT(6.568966 45.489622)",
       "commentaire": "nom trouvé : \"Berger deschamps\"",
       "geometry_lng": 6.568966,
-      "geometry_lat": 45.489622
+      "geometry_lat": 45.489622,
+      "weddingday": "1662-07-23T00:00:00.000Z"
     }
   },
   {
@@ -3383,7 +3429,8 @@
       "geom": "POINT(6.568744 45.489582)",
       "commentaire": "",
       "geometry_lng": 6.568744,
-      "geometry_lat": 45.489582
+      "geometry_lat": 45.489582,
+      "weddingday": "1678-09-10T00:00:00.000Z"
     }
   },
   {
@@ -3404,7 +3451,8 @@
       "geom": "POINT(6.559704 45.497241)",
       "commentaire": "mariage le 23 juillet 1662",
       "geometry_lng": 6.559704,
-      "geometry_lat": 45.497241
+      "geometry_lat": 45.497241,
+      "weddingday": "1632-07-23T00:00:00.000Z"
     }
   },
   {
@@ -3425,7 +3473,8 @@
       "geom": "POINT(6.59428 45.5114)",
       "commentaire": "",
       "geometry_lng": 6.59428,
-      "geometry_lat": 45.5114
+      "geometry_lat": 45.5114,
+      "weddingday": "1682-06-06T00:00:00.000Z"
     }
   },
   {
@@ -4019,7 +4068,8 @@
       "geom": "POINT(6.56835 45.489199)",
       "commentaire": "ML Tardivet mariage le 01/02/1882, Claudine Séraphine Cochet mariage le 28/01/1909. ",
       "geometry_lng": 6.56835,
-      "geometry_lat": 45.489199
+      "geometry_lat": 45.489199,
+      "weddingday": "1882-02-01T00:00:00.000Z"
     }
   },
   {
@@ -4040,7 +4090,8 @@
       "geom": "POINT(6.590313 45.535653)",
       "commentaire": "Union: registre M 1882 - arrondissement de Moûtiers - 3E 2809",
       "geometry_lng": 6.590313,
-      "geometry_lat": 45.535653
+      "geometry_lat": 45.535653,
+      "weddingday": "1882-05-04T00:00:00.000Z"
     }
   },
   {
@@ -4092,7 +4143,8 @@
       "geom": "POINT(6.568364 45.489191)",
       "commentaire": "",
       "geometry_lng": 6.568364,
-      "geometry_lat": 45.489191
+      "geometry_lat": 45.489191,
+      "weddingday": "1912-06-20T00:00:00.000Z"
     }
   },
   {
@@ -4162,7 +4214,8 @@
       "geom": "POINT(6.590313 45.535653)",
       "commentaire": "",
       "geometry_lng": 6.590313,
-      "geometry_lat": 45.535653
+      "geometry_lat": 45.535653,
+      "weddingday": "1882-05-04T00:00:00.000Z"
     }
   },
   {
@@ -4210,7 +4263,8 @@
       "geom": "POINT(6.568358 45.489197)",
       "commentaire": "Militaire : classe 1888 - matricule 1460 - image 505/529 - (registre 1 R 73 volume 3 matricules 988-1482) taille 1,64m degré d'instruction générale : 2 (sait lire et écrire)",
       "geometry_lng": 6.568358,
-      "geometry_lat": 45.489197
+      "geometry_lat": 45.489197,
+      "weddingday": "1912-06-20T00:00:00.000Z"
     }
   },
   {
@@ -4300,7 +4354,8 @@
       "geom": "POINT(6.512146 45.519579)",
       "commentaire": "",
       "geometry_lng": 6.512146,
-      "geometry_lat": 45.519579
+      "geometry_lat": 45.519579,
+      "weddingday": "1836-11-03T00:00:00.000Z"
     }
   },
   {
@@ -4321,7 +4376,8 @@
       "geom": "POINT(6.568472 45.489517)",
       "commentaire": "dispense d'un ban et dempêchement du second degré de consanguinité égal",
       "geometry_lng": 6.568472,
-      "geometry_lat": 45.489517
+      "geometry_lat": 45.489517,
+      "weddingday": "1853-10-02T00:00:00.000Z"
     }
   },
   {
@@ -4342,7 +4398,8 @@
       "geom": "POINT(4.452082 46.403446)",
       "commentaire": "tous les enfants sont nés à Hautecour",
       "geometry_lng": 4.452082,
-      "geometry_lat": 46.403446
+      "geometry_lat": 46.403446,
+      "weddingday": "1818-07-09T00:00:00.000Z"
     }
   },
   {
@@ -4363,7 +4420,8 @@
       "geom": "POINT(6.567678 45.454592)",
       "commentaire": "",
       "geometry_lng": 6.567678,
-      "geometry_lat": 45.454592
+      "geometry_lat": 45.454592,
+      "weddingday": "1814-02-09T00:00:00.000Z"
     }
   },
   {
@@ -4393,7 +4451,8 @@
       "geom": "POINT(6.568358 45.489179)",
       "commentaire": "charvet ou charvey ? trouvé Charvaz sur généanet...",
       "geometry_lng": 6.568358,
-      "geometry_lat": 45.489179
+      "geometry_lat": 45.489179,
+      "weddingday": "1923-08-05T11:01:00.000Z"
     }
   },
   {
@@ -4414,7 +4473,8 @@
       "geom": "POINT(6.568676 45.489754)",
       "commentaire": "",
       "geometry_lng": 6.568676,
-      "geometry_lat": 45.489754
+      "geometry_lat": 45.489754,
+      "weddingday": "1828-09-23T00:00:00.000Z"
     }
   },
   {
@@ -4437,7 +4497,8 @@
       "geom": "POINT(6.568574 45.489611)",
       "commentaire": "",
       "geometry_lng": 6.568574,
-      "geometry_lat": 45.489611
+      "geometry_lat": 45.489611,
+      "weddingday": "1818-07-09T00:00:00.000Z"
     }
   },
   {
@@ -4500,7 +4561,8 @@
       "geom": "POINT(6.566823 45.454714)",
       "commentaire": "",
       "geometry_lng": 6.566823,
-      "geometry_lat": 45.454714
+      "geometry_lat": 45.454714,
+      "weddingday": "1814-02-09T00:00:00.000Z"
     }
   },
   {
@@ -4635,7 +4697,8 @@
       "geom": "POINT(6.512103 45.519519)",
       "commentaire": "",
       "geometry_lng": 6.512103,
-      "geometry_lat": 45.519519
+      "geometry_lat": 45.519519,
+      "weddingday": "1836-11-03T00:00:00.000Z"
     }
   },
   {
@@ -4664,7 +4727,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1834-01-08T00:00:00.000Z"
     }
   },
   {
@@ -4807,7 +4871,8 @@
       "geom": "POINT(6.56859 45.489739)",
       "commentaire": "",
       "geometry_lng": 6.56859,
-      "geometry_lat": 45.489739
+      "geometry_lat": 45.489739,
+      "weddingday": "1828-09-23T00:00:00.000Z"
     }
   },
   {
@@ -4850,7 +4915,8 @@
       "geom": "POINT(6.568553 45.489723)",
       "commentaire": "dispense d'un ban et dempêchement du second degré de consanguinité égal",
       "geometry_lng": 6.568553,
-      "geometry_lat": 45.489723
+      "geometry_lat": 45.489723,
+      "weddingday": "1853-10-02T00:00:00.000Z"
     }
   },
   {
@@ -4909,7 +4975,8 @@
       "geom": "POINT(6.568585 45.489441)",
       "commentaire": "",
       "geometry_lng": 6.568585,
-      "geometry_lat": 45.489441
+      "geometry_lat": 45.489441,
+      "weddingday": "1802-06-30T00:00:00.000Z"
     }
   },
   {
@@ -4936,7 +5003,8 @@
       "geom": "POINT(6.583892 45.512358)",
       "commentaire": "habite à Montmagny",
       "geometry_lng": 6.583892,
-      "geometry_lat": 45.512358
+      "geometry_lat": 45.512358,
+      "weddingday": "1834-01-08T00:00:00.000Z"
     }
   },
   {

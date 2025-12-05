@@ -3,6 +3,8 @@ import f3 from "../index.js"
 import {updateCardSvgDefs} from "../view/elements/Card.defs.js"
 import {processCardDisplay} from "./utils.js"
 
+const ZERO_DATE = '1970-01-01T00:00:00.000Z'
+
 CardSvgWrapper.is_html = false
 export default function CardSvgWrapper(...args) { return new CardSvg(...args) }
 
@@ -12,7 +14,7 @@ function CardSvg(cont, store) {
   this.svg = null
   this.getCard = null
   this.card_dim = {w:220,h:70,text_x:75,text_y:15,img_w:60,img_h:60,img_x:5,img_y:5}
-  this.card_display = [d => `${d.data["first name"]} ${d.data["last name"]}`]
+  this.card_display = defaultCardDisplay()
   this.mini_tree = true
   this.link_break = false
   this.onCardClick = this.onCardClickDefault
@@ -103,4 +105,27 @@ CardSvg.prototype.setOnCardClick = function(onCardClick) {
   this.onCardClick = onCardClick
 
   return this
+}
+
+function defaultCardDisplay() {
+  return [
+    d => `${d.data["first name"]} ${d.data["last name"]}`,
+    d => formatDateLine('Né(e)', d.data["birthday"]),
+    d => formatDateLine('Marié(e)', d.data["weddingday"]),
+    d => formatDateLine('Décès', d.data["lastday"])
+  ]
+}
+
+function formatDateLine(label, raw) {
+  const formatted = formatDate(raw)
+  return formatted ? `${label} le ${formatted}` : ''
+}
+
+function formatDate(value) {
+  if (!value || value === ZERO_DATE) return ''
+  const datePart = value.split('T')[0]
+  const parts = datePart.split('-')
+  if (parts.length !== 3) return ''
+  const [year, month, day] = parts
+  return `${day}/${month}/${year}`
 }

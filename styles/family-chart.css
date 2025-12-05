@@ -1,3 +1,13 @@
+.f3 {
+    --female-color: rgb(196, 138, 146);
+    --male-color: rgb(120, 159, 172);
+    --genderless-color: lightgray;
+    --background-color: rgb(33, 33, 33);
+    --text-color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+
 .f3 .cursor-pointer {
   cursor: pointer;
 }
@@ -18,6 +28,16 @@
 }
 .f3 .card-genderless .card-body-rect, .f3 .card-genderless .text-overflow-mask {
   fill: lightgray;
+}
+.f3 div.card-new-rel.card-female .card-inner, .f3 div.card-to-add.card-female .card-inner {
+    border-color: var(--female-color);
+    color: var(--female-color);
+    background-color: var(--genderless-color);
+}
+.f3 div.card-new-rel.card-male .card-inner, .f3 div.card-to-add.card-male .card-inner {
+    color: var(--male-color);
+    border-color: var(--male-color);
+    background-color: var(--genderless-color);
 }
 .f3 .card_add .card-body-rect {
   fill: #3b5560;
