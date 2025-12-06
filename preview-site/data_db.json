@@ -4964,7 +4964,7 @@
       "last name": "DESCHAMPS-BERGER",
       "birthday": "1823-02-24T00:00:00.000Z",
       "lastday": "1879-05-26T00:00:00.000Z",
-      "job": "Cultivatrice",
+      "job": "ménagère",
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
       "geom": "POINT(6.568446 45.489581)",
@@ -4978,7 +4978,8 @@
   {
     "id": 190,
     "rels": {
-      "father": 188
+      "father": 188,
+      "mother": 191
     },
     "data": {
       "first name": "Etienne",
