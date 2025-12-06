@@ -53,7 +53,7 @@ fetch("./data_db.json")
               .setCardXSpacing(300)
               .setCardYSpacing(150)
 
-      const initialMainId = 3
+      const initialMainId = 31
       const initialMainDatum = data.find(person => person.id === initialMainId)
       if (initialMainDatum) {
         f3Chart.updateMainId(initialMainDatum.id)
