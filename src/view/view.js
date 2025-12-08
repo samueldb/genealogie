@@ -4,6 +4,7 @@ import updateLinks from "./view.links.js"
 import updateCards from "./view.cards.js"
 import updateCardsHtml from "./view.html.cards.js"
 import updateCardsComponent from "./view.html.component.js"
+import updateTimeline from "./view.timeline.js"
 
 export default function(tree, svg, Card, props={}) {
 
@@ -15,10 +16,13 @@ export default function(tree, svg, Card, props={}) {
   updateLinks(svg, tree, props);
 
   const tree_position = props.tree_position || 'fit';
-  if (props.initial) treeFit({svg, svg_dim: svg.getBoundingClientRect(), tree_dim: tree.dim, transition_time: 0})
-  else if (tree_position === 'fit') treeFit({svg, svg_dim: svg.getBoundingClientRect(), tree_dim: tree.dim, transition_time: props.transition_time})
-  else if (tree_position === 'main_to_middle') cardToMiddle({datum: tree.data[0], svg, svg_dim: svg.getBoundingClientRect(), scale: props.scale, transition_time: props.transition_time})
+  const svg_dim = svg.getBoundingClientRect()
+  if (props.initial) treeFit({svg, svg_dim, tree_dim: tree.dim, transition_time: 0})
+  else if (tree_position === 'fit') treeFit({svg, svg_dim, tree_dim: tree.dim, transition_time: props.transition_time})
+  else if (tree_position === 'main_to_middle') cardToMiddle({datum: tree.data[0], svg, svg_dim, scale: props.scale, transition_time: props.transition_time})
   else if (tree_position === 'inherit') {}
+
+  updateTimeline(svg, tree)
 
   return true
 }

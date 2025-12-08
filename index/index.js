@@ -1,5 +1,8 @@
+import { setupTimeline } from "./timeline.js"
+
 const FAMILY_CHART_SELECTOR = "#FamilyChart"
 const FAMILY_CHART_BOTTOM_PADDING = 16
+const TIMELINE_END_YEAR = 2025
 
 const resizeFamilyChartHeight = () => {
   const chart = document.querySelector(FAMILY_CHART_SELECTOR)
@@ -47,6 +50,7 @@ fetch("./data_db.json")
       let saveTimeoutId = null
       let pendingSavePayload = null
       const saveStatusElement = document.getElementById("SaveDataStatus")
+      let timeline = null
 
       const f3Chart = f3.createChart('#FamilyChart', data)
               .setTransitionTime(100)
@@ -88,13 +92,28 @@ fetch("./data_db.json")
                const updated_data = getCurrentDataset()
                lastNameSuggestions = extractLastNames(updated_data)
                queueDataPersistence()
+               timeline?.update()
              })
         // .setNoEdit()  // if you want to just see info form
       setupEditPanel()
 
+      timeline = setupTimeline({
+        containerSelector: "#TimelineContainer",
+        chartSelector: FAMILY_CHART_SELECTOR,
+        getData: () => getCurrentDataset(),
+        endYear: TIMELINE_END_YEAR
+      })
+
+      if (typeof f3Chart.setAfterUpdate === "function") {
+        f3Chart.setAfterUpdate(() => {
+          timeline?.update()
+        })
+      }
+
       f3Chart.updateTree({initial: true})
       f3EditTree.open(f3Chart.getMainDatum())
       f3Chart.updateTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
+      timeline?.update()
 
       function handleCardClick(e, d) {
         const datum = d?.data || d

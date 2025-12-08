@@ -20,6 +20,19 @@
 .f3 svg.main_svg text {
   fill: currentColor;
 }
+.f3 .timeline {
+  color: currentColor;
+}
+.f3 .timeline line {
+  stroke: currentColor;
+  stroke-width: 1px;
+  opacity: 0.6;
+}
+.f3 .timeline text {
+  fill: currentColor;
+  font-size: 12px;
+  opacity: 0.85;
+}
 .f3 rect.card-female, .f3 .card-female .card-body-rect, .f3 .card-female .text-overflow-mask {
   fill: var(--female-color);
 }

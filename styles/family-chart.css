@@ -107,3 +107,18 @@
 .editBtn_add{
   color: #3b5560;
 }
+
+.f3 .f3-timeline {
+  color: currentColor;
+}
+.f3 .f3-timeline__line,
+.f3 .f3-timeline__tick-line {
+  stroke: currentColor;
+  stroke-width: 1px;
+  opacity: 0.65;
+}
+.f3 .f3-timeline__tick-label {
+  fill: currentColor;
+  font-size: 12px;
+  opacity: 0.9;
+}

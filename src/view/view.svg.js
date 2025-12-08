@@ -9,6 +9,7 @@ export default function createSvg(cont, props={}) {
         <g class="links_view"></g>
         <g class="cards_view"></g>
       </g>
+      <g class="timeline"></g>
       <g style="transform: translate(100%, 100%)">
         <g class="fit_screen_icon cursor-pointer" style="transform: translate(-50px, -50px); display: none">
           <rect width="27" height="27" stroke-dasharray="${27/2}" stroke-dashoffset="${27/4}" 
