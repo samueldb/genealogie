@@ -43,6 +43,9 @@ jobs:
           mkdir -p preview-site
           cp -R deschampsberger preview-site/deschampsberger
           cp -R index preview-site/index
+          if [ -f index/timeline.js ]; then
+            cp index/timeline.js preview-site/index/timeline.js
+          fi
           cp -R styles preview-site/styles
           if [ -d dist ]; then
             cp -R dist preview-site/dist

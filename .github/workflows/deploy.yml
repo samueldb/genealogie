@@ -42,9 +42,12 @@ jobs:
           mkdir -p public-site
           cp -R deschampsberger public-site/deschampsberger
           cp -R index public-site/index
+          if [ -f index/timeline.js ]; then
+            cp index/timeline.js public-site/index/timeline.js
+          fi
           cp -R styles public-site/styles
           if [ -d dist ]; then
-            cp -R dist preview-site/dist
+            cp -R dist public-site/dist
           fi
           cp -R includes public-site/includes
           cp -R utils public-site/utils
