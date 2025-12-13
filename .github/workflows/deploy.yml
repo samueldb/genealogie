@@ -13,16 +13,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Check for source directory
+        id: src-check
+        run: |
+          if [ -d src ]; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Node.js
+        if: ${{ steps.src-check.outputs.found == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
 
       - name: Install dependencies
+        if: ${{ steps.src-check.outputs.found == 'true' }}
         run: npm install
 
       - name: Build library
+        if: ${{ steps.src-check.outputs.found == 'true' }}
         run: npm run build
 
       - name: Prepare GitHub Pages bundle
