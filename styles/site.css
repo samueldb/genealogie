@@ -4,6 +4,102 @@
   gap: 1rem;
 }
 
+.timeline-layout {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.timeline-panel {
+  width: 160px;
+  min-width: 140px;
+  background: linear-gradient(180deg, #0f172a, #1c1f2b);
+  color: #e8eefc;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 12px 16px;
+  box-shadow: 0 10px 30px rgba(12, 21, 39, 0.32);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timeline-panel__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-panel__title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.timeline-panel__subtitle {
+  font-size: 0.85rem;
+  color: rgba(232, 238, 252, 0.8);
+}
+
+.timeline-svg {
+  width: 100%;
+  flex: 1;
+  overflow: visible;
+}
+
+.timeline-svg line {
+  stroke: currentColor;
+  stroke-width: 1px;
+  opacity: 0.65;
+}
+
+.timeline-svg text {
+  fill: currentColor;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.timeline-count-path {
+  fill: none;
+  stroke: #8ed396;
+  stroke-width: 2px;
+  opacity: 0.9;
+}
+
+.timeline-count-dot {
+  fill: #e8eefc;
+  stroke: #8ed396;
+  stroke-width: 1px;
+  opacity: 0.9;
+}
+
+.timeline-x-axis-line,
+.timeline-x-axis-tick {
+  stroke: currentColor;
+  stroke-width: 1px;
+  opacity: 0.5;
+}
+
+.timeline-x-axis-label {
+  fill: currentColor;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+#FamilyChart {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .timeline-layout {
+    flex-direction: column;
+  }
+
+  .timeline-panel {
+    width: 100%;
+  }
+}
+
 #EditPanel {
   display: flex;
   flex-direction: column;

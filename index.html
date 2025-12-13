@@ -23,16 +23,25 @@
 </head>
 <body>
 <header id="header"></header>
-<div id="menu"></div>
-<div id="content-wrapper">
-    <div class="inner clearfix">
-        <section id="main-content">
-            <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgba(250,250,250,1);color:#fff;"></div>
-        </section>
-        <aside id="sidebar">
-            <div id="RecherchePersonne"></div>
-            <div id="EditPanel">
-                <div id="EditPanelFormHost"></div>
+  <div id="menu"></div>
+  <div id="content-wrapper">
+      <div class="inner clearfix">
+          <section id="main-content">
+              <div class="timeline-layout">
+                  <div id="TimelineContainer" class="timeline-panel" aria-hidden="true">
+                      <div class="timeline-panel__header">
+                          <div class="timeline-panel__title">Frise chronologique</div>
+                          <div class="timeline-panel__subtitle">Nombre de personnes référencées vivantes à cette époque</div>
+                      </div>
+                      <svg id="TimelineSvg" class="timeline-svg" role="presentation"></svg>
+                  </div>
+                  <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgba(250,250,250,1);color:#fff;"></div>
+              </div>
+          </section>
+          <aside id="sidebar">
+              <div id="RecherchePersonne"></div>
+              <div id="EditPanel">
+                  <div id="EditPanelFormHost"></div>
                 <div id="SaveDataStatus" class="save-status" aria-live="polite"></div>
             </div>
             Légende
