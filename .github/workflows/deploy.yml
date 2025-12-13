@@ -43,7 +43,9 @@ jobs:
           cp -R deschampsberger public-site/deschampsberger
           cp -R index public-site/index
           cp -R styles public-site/styles
-          cp -R dist public-site/dist
+          if [ -d dist ]; then
+            cp -R dist preview-site/dist
+          fi
           cp -R includes public-site/includes
           cp -R utils public-site/utils
           cp data_db.json public-site/data_db.json
