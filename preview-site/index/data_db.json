@@ -502,6 +502,9 @@
   {
     "id": 61,
     "rels": {
+      "spouses": [
+        "3b1ea212-3506-4cca-aa37-9e026022a771"
+      ],
       "father": 59,
       "mother": 60
     },
@@ -5222,6 +5225,26 @@
     "rels": {
       "father": 3,
       "mother": 221
+    }
+  },
+  {
+    "id": "3b1ea212-3506-4cca-aa37-9e026022a771",
+    "data": {
+      "gender": "F",
+      "first name": "Flavie",
+      "last name": "?",
+      "birthday": "",
+      "weddingday": "",
+      "lastday": "",
+      "address": "Toulouse",
+      "commentaire": "",
+      "geometry_lat": "",
+      "geometry_lng": ""
+    },
+    "rels": {
+      "spouses": [
+        61
+      ]
     }
   }
 ]
