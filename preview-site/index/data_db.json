@@ -722,10 +722,8 @@
       "gender": "M",
       "geom": "POINT(6.568744 45.489582)",
       "commentaire": "",
-      "geometry_lng": "1.345443",
-      "geometry_lat": "43.536519",
-      "weddingday": "",
-      "address": "31270 Cugnaux"
+      "geometry_lng": 6.568744,
+      "geometry_lat": 45.489582
     }
   },
   {
@@ -2013,14 +2011,16 @@
       "first name": "Josette",
       "last name": "DESCHAMPS-BERGER",
       "birthday": "1970-01-01T00:00:00.000Z",
-      "lastday": "1970-01-01T00:00:00.000Z",
+      "lastday": "2025-05-11T00:00:00.000Z",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
       "geom": "POINT(6.568725 45.489483)",
       "commentaire": "",
-      "geometry_lng": 6.568725,
-      "geometry_lat": 45.489483
+      "geometry_lng": "",
+      "geometry_lat": "",
+      "weddingday": "",
+      "address": ""
     }
   },
   {
@@ -2175,16 +2175,14 @@
       "first name": "yvon",
       "last name": "DESCHAMPS-BERGER",
       "birthday": "1938-01-01T00:00:00.000Z",
-      "lastday": "2025-02-16T00:00:00.000Z",
+      "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "M",
       "geom": "POINT(5.952071 45.535837)",
       "commentaire": "",
-      "geometry_lng": "1.324670",
-      "geometry_lat": "43.649422",
-      "weddingday": "",
-      "address": "31700 Cornebarrieu"
+      "geometry_lng": 5.952071,
+      "geometry_lat": 45.535837
     }
   },
   {
