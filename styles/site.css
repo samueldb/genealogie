@@ -536,6 +536,192 @@
   margin: 0;
 }
 
+.person-life-timeline {
+  margin: 12px 0;
+  padding: 12px 8px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f8fafc;
+  overflow: visible;
+}
+
+.person-life-timeline__axis {
+  position: relative;
+  min-height: 150px;
+  margin: 0 8px;
+}
+
+.person-life-timeline__axis::before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 38px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #86b98f, #7aa6c2 48%, #9ca3af);
+}
+
+.person-life-timeline__item {
+  position: absolute;
+  left: var(--timeline-position);
+  top: 38px;
+  width: 86px;
+  transform: translateX(-50%);
+  text-align: center;
+  outline: none;
+}
+
+.person-life-timeline__label {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 86px;
+  min-height: 24px;
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+}
+
+.person-life-timeline__marker {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border: 3px solid #fff;
+  border-radius: 999px;
+  background: #64748b;
+  box-shadow: 0 0 0 2px #cbd5e1, 0 6px 12px rgba(15, 23, 42, 0.12);
+  transform: translate(-50%, -50%);
+}
+
+.person-life-timeline__item--birth .person-life-timeline__marker {
+  background: #4f9f67;
+  box-shadow: 0 0 0 2px #b8dec1, 0 6px 12px rgba(15, 23, 42, 0.12);
+}
+
+.person-life-timeline__item--wedding .person-life-timeline__marker {
+  background: #527fa2;
+  box-shadow: 0 0 0 2px #b8cfe0, 0 6px 12px rgba(15, 23, 42, 0.12);
+}
+
+.person-life-timeline__item--child .person-life-timeline__marker,
+.person-life-timeline__item--children .person-life-timeline__marker {
+  background: #b88a3d;
+  box-shadow: 0 0 0 2px #ead8b8, 0 6px 12px rgba(15, 23, 42, 0.12);
+}
+
+.person-life-timeline__item--child {
+  width: 74px;
+}
+
+.person-life-timeline__item--child .person-life-timeline__label,
+.person-life-timeline__item--child .person-life-timeline__date {
+  width: 74px;
+}
+
+.person-life-timeline__item--stack-1 .person-life-timeline__label {
+  bottom: 38px;
+}
+
+.person-life-timeline__item--stack-2 .person-life-timeline__label {
+  bottom: 58px;
+}
+
+.person-life-timeline__item--stack-3 .person-life-timeline__label {
+  bottom: 78px;
+}
+
+.person-life-timeline__item--stack-1 .person-life-timeline__date {
+  top: 30px;
+}
+
+.person-life-timeline__item--stack-2 .person-life-timeline__date {
+  top: 48px;
+}
+
+.person-life-timeline__item--stack-3 .person-life-timeline__date {
+  top: 66px;
+}
+
+.person-life-timeline__item--death .person-life-timeline__marker {
+  background: #475569;
+  box-shadow: 0 0 0 2px #cbd5e1, 0 6px 12px rgba(15, 23, 42, 0.12);
+}
+
+.person-life-timeline__item.is-empty .person-life-timeline__marker {
+  background: #e5e7eb;
+  box-shadow: 0 0 0 2px #d1d5db;
+}
+
+.person-life-timeline__date {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  width: 86px;
+  color: #111827;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transform: translateX(-50%);
+}
+
+.person-life-timeline__item.is-empty .person-life-timeline__date {
+  color: #94a3b8;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.person-life-timeline__tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  z-index: 6;
+  width: max-content;
+  max-width: 220px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #111827;
+  color: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  text-align: left;
+  transform: translate(-50%, 4px);
+  transition: opacity 120ms ease, transform 120ms ease;
+  white-space: pre-line;
+}
+
+.person-life-timeline__tooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: #111827;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.person-life-timeline__item:hover .person-life-timeline__tooltip,
+.person-life-timeline__item:focus .person-life-timeline__tooltip,
+.person-life-timeline__item:focus-visible .person-life-timeline__tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.person-life-timeline__item:focus-visible .person-life-timeline__marker {
+  outline: 2px solid #1e3a8a;
+  outline-offset: 3px;
+}
+
 .person-details-grid {
   display: grid;
   grid-template-columns: 1fr;
