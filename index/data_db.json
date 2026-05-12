@@ -363,16 +363,17 @@
     "data": {
       "first name": "Emilia",
       "last name": "NANTET",
-      "birthday": "1989-06-15T00:00:00.000Z",
-      "lastday": "1970-01-01T00:00:00.000Z",
+      "birthday": "15/06/1989",
+      "lastday": "",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/15.jpg",
       "gender": "F",
       "geom": "POINT(6.564245 45.402488)",
       "commentaire": "",
-      "geometry_lng": "",
-      "geometry_lat": "",
-      "address": "route du villard, 73550 Les Allues"
+      "geometry_lng": "6.549506",
+      "geometry_lat": "45.440705",
+      "address": "route du villard, 73550 Les Allues",
+      "weddingday": ""
     }
   },
   {
@@ -502,9 +503,6 @@
   {
     "id": 61,
     "rels": {
-      "spouses": [
-        "3b1ea212-3506-4cca-aa37-9e026022a771"
-      ],
       "father": 59,
       "mother": 60
     },
@@ -2014,16 +2012,14 @@
       "first name": "Josette",
       "last name": "DESCHAMPS-BERGER",
       "birthday": "1970-01-01T00:00:00.000Z",
-      "lastday": "2025-05-11T00:00:00.000Z",
+      "lastday": "1970-01-01T00:00:00.000Z",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
       "geom": "POINT(6.568725 45.489483)",
       "commentaire": "",
-      "geometry_lng": "",
-      "geometry_lat": "",
-      "weddingday": "",
-      "address": ""
+      "geometry_lng": 6.568725,
+      "geometry_lat": 45.489483
     }
   },
   {
@@ -5225,26 +5221,6 @@
     "rels": {
       "father": 3,
       "mother": 221
-    }
-  },
-  {
-    "id": "3b1ea212-3506-4cca-aa37-9e026022a771",
-    "data": {
-      "gender": "F",
-      "first name": "Flavie",
-      "last name": "?",
-      "birthday": "",
-      "weddingday": "",
-      "lastday": "",
-      "address": "Toulouse",
-      "commentaire": "",
-      "geometry_lat": "",
-      "geometry_lng": ""
-    },
-    "rels": {
-      "spouses": [
-        61
-      ]
     }
   }
 ]
