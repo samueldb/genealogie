@@ -78,8 +78,8 @@ fetch("./data_db.json")
           "first name",
           "last name",
           "birthday",
-          { id: "weddingday", label: "Date de mariage", type: "text" },
-          { id: "lastday", label: "Date de décès", type: "text" },
+          { id: "weddingday", label: "Mariage", type: "text" },
+          { id: "lastday", label: "Décès", type: "text" },
           { id: "avatar", label: "Photo URL", type: "img" },
           { id: "address", label: "Adresse", type: "text" },
           // { id: "geometry_lat", label: "Latitude", type: "text" },
@@ -315,6 +315,9 @@ fetch("./data_db.json")
           const form = (formHost || document).querySelector("form")
           if (!form) return
           enhanceAvatarField(formHost)
+          structurePersonPanelActions(formHost)
+          enhanceDateInputs(formHost)
+          enhanceInfoReadability(formHost)
           enhanceMapField(formHost)
         }
 
@@ -380,6 +383,53 @@ fetch("./data_db.json")
           }
         }
 
+        function enhanceDateInputs(formHost) {
+          const dateFieldNames = ["birthday", "weddingday", "lastday"]
+          dateFieldNames.forEach(name => {
+            const input = formHost.querySelector(`input[name="${name}"]`)
+            if (!input || input.dataset.dateEnhanced === "true") return
+
+            input.dataset.dateEnhanced = "true"
+            input.type = "text"
+            input.placeholder = "jj/mm/aaaa"
+            input.inputMode = "numeric"
+            input.setAttribute("pattern", "\\d{2}/\\d{2}/\\d{4}")
+
+            const formattedValue = formatDateForEditInput(input.value)
+            if (formattedValue) input.value = formattedValue
+
+            const fieldWrapper = input.closest(".f3-form-field") || input.parentElement
+            if (!fieldWrapper) return
+
+            let datePicker = fieldWrapper.querySelector(".person-date-picker")
+            if (!datePicker) {
+              datePicker = document.createElement("input")
+              datePicker.type = "date"
+              datePicker.className = "person-date-picker"
+              datePicker.setAttribute("aria-label", "Sélectionner une date")
+              input.after(datePicker)
+            }
+
+            datePicker.value = toCalendarDateValue(input.value)
+            datePicker.addEventListener("change", () => {
+              const selectedDate = formatCalendarDateForEditInput(datePicker.value)
+              if (!selectedDate) return
+              input.value = selectedDate
+              input.dispatchEvent(new Event("input", {bubbles: true}))
+              input.dispatchEvent(new Event("change", {bubbles: true}))
+            })
+
+            input.addEventListener("change", () => {
+              datePicker.value = toCalendarDateValue(input.value)
+            })
+            input.addEventListener("blur", () => {
+              const normalized = formatDateForEditInput(input.value)
+              if (normalized) input.value = normalized
+              datePicker.value = toCalendarDateValue(input.value)
+            })
+          })
+        }
+
         function getInfoFieldByLabel(form, ...labelTexts) {
           const normalizedTargets = labelTexts
             .filter(Boolean)
@@ -426,16 +476,28 @@ fetch("./data_db.json")
 
           const lastNameWrapper = findFieldWrapper(formHost, 'last name', 'Nom de famille')
           const firstNameWrapper = findFieldWrapper(formHost, 'first name', 'Prénom')
-          const birthdayWrapper = findFieldWrapper(formHost, 'birthday', 'Birthday')
+          const birthdayWrapper = findFieldWrapper(formHost, 'birthday', 'Date de naissance', 'Birthday')
           ;[lastNameWrapper, firstNameWrapper, birthdayWrapper].forEach(wrapper => {
             if (wrapper && wrapper.parentElement !== detailsSlot) detailsSlot.appendChild(wrapper)
           })
+          applyFrenchFieldLabels(lastNameWrapper, firstNameWrapper, birthdayWrapper)
 
           function findFieldWrapper(scope, name, labelText) {
             const input = scope.querySelector(`input[name="${name}"]`)
             if (input) return input.closest('.f3-form-field')
             return getInfoFieldByLabel(scope, labelText, name) || null
           }
+        }
+
+        function applyFrenchFieldLabels(lastNameWrapper, firstNameWrapper, birthdayWrapper) {
+          ;[
+            [lastNameWrapper, "Nom de famille"],
+            [firstNameWrapper, "Prénom"],
+            [birthdayWrapper, "Date de naissance"]
+          ].forEach(([wrapper, label]) => {
+            const labelEl = wrapper?.querySelector("label, .f3-info-field-label")
+            if (labelEl) labelEl.textContent = label
+          })
         }
 
         function enhanceMapField(formHost) {
@@ -648,6 +710,91 @@ fetch("./data_db.json")
               try { map.resize() } catch (err) {}
             }, 200)
           }
+        }
+
+        function structurePersonPanelActions(formHost) {
+          const form = formHost.querySelector("form")
+          if (!form) return
+
+          let toolbar = form.querySelector(".person-panel-actions")
+          if (!toolbar) {
+            toolbar = document.createElement("div")
+            toolbar.className = "person-panel-actions"
+            const title = form.querySelector(".f3-form-title")
+            const insertBeforeEl = title?.nextSibling || form.firstChild
+            form.insertBefore(toolbar, insertBeforeEl)
+          }
+
+          const editBtn = form.querySelector(".f3-edit-btn")
+          const addRelativeBtn = form.querySelector(".f3-add-relative-btn")
+          const closeBtn = form.querySelector(".f3-close-btn")
+
+          ;[
+            [addRelativeBtn, "Ajouter un proche"],
+            [editBtn, "Modifier la personne"],
+            [closeBtn, "Fermer le panneau"]
+          ].forEach(([button, label]) => {
+            if (!button) return
+            button.classList.add("panel-icon-button")
+            if (!button.getAttribute("aria-label")) button.setAttribute("aria-label", label)
+            if (!button.getAttribute("title")) button.setAttribute("title", label)
+            if (button.parentElement !== toolbar) toolbar.appendChild(button)
+          })
+
+          const sourceButtons = form.querySelector(".f3-form-buttons")
+          if (sourceButtons && sourceButtons !== toolbar && !sourceButtons.children.length) {
+            sourceButtons.classList.add("is-empty")
+          }
+        }
+
+        function enhanceInfoReadability(formHost) {
+          const form = formHost.querySelector("form")
+          if (!form) return
+
+          let detailsGrid = form.querySelector(".person-details-grid")
+          if (!detailsGrid) {
+            detailsGrid = document.createElement("div")
+            detailsGrid.className = "person-details-grid"
+            const insertAfter = form.querySelector(".person-form-header") || form.querySelector(".f3-form-title")
+            if (insertAfter?.nextSibling) {
+              form.insertBefore(detailsGrid, insertAfter.nextSibling)
+            } else {
+              form.appendChild(detailsGrid)
+            }
+          }
+
+          const header = form.querySelector(".person-form-header")
+          Array.from(form.querySelectorAll(".f3-info-field")).forEach(field => {
+            const label = field.querySelector(".f3-info-field-label")?.textContent?.trim()
+            const valueEl = field.querySelector(".f3-info-field-value")
+            if (!valueEl) return
+
+            const rawValue = valueEl.dataset.originalValue ?? valueEl.textContent ?? ""
+            if (!valueEl.dataset.originalValue) valueEl.dataset.originalValue = rawValue
+            const isDateField = isDateFieldLabel(label)
+            const value = rawValue.trim()
+            const displayValue = isDateField ? formatDateForPanel(value) : value
+
+            field.classList.add("person-detail-field")
+            field.classList.toggle("is-empty", !value)
+
+            valueEl.textContent = displayValue || "Non renseigné"
+
+            const isKeyHeaderField = header?.contains(field)
+            const isHiddenMediaField = field.classList.contains("avatar-field-wrapper")
+              || label === "Photo URL"
+              || valueEl.classList.contains("visually-hidden")
+
+            if (!isKeyHeaderField && !isHiddenMediaField && field.parentElement !== detailsGrid) {
+              detailsGrid.appendChild(field)
+            }
+
+            if (/commentaire|adresse/i.test(label || "")) {
+              field.classList.add("person-detail-field--wide")
+            }
+          })
+
+          detailsGrid.classList.toggle("is-empty", !detailsGrid.querySelector(".person-detail-field:not(.is-empty)"))
         }
 
         function resolveNumericValue(inputValue, infoField) {
@@ -879,6 +1026,67 @@ fetch("./data_db.json")
         return `${day}/${month}/${year}`
       }
       return normalized
+    }
+
+    function formatDateForPanel(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return normalizeDateInput(value)
+      return `${parts.day}-${parts.month}-${parts.year}`
+    }
+
+    function formatDateForEditInput(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return normalizeDateInput(value)
+      return `${parts.day}/${parts.month}/${parts.year}`
+    }
+
+    function formatCalendarDateForEditInput(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return ""
+      return `${parts.day}/${parts.month}/${parts.year}`
+    }
+
+    function toCalendarDateValue(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return ""
+      return `${parts.year}-${parts.month}-${parts.day}`
+    }
+
+    function parseDateParts(value) {
+      const normalized = normalizeDateInput(value)
+      if (!normalized || isPlaceholderDate(normalized)) return null
+
+      let match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})(?:\b|T)/)
+      if (match) {
+        const [, year, month, day] = match
+        return isValidDateParts(day, month, year) ? {day, month, year} : null
+      }
+
+      match = normalized.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/)
+      if (match) {
+        const [, rawDay, rawMonth, year] = match
+        const day = rawDay.padStart(2, "0")
+        const month = rawMonth.padStart(2, "0")
+        return isValidDateParts(day, month, year) ? {day, month, year} : null
+      }
+
+      return null
+    }
+
+    function isValidDateParts(day, month, year) {
+      const numericDay = Number(day)
+      const numericMonth = Number(month)
+      const numericYear = Number(year)
+      if (!Number.isInteger(numericDay) || !Number.isInteger(numericMonth) || !Number.isInteger(numericYear)) return false
+      if (numericYear < 1 || numericMonth < 1 || numericMonth > 12 || numericDay < 1) return false
+      const date = new Date(Date.UTC(numericYear, numericMonth - 1, numericDay))
+      return date.getUTCFullYear() === numericYear
+        && date.getUTCMonth() === numericMonth - 1
+        && date.getUTCDate() === numericDay
+    }
+
+    function isDateFieldLabel(label = "") {
+      return /^(birthday|date de naissance|date de mariage|Mariage|date de décès|date de deces|décès)$/i.test(label.trim())
     }
 
     function getExternalFormatter() {

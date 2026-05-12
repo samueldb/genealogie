@@ -106,14 +106,102 @@
   gap: 0.5rem;
 }
 
+#EditPanelFormHost {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.f3-form {
+  position: relative;
+}
+
+.person-panel-actions {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin: -4px -4px 10px;
+  padding: 8px 4px;
+  background: linear-gradient(180deg, #fff 70%, rgba(255, 255, 255, 0));
+}
+
+#EditPanelFormHost .panel-icon-button,
+#EditPanelFormHost .f3-add-relative-btn,
+#EditPanelFormHost .f3-edit-btn,
+#EditPanelFormHost .f3-close-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #64748b;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  position: static;
+  transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+#EditPanelFormHost .panel-icon-button svg,
+#EditPanelFormHost .f3-add-relative-btn svg,
+#EditPanelFormHost .f3-edit-btn svg,
+#EditPanelFormHost .f3-close-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+}
+
+#EditPanelFormHost .panel-icon-button:hover,
+#EditPanelFormHost .f3-add-relative-btn:hover,
+#EditPanelFormHost .f3-edit-btn:hover,
+#EditPanelFormHost .f3-close-btn:hover {
+  background: #f1f5f9;
+  color: #1e3a8a;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+#EditPanelFormHost .panel-icon-button:active,
+#EditPanelFormHost .f3-add-relative-btn:active,
+#EditPanelFormHost .f3-edit-btn:active,
+#EditPanelFormHost .f3-close-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+#EditPanelFormHost .panel-icon-button:focus-visible,
+#EditPanelFormHost .f3-add-relative-btn:focus-visible,
+#EditPanelFormHost .f3-edit-btn:focus-visible,
+#EditPanelFormHost .f3-close-btn:focus-visible {
+  outline: 2px solid #cbd5e1;
+  outline-offset: 2px;
+}
+
+#EditPanelFormHost .f3-form-buttons.is-empty {
+  display: none;
+}
+
 #EditPanelFormHost .f3-form-cont {
   width: 100%;
   height: auto;
   box-shadow: none;
+  background: #fff;
 }
 
 #EditPanelFormHost .f3-form-cont.opened {
   width: 100%;
+  background: #fff;
 }
 
 #EditPanel .lastname-suggestions {
@@ -412,7 +500,8 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 8px 0;
+  padding: 8px 0 12px;
+  border-bottom: 1px solid #eef2f7;
 }
 
 #familyForm .person-form-header__avatar .person-media {
@@ -445,6 +534,106 @@
 
 #familyForm .person-form-header__avatar .avatar-field-wrapper {
   margin: 0;
+}
+
+.person-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.person-details-grid.is-empty {
+  display: none;
+}
+
+#EditPanelFormHost .person-detail-field,
+#familyForm .person-form-header__details .f3-form-field,
+#familyForm .person-form-header__avatar .f3-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 10px;
+}
+
+#EditPanelFormHost .person-details-grid .person-detail-field {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+#EditPanelFormHost .person-detail-field--wide {
+  grid-column: 1 / -1;
+}
+
+#EditPanelFormHost .f3-info-field-label,
+#EditPanelFormHost .f3-form-field label {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+#EditPanelFormHost .f3-info-field-value {
+  color: #111827;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+#EditPanelFormHost .person-detail-field.is-empty .f3-info-field-value {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+#EditPanelFormHost .person-form-header__details .f3-info-field-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#EditPanelFormHost input,
+#EditPanelFormHost textarea {
+  border-color: #dbe3ef;
+  border-radius: 8px;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+#EditPanelFormHost .person-date-picker {
+  width: 33.333%;
+  min-width: 112px;
+  max-width: 180px;
+  height: 38px;
+  align-self: flex-start;
+  padding: 4px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+#EditPanelFormHost textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+@media (min-width: 1200px) {
+  .person-details-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  #familyForm .person-form-header {
+    flex-direction: column;
+  }
+
+  .person-panel-actions {
+    justify-content: flex-start;
+  }
 }
 
 /* Card layout tweaks */
