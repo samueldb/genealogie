@@ -3117,16 +3117,17 @@
     "data": {
       "first name": "(Aimé) Théophile Marcellin",
       "last name": "DESCHAMPS-BERGER",
-      "birthday": "1917-08-17T16:10:26.000Z",
-      "lastday": "1982-03-23T16:09:58.000Z",
+      "birthday": "17/08/1917",
+      "lastday": "23/03/1982",
       "job": "cultivateur",
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "M",
       "geom": "POINT(6.568373 45.489186)",
       "commentaire": "membre du 6e bataillon de Armée secrète (AS) de Savoie du 20 octobre 1943 au 20 septembre 1944. Démobilisé le 1er octobre 1944. Qualité de deuxième classe.Cote de l'acte : Service historique de la Défense, Vincennes GR 16 P 178421",
-      "geometry_lng": "",
-      "geometry_lat": "",
-      "address": "montfort, 73600 pomblère saint marcel"
+      "geometry_lng": "6.559707",
+      "geometry_lat": "45.490472",
+      "address": "montfort, 73600 pomblière saint marcel",
+      "weddingday": ""
     }
   },
   {
