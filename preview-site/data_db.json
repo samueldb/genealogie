@@ -506,6 +506,9 @@
       "spouses": [
         "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
       ],
+      "children": [
+        "33e75886-d11c-4180-a1f2-16000d47aaab"
+      ],
       "father": 59,
       "mother": 60
     },
@@ -5240,9 +5243,30 @@
       "commentaire": ""
     },
     "rels": {
+      "children": [
+        "33e75886-d11c-4180-a1f2-16000d47aaab"
+      ],
       "spouses": [
         61
       ]
+    }
+  },
+  {
+    "id": "33e75886-d11c-4180-a1f2-16000d47aaab",
+    "data": {
+      "gender": "M",
+      "avatar": "",
+      "last name": "Lucien",
+      "first name": "DESCHAMPS-BERGER",
+      "birthday": "16/03/2026",
+      "weddingday": "",
+      "lastday": "",
+      "address": "toulouse",
+      "commentaire": ""
+    },
+    "rels": {
+      "father": 61,
+      "mother": "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
     }
   }
 ]
