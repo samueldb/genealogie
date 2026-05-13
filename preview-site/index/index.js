@@ -36,11 +36,26 @@ const setupFamilyChartHeight = () => {
 }
 
 setupFamilyChartHeight()
+warmUpPersistenceBackend()
 
 fetch("./data_db.json")
   .then(res => res.json())
   .then(data => create(data))
   .catch(err => console.error(err))
+
+function warmUpPersistenceBackend() {
+  const { healthEndpoint } = getPersistenceConfig()
+  if (!healthEndpoint || typeof fetch !== "function") return
+
+  fetch(healthEndpoint, {
+    method: "GET",
+    mode: "cors",
+    cache: "no-store",
+    keepalive: true
+  }).catch(err => {
+    console.debug("Backend warm-up failed", err)
+  })
+}
 
     function create(data){
 
@@ -82,7 +97,7 @@ fetch("./data_db.json")
           "birthday",
           { id: "weddingday", label: "Mariage", type: "text" },
           { id: "lastday", label: "Décès", type: "text" },
-          { id: "avatar", label: "Photo URL", type: "img" },
+          { id: "avatar", label: "Photo URL", type: "text" },
           { id: "address", label: "Adresse", type: "text" },
           // { id: "geometry_lat", label: "Latitude", type: "text" },
           // { id: "geometry_lng", label: "Longitude", type: "text" },
@@ -297,8 +312,13 @@ fetch("./data_db.json")
         function hookPersonFormEnhancer(formCont) {
           if (!formCont || formCont.dataset.formEnhancerAttached === "true") return
           formCont.dataset.formEnhancerAttached = "true"
+          let enhancementFrame = null
           const observer = new MutationObserver(() => {
-            window.requestAnimationFrame(() => enhancePersonForm(formCont))
+            if (enhancementFrame) return
+            enhancementFrame = window.requestAnimationFrame(() => {
+              enhancementFrame = null
+              enhancePersonForm(formCont)
+            })
           })
           observer.observe(formCont, {childList: true, subtree: true})
           enhancePersonForm(formCont)
@@ -353,7 +373,6 @@ fetch("./data_db.json")
           `
 
           if (avatarInput) {
-            avatarInput.classList.add("visually-hidden")
             const labelEl = fieldWrapper.querySelector("label")
             if (labelEl) labelEl.classList.add("visually-hidden")
             avatarInput.placeholder = "URL de la photo"
@@ -367,6 +386,8 @@ fetch("./data_db.json")
                 const dataUrl = reader.result
                 avatarInput.value = typeof dataUrl === "string" ? dataUrl : ""
                 updatePreview(avatarInput.value)
+                avatarInput.dispatchEvent(new Event("input", {bubbles: true}))
+                avatarInput.dispatchEvent(new Event("change", {bubbles: true}))
               }
               reader.readAsDataURL(file)
             })
@@ -515,10 +536,15 @@ fetch("./data_db.json")
           const addressInfo = getInfoFieldByLabel(formHost, "Adresse", "address")
           let latValue = resolveNumericValue(latInput?.value, latInfo)
           let lngValue = resolveNumericValue(lngInput?.value, lngInfo)
-          const addressValue = resolveTextValue(addressInput?.value, addressInfo)
+          const addressValue = normalizeOptionalText(resolveTextValue(addressInput?.value, addressInfo))
 
           const editable = !!latInput && !!lngInput && !formHost.querySelector("form")?.classList.contains("non-editable")
           const existingWrapper = formHost.querySelector(".person-map")
+          const hasLocation = (Number.isFinite(latValue) && Number.isFinite(lngValue)) || !!addressValue
+          if (!hasLocation) {
+            if (existingWrapper) existingWrapper.remove()
+            return
+          }
           if (existingWrapper && existingWrapper.dataset.editable === String(editable)) {
             return
           }
@@ -660,11 +686,6 @@ fetch("./data_db.json")
             hasRenderedSomething = true
           }
 
-          if (!hasRenderedSomething) {
-            setStatus("Ajoutez une adresse ou des coordonnées pour afficher la carte.")
-            return
-          }
-
           latInput.addEventListener("change", syncMarkerToInputs)
           lngInput.addEventListener("change", syncMarkerToInputs)
           latInput.addEventListener("blur", syncMarkerToInputs)
@@ -747,10 +768,23 @@ fetch("./data_db.json")
             if (button.parentElement !== toolbar) toolbar.appendChild(button)
           })
 
+          if (addRelativeBtn && addRelativeBtn.dataset.centerOnAddAttached !== "true") {
+            addRelativeBtn.dataset.centerOnAddAttached = "true"
+            addRelativeBtn.addEventListener("click", centerCurrentPanelPersonForAddRelative, {capture: true})
+          }
+
           const sourceButtons = form.querySelector(".f3-form-buttons")
           if (sourceButtons && sourceButtons !== toolbar && !sourceButtons.children.length) {
             sourceButtons.classList.add("is-empty")
           }
+        }
+
+        function centerCurrentPanelPersonForAddRelative() {
+          const person = getCurrentPanelPerson()
+          if (!person?.id) return
+          currentPanelPersonId = person.id
+          f3Chart.updateMainId(person.id)
+          f3Chart.updateTree({tree_position: "main_to_middle"})
         }
 
         function enhanceInfoReadability(formHost) {
@@ -792,10 +826,10 @@ fetch("./data_db.json")
             field.classList.add("person-detail-field")
             field.classList.toggle("is-empty", !value)
 
-            valueEl.textContent = displayValue || "Non renseigné"
+            setTextContentIfChanged(valueEl, displayValue || "Non renseigné")
             if (isBirthDateLabel(originalLabel)) {
               const labelEl = field.querySelector(".f3-info-field-label")
-              if (labelEl) labelEl.textContent = "Âge"
+              if (labelEl) setTextContentIfChanged(labelEl, "Âge")
             }
 
             const isKeyHeaderField = header?.contains(field)
@@ -835,6 +869,17 @@ fetch("./data_db.json")
             if (header?.nextSibling) form.insertBefore(timelineEl, header.nextSibling)
             else form.insertBefore(timelineEl, form.firstChild)
           }
+
+          const timelineSignature = JSON.stringify(timelineData.items.map(item => ({
+            type: item.type,
+            label: item.label,
+            date: item.date,
+            position: Math.round(item.position * 10) / 10,
+            stackLevel: item.stackLevel || 0,
+            tooltip: item.tooltip || ""
+          })))
+          if (timelineEl.dataset.timelineSignature === timelineSignature) return
+          timelineEl.dataset.timelineSignature = timelineSignature
 
           timelineEl.replaceChildren()
           const axis = document.createElement("div")
@@ -1081,6 +1126,12 @@ fetch("./data_db.json")
           }[type] ?? 3
         }
 
+        function setTextContentIfChanged(element, text) {
+          if (element && element.textContent !== text) {
+            element.textContent = text
+          }
+        }
+
         function resolveNumericValue(inputValue, infoField) {
           const candidate = parseFloat(inputValue)
           if (Number.isFinite(candidate)) return candidate
@@ -1093,9 +1144,16 @@ fetch("./data_db.json")
         }
 
         function resolveTextValue(inputValue, infoField) {
-          const raw = inputValue ?? infoField?.querySelector(".f3-info-field-value")?.textContent
+          const infoValue = infoField?.querySelector(".f3-info-field-value")
+          const raw = inputValue ?? infoValue?.dataset.originalValue ?? infoValue?.textContent
           if (!raw) return ""
           return String(raw).trim()
+        }
+
+        function normalizeOptionalText(value = "") {
+          const normalized = String(value).trim()
+          if (/^(non renseigné|non renseigne|null|undefined|-|n\/a)$/i.test(normalized)) return ""
+          return normalized
         }
 
         async function geocodeAddress(query) {
@@ -1278,7 +1336,8 @@ fetch("./data_db.json")
       const baseUrl = typeof rawConfig.baseUrl === "string" ? rawConfig.baseUrl.trim().replace(/\/$/, "") : ""
       const apiKey = typeof rawConfig.apiKey === "string" ? rawConfig.apiKey : ""
       const endpoint = baseUrl ? `${baseUrl}/api/family-data` : "api/family-data"
-      return { endpoint, apiKey }
+      const healthEndpoint = baseUrl ? `${baseUrl}/health` : ""
+      return { endpoint, healthEndpoint, apiKey }
     }
 
     function formatBirthDate(value) {
