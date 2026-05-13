@@ -499,25 +499,28 @@
 #familyForm .person-form-header {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 14px;
   padding: 8px 0 12px;
   border-bottom: 1px solid #eef2f7;
 }
 
 #familyForm .person-form-header__avatar .person-media {
   margin-top: 0;
+  padding: 8px;
 }
 
 #familyForm .person-form-header__avatar .person-media__preview img {
-  width: 80px;
-  height: 80px;
+  width: 124px;
+  height: 124px;
   object-fit: cover;
 }
 
 #familyForm .person-form-header__details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 8px 12px;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 6px;
+  min-height: 124px;
   width: 100%;
 }
 
@@ -527,6 +530,7 @@
 }
 
 #familyForm .person-form-header__avatar {
+  flex: 0 0 140px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -536,9 +540,36 @@
   margin: 0;
 }
 
+#familyForm .person-form-header__avatar .avatar-field-wrapper .f3-info-field-label {
+  display: none;
+}
+
+#familyForm .person-form-header__avatar .avatar-field-wrapper input[name="avatar"] {
+  width: 100%;
+  font-size: 0.78rem;
+}
+
+#EditPanelFormHost .person-form-header__details .f3-info-field-label,
+#EditPanelFormHost .person-form-header__details .f3-form-field label {
+  font-size: 0.64rem;
+}
+
+#EditPanelFormHost .person-form-header__details .f3-info-field-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+#EditPanelFormHost .person-form-header__details input {
+  min-height: 32px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 0.9rem;
+}
+
 .person-life-timeline {
   margin: 12px 0;
-  padding: 12px 8px 14px;
+  padding: 18px 8px 20px;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   background: #f8fafc;
@@ -547,7 +578,7 @@
 
 .person-life-timeline__axis {
   position: relative;
-  min-height: 150px;
+  min-height: 160px;
   margin: 0 8px;
 }
 
@@ -556,7 +587,7 @@
   position: absolute;
   left: 6%;
   right: 6%;
-  top: 38px;
+  top: 72px;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, #86b98f, #7aa6c2 48%, #9ca3af);
@@ -565,7 +596,7 @@
 .person-life-timeline__item {
   position: absolute;
   left: var(--timeline-position);
-  top: 38px;
+  top: 72px;
   width: 86px;
   transform: translateX(-50%);
   text-align: center;
@@ -778,7 +809,8 @@
 }
 
 #EditPanelFormHost .person-form-header__details .f3-info-field-value {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.25;
   font-weight: 600;
 }
 
