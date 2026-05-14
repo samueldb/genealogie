@@ -3039,9 +3039,9 @@
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/7.jpg",
       "gender": "F",
       "geom": "POINT(6.568344 45.489178)",
-      "commentaire": "décédée du covid",
-      "geometry_lng": 6.568344,
-      "geometry_lat": 45.489178,
+      "commentaire": "",
+      "geometry_lng": "6.568744",
+      "geometry_lat": "45.489582",
       "weddingday": "",
       "address": "montfort, 73600 saint marcel"
     }
