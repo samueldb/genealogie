@@ -36,11 +36,26 @@ const setupFamilyChartHeight = () => {
 }
 
 setupFamilyChartHeight()
+warmUpPersistenceBackend()
 
 fetch("./data_db.json")
   .then(res => res.json())
   .then(data => create(data))
   .catch(err => console.error(err))
+
+function warmUpPersistenceBackend() {
+  const { healthEndpoint } = getPersistenceConfig()
+  if (!healthEndpoint || typeof fetch !== "function") return
+
+  fetch(healthEndpoint, {
+    method: "GET",
+    mode: "cors",
+    cache: "no-store",
+    keepalive: true
+  }).catch(err => {
+    console.debug("Backend warm-up failed", err)
+  })
+}
 
     function create(data){
 
@@ -51,6 +66,7 @@ fetch("./data_db.json")
       let pendingSavePayload = null
       const saveStatusElement = document.getElementById("SaveDataStatus")
       let timeline = null
+      let currentPanelPersonId = null
 
       const f3Chart = f3.createChart('#FamilyChart', data)
               .setTransitionTime(100)
@@ -61,6 +77,7 @@ fetch("./data_db.json")
       const initialMainDatum = data.find(person => person.id === initialMainId)
       if (initialMainDatum) {
         f3Chart.updateMainId(initialMainDatum.id)
+        currentPanelPersonId = initialMainDatum.id
       }
 
       const f3Card = f3Chart.setCardHtml()
@@ -78,9 +95,9 @@ fetch("./data_db.json")
           "first name",
           "last name",
           "birthday",
-          { id: "weddingday", label: "Date de mariage", type: "text" },
-          { id: "lastday", label: "Date de décès", type: "text" },
-          { id: "avatar", label: "Photo URL", type: "img" },
+          { id: "weddingday", label: "Mariage", type: "text" },
+          { id: "lastday", label: "Décès", type: "text" },
+          { id: "avatar", label: "Photo URL", type: "text" },
           { id: "address", label: "Adresse", type: "text" },
           // { id: "geometry_lat", label: "Latitude", type: "text" },
           // { id: "geometry_lng", label: "Longitude", type: "text" },
@@ -111,6 +128,7 @@ fetch("./data_db.json")
       }
 
       f3Chart.updateTree({initial: true})
+      currentPanelPersonId = f3Chart.getMainDatum()?.id || currentPanelPersonId
       f3EditTree.open(f3Chart.getMainDatum())
       f3Chart.updateTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
       timeline?.update()
@@ -127,6 +145,7 @@ fetch("./data_db.json")
         if (isDouble) {
           updateTreeWithNewMainPerson(datum.id, true)
         } else {
+          currentPanelPersonId = datum.id
           f3EditTree.open(datum)
         }
       }
@@ -270,6 +289,7 @@ fetch("./data_db.json")
             return
           }
           f3Chart.updateMainId(target.id)
+          currentPanelPersonId = target.id
           const tree_position = shouldCenter ? 'main_to_middle' : 'inherit'
           f3Chart.updateTree({tree_position})
           const currentMain = f3Chart.getMainDatum()
@@ -292,8 +312,13 @@ fetch("./data_db.json")
         function hookPersonFormEnhancer(formCont) {
           if (!formCont || formCont.dataset.formEnhancerAttached === "true") return
           formCont.dataset.formEnhancerAttached = "true"
+          let enhancementFrame = null
           const observer = new MutationObserver(() => {
-            window.requestAnimationFrame(() => enhancePersonForm(formCont))
+            if (enhancementFrame) return
+            enhancementFrame = window.requestAnimationFrame(() => {
+              enhancementFrame = null
+              enhancePersonForm(formCont)
+            })
           })
           observer.observe(formCont, {childList: true, subtree: true})
           enhancePersonForm(formCont)
@@ -315,6 +340,10 @@ fetch("./data_db.json")
           const form = (formHost || document).querySelector("form")
           if (!form) return
           enhanceAvatarField(formHost)
+          structurePersonPanelActions(formHost)
+          enhanceDateInputs(formHost)
+          enhanceInfoReadability(formHost)
+          enhanceLifeTimeline(formHost)
           enhanceMapField(formHost)
         }
 
@@ -344,7 +373,6 @@ fetch("./data_db.json")
           `
 
           if (avatarInput) {
-            avatarInput.classList.add("visually-hidden")
             const labelEl = fieldWrapper.querySelector("label")
             if (labelEl) labelEl.classList.add("visually-hidden")
             avatarInput.placeholder = "URL de la photo"
@@ -358,6 +386,8 @@ fetch("./data_db.json")
                 const dataUrl = reader.result
                 avatarInput.value = typeof dataUrl === "string" ? dataUrl : ""
                 updatePreview(avatarInput.value)
+                avatarInput.dispatchEvent(new Event("input", {bubbles: true}))
+                avatarInput.dispatchEvent(new Event("change", {bubbles: true}))
               }
               reader.readAsDataURL(file)
             })
@@ -378,6 +408,53 @@ fetch("./data_db.json")
             const img = mediaWrapper.querySelector("img")
             img.src = url || "deschampsberger/images/profil_base.svg"
           }
+        }
+
+        function enhanceDateInputs(formHost) {
+          const dateFieldNames = ["birthday", "weddingday", "lastday"]
+          dateFieldNames.forEach(name => {
+            const input = formHost.querySelector(`input[name="${name}"]`)
+            if (!input || input.dataset.dateEnhanced === "true") return
+
+            input.dataset.dateEnhanced = "true"
+            input.type = "text"
+            input.placeholder = "jj/mm/aaaa"
+            input.inputMode = "numeric"
+            input.setAttribute("pattern", "\\d{2}/\\d{2}/\\d{4}")
+
+            const formattedValue = formatDateForEditInput(input.value)
+            if (formattedValue) input.value = formattedValue
+
+            const fieldWrapper = input.closest(".f3-form-field") || input.parentElement
+            if (!fieldWrapper) return
+
+            let datePicker = fieldWrapper.querySelector(".person-date-picker")
+            if (!datePicker) {
+              datePicker = document.createElement("input")
+              datePicker.type = "date"
+              datePicker.className = "person-date-picker"
+              datePicker.setAttribute("aria-label", "Sélectionner une date")
+              input.after(datePicker)
+            }
+
+            datePicker.value = toCalendarDateValue(input.value)
+            datePicker.addEventListener("change", () => {
+              const selectedDate = formatCalendarDateForEditInput(datePicker.value)
+              if (!selectedDate) return
+              input.value = selectedDate
+              input.dispatchEvent(new Event("input", {bubbles: true}))
+              input.dispatchEvent(new Event("change", {bubbles: true}))
+            })
+
+            input.addEventListener("change", () => {
+              datePicker.value = toCalendarDateValue(input.value)
+            })
+            input.addEventListener("blur", () => {
+              const normalized = formatDateForEditInput(input.value)
+              if (normalized) input.value = normalized
+              datePicker.value = toCalendarDateValue(input.value)
+            })
+          })
         }
 
         function getInfoFieldByLabel(form, ...labelTexts) {
@@ -426,16 +503,28 @@ fetch("./data_db.json")
 
           const lastNameWrapper = findFieldWrapper(formHost, 'last name', 'Nom de famille')
           const firstNameWrapper = findFieldWrapper(formHost, 'first name', 'Prénom')
-          const birthdayWrapper = findFieldWrapper(formHost, 'birthday', 'Birthday')
+          const birthdayWrapper = findFieldWrapper(formHost, 'birthday', 'Date de naissance', 'Birthday')
           ;[lastNameWrapper, firstNameWrapper, birthdayWrapper].forEach(wrapper => {
             if (wrapper && wrapper.parentElement !== detailsSlot) detailsSlot.appendChild(wrapper)
           })
+          applyFrenchFieldLabels(lastNameWrapper, firstNameWrapper, birthdayWrapper)
 
           function findFieldWrapper(scope, name, labelText) {
             const input = scope.querySelector(`input[name="${name}"]`)
             if (input) return input.closest('.f3-form-field')
             return getInfoFieldByLabel(scope, labelText, name) || null
           }
+        }
+
+        function applyFrenchFieldLabels(lastNameWrapper, firstNameWrapper, birthdayWrapper) {
+          ;[
+            [lastNameWrapper, "Nom de famille"],
+            [firstNameWrapper, "Prénom"],
+            [birthdayWrapper, "Date de naissance"]
+          ].forEach(([wrapper, label]) => {
+            const labelEl = wrapper?.querySelector("label, .f3-info-field-label")
+            if (labelEl) labelEl.textContent = label
+          })
         }
 
         function enhanceMapField(formHost) {
@@ -447,10 +536,15 @@ fetch("./data_db.json")
           const addressInfo = getInfoFieldByLabel(formHost, "Adresse", "address")
           let latValue = resolveNumericValue(latInput?.value, latInfo)
           let lngValue = resolveNumericValue(lngInput?.value, lngInfo)
-          const addressValue = resolveTextValue(addressInput?.value, addressInfo)
+          const addressValue = normalizeOptionalText(resolveTextValue(addressInput?.value, addressInfo))
 
           const editable = !!latInput && !!lngInput && !formHost.querySelector("form")?.classList.contains("non-editable")
           const existingWrapper = formHost.querySelector(".person-map")
+          const hasLocation = (Number.isFinite(latValue) && Number.isFinite(lngValue)) || !!addressValue
+          if (!hasLocation) {
+            if (existingWrapper) existingWrapper.remove()
+            return
+          }
           if (existingWrapper && existingWrapper.dataset.editable === String(editable)) {
             return
           }
@@ -592,11 +686,6 @@ fetch("./data_db.json")
             hasRenderedSomething = true
           }
 
-          if (!hasRenderedSomething) {
-            setStatus("Ajoutez une adresse ou des coordonnées pour afficher la carte.")
-            return
-          }
-
           latInput.addEventListener("change", syncMarkerToInputs)
           lngInput.addEventListener("change", syncMarkerToInputs)
           latInput.addEventListener("blur", syncMarkerToInputs)
@@ -650,6 +739,399 @@ fetch("./data_db.json")
           }
         }
 
+        function structurePersonPanelActions(formHost) {
+          const form = formHost.querySelector("form")
+          if (!form) return
+
+          let toolbar = form.querySelector(".person-panel-actions")
+          if (!toolbar) {
+            toolbar = document.createElement("div")
+            toolbar.className = "person-panel-actions"
+            const title = form.querySelector(".f3-form-title")
+            const insertBeforeEl = title?.nextSibling || form.firstChild
+            form.insertBefore(toolbar, insertBeforeEl)
+          }
+
+          const editBtn = form.querySelector(".f3-edit-btn")
+          const addRelativeBtn = form.querySelector(".f3-add-relative-btn")
+          const closeBtn = form.querySelector(".f3-close-btn")
+
+          ;[
+            [addRelativeBtn, "Ajouter un proche"],
+            [editBtn, "Modifier la personne"],
+            [closeBtn, "Fermer le panneau"]
+          ].forEach(([button, label]) => {
+            if (!button) return
+            button.classList.add("panel-icon-button")
+            if (!button.getAttribute("aria-label")) button.setAttribute("aria-label", label)
+            if (!button.getAttribute("title")) button.setAttribute("title", label)
+            if (button.parentElement !== toolbar) toolbar.appendChild(button)
+          })
+
+          if (addRelativeBtn && addRelativeBtn.dataset.centerOnAddAttached !== "true") {
+            addRelativeBtn.dataset.centerOnAddAttached = "true"
+            addRelativeBtn.addEventListener("click", centerCurrentPanelPersonForAddRelative, {capture: true})
+          }
+
+          const sourceButtons = form.querySelector(".f3-form-buttons")
+          if (sourceButtons && sourceButtons !== toolbar && !sourceButtons.children.length) {
+            sourceButtons.classList.add("is-empty")
+          }
+        }
+
+        function centerCurrentPanelPersonForAddRelative() {
+          const person = getCurrentPanelPerson()
+          if (!person?.id) return
+          currentPanelPersonId = person.id
+          f3Chart.updateMainId(person.id)
+          f3Chart.updateTree({tree_position: "main_to_middle"})
+        }
+
+        function enhanceInfoReadability(formHost) {
+          const form = formHost.querySelector("form")
+          if (!form) return
+
+          let detailsGrid = form.querySelector(".person-details-grid")
+          if (!detailsGrid) {
+            detailsGrid = document.createElement("div")
+            detailsGrid.className = "person-details-grid"
+            const insertAfter = form.querySelector(".person-form-header") || form.querySelector(".f3-form-title")
+            if (insertAfter?.nextSibling) {
+              form.insertBefore(detailsGrid, insertAfter.nextSibling)
+            } else {
+              form.appendChild(detailsGrid)
+            }
+          }
+
+          const header = form.querySelector(".person-form-header")
+          Array.from(form.querySelectorAll(".f3-info-field")).forEach(field => {
+            const label = field.querySelector(".f3-info-field-label")?.textContent?.trim()
+            const valueEl = field.querySelector(".f3-info-field-value")
+            if (!valueEl) return
+
+            const originalLabel = field.dataset.originalLabel || label || ""
+            if (!field.dataset.originalLabel) field.dataset.originalLabel = originalLabel
+            const rawValue = valueEl.dataset.originalValue ?? valueEl.textContent ?? ""
+            if (!valueEl.dataset.originalValue) valueEl.dataset.originalValue = rawValue
+            if (isTimelineOnlyDateLabel(originalLabel)) {
+              field.remove()
+              return
+            }
+            const isDateField = isDateFieldLabel(originalLabel)
+            const value = rawValue.trim()
+            const displayValue = isBirthDateLabel(originalLabel)
+              ? formatAgeForPanel(value, getLifeDateValue(getCurrentPanelPerson(), formHost, "lastday"))
+              : isDateField ? formatDateForPanel(value) : value
+
+            field.classList.add("person-detail-field")
+            field.classList.toggle("is-empty", !value)
+
+            setTextContentIfChanged(valueEl, displayValue || "Non renseigné")
+            if (isBirthDateLabel(originalLabel)) {
+              const labelEl = field.querySelector(".f3-info-field-label")
+              if (labelEl) setTextContentIfChanged(labelEl, "Âge")
+            }
+
+            const isKeyHeaderField = header?.contains(field)
+            const isHiddenMediaField = field.classList.contains("avatar-field-wrapper")
+              || label === "Photo URL"
+              || valueEl.classList.contains("visually-hidden")
+
+            if (!isKeyHeaderField && !isHiddenMediaField && field.parentElement !== detailsGrid) {
+              detailsGrid.appendChild(field)
+            }
+
+            if (/commentaire|adresse/i.test(label || "")) {
+              field.classList.add("person-detail-field--wide")
+            }
+          })
+
+          detailsGrid.classList.toggle("is-empty", !detailsGrid.querySelector(".person-detail-field:not(.is-empty)"))
+        }
+
+        function enhanceLifeTimeline(formHost) {
+          const form = formHost.querySelector("form")
+          if (!form) return
+
+          const person = getCurrentPanelPerson()
+          const timelineData = buildLifeTimelineData(person, formHost)
+          let timelineEl = form.querySelector(".person-life-timeline")
+
+          if (!timelineData.hasKnownDate) {
+            if (timelineEl) timelineEl.remove()
+            return
+          }
+
+          if (!timelineEl) {
+            timelineEl = document.createElement("section")
+            timelineEl.className = "person-life-timeline"
+            const header = form.querySelector(".person-form-header")
+            if (header?.nextSibling) form.insertBefore(timelineEl, header.nextSibling)
+            else form.insertBefore(timelineEl, form.firstChild)
+          }
+
+          const timelineSignature = JSON.stringify(timelineData.items.map(item => ({
+            type: item.type,
+            label: item.label,
+            date: item.date,
+            position: Math.round(item.position * 10) / 10,
+            stackLevel: item.stackLevel || 0,
+            tooltip: item.tooltip || ""
+          })))
+          if (timelineEl.dataset.timelineSignature === timelineSignature) return
+          timelineEl.dataset.timelineSignature = timelineSignature
+
+          timelineEl.replaceChildren()
+          const axis = document.createElement("div")
+          axis.className = "person-life-timeline__axis"
+
+          timelineData.items.forEach(item => {
+            const node = document.createElement("div")
+            node.className = `person-life-timeline__item person-life-timeline__item--${item.type}`
+            if (!item.date) node.classList.add("is-empty")
+            if (item.lane) node.classList.add(`person-life-timeline__item--lane-${item.lane}`)
+            if (item.stackLevel) node.classList.add(`person-life-timeline__item--stack-${item.stackLevel}`)
+            node.style.setProperty("--timeline-position", `${item.position}%`)
+            node.tabIndex = 0
+
+            const label = document.createElement("div")
+            label.className = "person-life-timeline__label"
+            label.textContent = item.label
+
+            const marker = document.createElement("div")
+            marker.className = "person-life-timeline__marker"
+
+            const date = document.createElement("div")
+            date.className = "person-life-timeline__date"
+            date.textContent = item.date || "Non renseigné"
+
+            const tooltip = document.createElement("div")
+            tooltip.className = "person-life-timeline__tooltip"
+            tooltip.textContent = item.tooltip || `${item.label} - ${item.date || "Non renseigné"}`
+
+            node.appendChild(label)
+            node.appendChild(marker)
+            node.appendChild(date)
+            node.appendChild(tooltip)
+            axis.appendChild(node)
+          })
+
+          timelineEl.appendChild(axis)
+        }
+
+        function getCurrentPanelPerson() {
+          const dataset = getCurrentDataset()
+          const personId = currentPanelPersonId || f3Chart.getMainDatum()?.id
+          return dataset.find(person => String(person.id) === String(personId)) || null
+        }
+
+        function buildLifeTimelineData(person, formHost) {
+          const birthValue = getLifeDateValue(person, formHost, "birthday")
+          const weddingValue = getLifeDateValue(person, formHost, "weddingday")
+          const deathValue = getLifeDateValue(person, formHost, "lastday")
+          const childEvents = getChildBirthEvents(person)
+          const hasDeathDate = !!parseDateParts(deathValue)
+
+          const datedParts = [
+            parseDateParts(birthValue),
+            parseDateParts(weddingValue),
+            parseDateParts(deathValue),
+            ...childEvents.map(child => child.parts)
+          ].filter(Boolean)
+
+          const yearRange = getTimelineYearRange(datedParts, {extendToFuture: !hasDeathDate})
+          const childItems = buildChildrenTimelineItems(childEvents, yearRange)
+          const items = spreadTimelineItems([
+            buildTimelineItem("birth", "Naissance", birthValue, yearRange),
+            buildTimelineItem("wedding", "Mariage", weddingValue, yearRange),
+            ...childItems,
+            buildTimelineItem("death", "Décès", deathValue, yearRange)
+          ].filter(Boolean))
+
+          return {
+            hasKnownDate: items.some(item => !!item.date),
+            items
+          }
+        }
+
+        function getLifeDateValue(person, formHost, fieldName) {
+          const input = formHost.querySelector(`input[name="${fieldName}"]`)
+          if (input) return input.value
+          return person?.data?.[fieldName] || ""
+        }
+
+        function getChildBirthEvents(person) {
+          const childIds = person?.rels?.children || []
+          if (!childIds.length) return []
+
+          const dataset = getCurrentDataset()
+          return childIds
+            .map(childId => dataset.find(candidate => String(candidate.id) === String(childId)))
+            .filter(Boolean)
+            .map(child => {
+              const parts = parseDateParts(child.data?.birthday)
+              if (!parts) return null
+              const firstName = child.data?.["first name"] || "Enfant"
+              return {
+                child,
+                parts,
+                firstName,
+                year: Number(parts.year),
+                date: formatDateForPanel(child.data?.birthday),
+                tooltip: `${firstName} - ${formatDateForPanel(child.data?.birthday)}`
+              }
+            })
+            .filter(Boolean)
+            .sort((a, b) => getDateSortValue(a.parts) - getDateSortValue(b.parts))
+        }
+
+        function buildChildrenTimelineItems(childEvents, yearRange) {
+          if (!childEvents.length) return []
+
+          const positionedChildren = childEvents.map(child => ({
+            ...child,
+            position: getTimelinePosition(child.parts, yearRange)
+          }))
+
+          if (childEvents.length > 1) {
+            return [buildChildrenClusterItem(positionedChildren)]
+          }
+
+          const onlyChild = positionedChildren[0]
+          return [{
+            type: "child",
+            label: onlyChild.firstName,
+            date: onlyChild.parts.year,
+            position: onlyChild.position,
+            tooltip: onlyChild.tooltip,
+            lane: 0
+          }]
+        }
+
+        function buildChildrenClusterItem(children) {
+          const averagePosition = children.reduce((sum, child) => sum + child.position, 0) / children.length
+          return {
+            type: "children",
+            label: "Enfants",
+            date: `${children.length} naissance${children.length > 1 ? "s" : ""}`,
+            position: Math.min(94, Math.max(6, averagePosition)),
+            tooltip: children.map(child => child.tooltip).join("\n"),
+            lane: 0
+          }
+        }
+
+        function buildTimelineItem(type, label, value, yearRange) {
+          const parts = parseDateParts(value)
+          return {
+            type,
+            label,
+            date: parts ? formatDateForPanel(value) : "",
+            position: parts ? getTimelinePosition(parts, yearRange) : getFallbackTimelinePosition(type),
+            tooltip: parts ? `${label} - ${formatDateForPanel(value)}` : ""
+          }
+        }
+
+        function getTimelineYearRange(partsList, {extendToFuture = false} = {}) {
+          const futureEndParts = {
+            day: "31",
+            month: "12",
+            year: String(new Date().getFullYear() + 30)
+          }
+          const effectivePartsList = extendToFuture ? [...partsList, futureEndParts] : partsList
+          if (!effectivePartsList.length) return {min: 0, max: 1}
+          const values = effectivePartsList.map(getDateSortValue)
+          const min = Math.min(...values)
+          const max = Math.max(...values)
+          return min === max ? {min: min - 1, max: max + 1} : {min, max}
+        }
+
+        function getTimelinePosition(parts, yearRange) {
+          const value = getDateSortValue(parts)
+          const percent = ((value - yearRange.min) / (yearRange.max - yearRange.min)) * 100
+          return Math.min(94, Math.max(6, percent))
+        }
+
+        function getFallbackTimelinePosition(type) {
+          return {
+            birth: 6,
+            wedding: 42,
+            children: 60,
+            death: 94
+          }[type] || 50
+        }
+
+        function spreadTimelineItems(items) {
+          const minimumGap = 18
+          const sorted = [...items].sort((a, b) => a.position - b.position)
+
+          sorted.forEach((item, index) => {
+            if (index === 0) {
+              item.position = Math.max(6, item.position)
+              return
+            }
+            const previous = sorted[index - 1]
+            item.position = Math.max(item.position, previous.position + minimumGap)
+          })
+
+          for (let index = sorted.length - 1; index >= 0; index -= 1) {
+            const item = sorted[index]
+            if (index === sorted.length - 1) {
+              item.position = Math.min(94, item.position)
+              continue
+            }
+            const next = sorted[index + 1]
+            item.position = Math.min(item.position, next.position - minimumGap)
+          }
+
+          sorted.forEach(item => {
+            item.position = Math.min(94, Math.max(6, item.position))
+          })
+
+          stackTimelineLabels(sorted)
+
+          return items
+        }
+
+        function stackTimelineLabels(sortedItems) {
+          const minimumLabelGap = 26
+          const activeItems = sortedItems.filter(item => item.date)
+          const occupiedLevels = []
+
+          getTimelineStackPriority()
+            .map(type => activeItems.find(item => item.type === type || (type === "children" && item.type === "child")))
+            .filter(Boolean)
+            .forEach(item => {
+              const maxLevel = getTimelineMaxStackLevel(item.type)
+              let level = 0
+              while (level < maxLevel && occupiedLevels[level]?.some(position => Math.abs(position - item.position) < minimumLabelGap)) {
+                level += 1
+              }
+              item.stackLevel = level
+              occupiedLevels[level] ||= []
+              occupiedLevels[level].push(item.position)
+            })
+        }
+
+        function getTimelineStackPriority() {
+          return ["birth", "death", "wedding", "children"]
+        }
+
+        function getTimelineMaxStackLevel(type) {
+          return {
+            birth: 0,
+            death: 1,
+            wedding: 2,
+            child: 3,
+            children: 3
+          }[type] ?? 3
+        }
+
+        function setTextContentIfChanged(element, text) {
+          if (element && element.textContent !== text) {
+            element.textContent = text
+          }
+        }
+
         function resolveNumericValue(inputValue, infoField) {
           const candidate = parseFloat(inputValue)
           if (Number.isFinite(candidate)) return candidate
@@ -662,9 +1144,16 @@ fetch("./data_db.json")
         }
 
         function resolveTextValue(inputValue, infoField) {
-          const raw = inputValue ?? infoField?.querySelector(".f3-info-field-value")?.textContent
+          const infoValue = infoField?.querySelector(".f3-info-field-value")
+          const raw = inputValue ?? infoValue?.dataset.originalValue ?? infoValue?.textContent
           if (!raw) return ""
           return String(raw).trim()
+        }
+
+        function normalizeOptionalText(value = "") {
+          const normalized = String(value).trim()
+          if (/^(non renseigné|non renseigne|null|undefined|-|n\/a)$/i.test(normalized)) return ""
+          return normalized
         }
 
         async function geocodeAddress(query) {
@@ -847,7 +1336,8 @@ fetch("./data_db.json")
       const baseUrl = typeof rawConfig.baseUrl === "string" ? rawConfig.baseUrl.trim().replace(/\/$/, "") : ""
       const apiKey = typeof rawConfig.apiKey === "string" ? rawConfig.apiKey : ""
       const endpoint = baseUrl ? `${baseUrl}/api/family-data` : "api/family-data"
-      return { endpoint, apiKey }
+      const healthEndpoint = baseUrl ? `${baseUrl}/health` : ""
+      return { endpoint, healthEndpoint, apiKey }
     }
 
     function formatBirthDate(value) {
@@ -879,6 +1369,99 @@ fetch("./data_db.json")
         return `${day}/${month}/${year}`
       }
       return normalized
+    }
+
+    function formatDateForPanel(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return normalizeDateInput(value)
+      return `${parts.day}-${parts.month}-${parts.year}`
+    }
+
+    function formatDateForEditInput(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return normalizeDateInput(value)
+      return `${parts.day}/${parts.month}/${parts.year}`
+    }
+
+    function formatCalendarDateForEditInput(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return ""
+      return `${parts.day}/${parts.month}/${parts.year}`
+    }
+
+    function toCalendarDateValue(value) {
+      const parts = parseDateParts(value)
+      if (!parts) return ""
+      return `${parts.year}-${parts.month}-${parts.day}`
+    }
+
+    function parseDateParts(value) {
+      const normalized = normalizeDateInput(value)
+      if (!normalized || isPlaceholderDate(normalized)) return null
+
+      let match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})(?:\b|T)/)
+      if (match) {
+        const [, year, month, day] = match
+        return isValidDateParts(day, month, year) ? {day, month, year} : null
+      }
+
+      match = normalized.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/)
+      if (match) {
+        const [, rawDay, rawMonth, year] = match
+        const day = rawDay.padStart(2, "0")
+        const month = rawMonth.padStart(2, "0")
+        return isValidDateParts(day, month, year) ? {day, month, year} : null
+      }
+
+      return null
+    }
+
+    function isValidDateParts(day, month, year) {
+      const numericDay = Number(day)
+      const numericMonth = Number(month)
+      const numericYear = Number(year)
+      if (!Number.isInteger(numericDay) || !Number.isInteger(numericMonth) || !Number.isInteger(numericYear)) return false
+      if (numericYear < 1 || numericMonth < 1 || numericMonth > 12 || numericDay < 1) return false
+      const date = new Date(Date.UTC(numericYear, numericMonth - 1, numericDay))
+      return date.getUTCFullYear() === numericYear
+        && date.getUTCMonth() === numericMonth - 1
+        && date.getUTCDate() === numericDay
+    }
+
+    function getDateSortValue(parts) {
+      return Number(parts.year) * 10000 + Number(parts.month) * 100 + Number(parts.day)
+    }
+
+    function formatAgeForPanel(birthValue, deathValue) {
+      const birthParts = parseDateParts(birthValue)
+      if (!birthParts) return ""
+      const deathParts = parseDateParts(deathValue)
+      const endDate = deathParts
+        ? dateFromParts(deathParts)
+        : new Date()
+      const birthDate = dateFromParts(birthParts)
+      let age = endDate.getFullYear() - birthDate.getFullYear()
+      const hasHadBirthday = endDate.getMonth() > birthDate.getMonth()
+        || (endDate.getMonth() === birthDate.getMonth() && endDate.getDate() >= birthDate.getDate())
+      if (!hasHadBirthday) age -= 1
+      if (age < 0) return ""
+      return `${age} ans`
+    }
+
+    function dateFromParts(parts) {
+      return new Date(Number(parts.year), Number(parts.month) - 1, Number(parts.day))
+    }
+
+    function isBirthDateLabel(label = "") {
+      return /^(birthday|date de naissance)$/i.test(label.trim())
+    }
+
+    function isTimelineOnlyDateLabel(label = "") {
+      return /^(mariage|date de mariage|décès|deces|date de décès|date de deces)$/i.test(label.trim())
+    }
+
+    function isDateFieldLabel(label = "") {
+      return /^(birthday|date de naissance|mariage|date de mariage|décès|deces|date de décès|date de deces)$/i.test(label.trim())
     }
 
     function getExternalFormatter() {
