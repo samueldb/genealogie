@@ -74,6 +74,9 @@
     "rels": {
       "children": [
         36
+      ],
+      "spouses": [
+        "b1eb24e0-ffe5-4483-89d9-d7e7b6cd563b"
       ]
     },
     "data": {
@@ -4147,7 +4150,8 @@
         35,
         8
       ],
-      "father": 215
+      "father": 215,
+      "mother": "b1eb24e0-ffe5-4483-89d9-d7e7b6cd563b"
     },
     "data": {
       "first name": "Victoire",
@@ -5270,6 +5274,28 @@
     "rels": {
       "father": 61,
       "mother": "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
+    }
+  },
+  {
+    "id": "b1eb24e0-ffe5-4483-89d9-d7e7b6cd563b",
+    "data": {
+      "gender": "F",
+      "avatar": "",
+      "last name": "VIVET",
+      "first name": "Marie Séraphine",
+      "birthday": "22/10/1844",
+      "weddingday": "07/06/1871",
+      "lastday": "01/12/1881",
+      "address": "montfort, 73600 Saint marcel",
+      "commentaire": "mariage à Montfort, elle est indiquée comme institutrice"
+    },
+    "rels": {
+      "children": [
+        36
+      ],
+      "spouses": [
+        215
+      ]
     }
   }
 ]
