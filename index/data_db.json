@@ -363,16 +363,17 @@
     "data": {
       "first name": "Emilia",
       "last name": "NANTET",
-      "birthday": "1989-06-15T00:00:00.000Z",
-      "lastday": "1970-01-01T00:00:00.000Z",
+      "birthday": "15/06/1989",
+      "lastday": "",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/15.jpg",
       "gender": "F",
       "geom": "POINT(6.564245 45.402488)",
       "commentaire": "",
-      "geometry_lng": "",
-      "geometry_lat": "",
-      "address": "route du villard, 73550 Les Allues"
+      "geometry_lng": "6.549506",
+      "geometry_lat": "45.440705",
+      "address": "route du villard, 73550 Les Allues",
+      "weddingday": ""
     }
   },
   {
@@ -502,6 +503,12 @@
   {
     "id": 61,
     "rels": {
+      "spouses": [
+        "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
+      ],
+      "children": [
+        "33e75886-d11c-4180-a1f2-16000d47aaab"
+      ],
       "father": 59,
       "mother": 60
     },
@@ -4964,7 +4971,7 @@
       "last name": "DESCHAMPS-BERGER",
       "birthday": "1823-02-24T00:00:00.000Z",
       "lastday": "1879-05-26T00:00:00.000Z",
-      "job": "Cultivatrice",
+      "job": "ménagère",
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
       "geom": "POINT(6.568446 45.489581)",
@@ -4978,7 +4985,8 @@
   {
     "id": 190,
     "rels": {
-      "father": 188
+      "father": 188,
+      "mother": 191
     },
     "data": {
       "first name": "Etienne",
@@ -5219,6 +5227,46 @@
     "rels": {
       "father": 3,
       "mother": 221
+    }
+  },
+  {
+    "id": "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126",
+    "data": {
+      "gender": "F",
+      "avatar": "",
+      "last name": "Flavie",
+      "first name": "?",
+      "birthday": "",
+      "weddingday": "",
+      "lastday": "",
+      "address": "toulouse",
+      "commentaire": ""
+    },
+    "rels": {
+      "children": [
+        "33e75886-d11c-4180-a1f2-16000d47aaab"
+      ],
+      "spouses": [
+        61
+      ]
+    }
+  },
+  {
+    "id": "33e75886-d11c-4180-a1f2-16000d47aaab",
+    "data": {
+      "gender": "M",
+      "avatar": "",
+      "last name": "Lucien",
+      "first name": "DESCHAMPS-BERGER",
+      "birthday": "16/03/2026",
+      "weddingday": "",
+      "lastday": "",
+      "address": "toulouse",
+      "commentaire": ""
+    },
+    "rels": {
+      "father": 61,
+      "mother": "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
     }
   }
 ]

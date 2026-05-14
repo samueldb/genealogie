@@ -9,11 +9,75 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="module" src="https://unpkg.com/family-chart@0.9.0"></script>
-    <link rel="stylesheet" href="https://unpkg.com/family-chart@0.9.0/dist/styles/family-chart.css">
     <link rel="stylesheet" href="styles/family-chart.css">
     <link rel="stylesheet" type="text/css" href="styles/decorum.css">
     <link rel="stylesheet" href="styles/site.css">
     <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <style>
+        .f3 div.card-image-rect {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 12px;
+            gap: 12px;
+            border-left: 4px solid #cbd5e1;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            transition: box-shadow 200ms ease, transform 200ms ease;
+        }
+        .f3 .card-male div.card-image-rect {
+            border-left-color: #5c929e;
+        }
+        .f3 .card-female div.card-image-rect {
+            border-left-color: #c48a8a;
+        }
+        .f3 div.card-image-rect:hover {
+            box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
+            transform: translateY(-2px);
+        }
+        .f3 div.card-image-rect img,
+        .f3 div.card-image-rect .person-icon {
+            height: 64px;
+            width: 64px;
+            object-fit: cover;
+            border-radius: 12px;
+            filter: grayscale(1);
+            transition: filter 200ms ease;
+        }
+        .f3 div.card-image-rect:hover img,
+        .f3 div.card-image-rect:hover .person-icon {
+            filter: grayscale(0);
+        }
+        .f3 div.card-image-rect div.card-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: left;
+        }
+        .f3 div.card-image-rect div.card-label > div:nth-child(1) {
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 700;
+        }
+        .f3 div.card-image-rect div.card-label > div:nth-child(2) {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            line-height: 1.2;
+        }
+        .f3 div.card-image-rect div.card-label > div:nth-child(n+3) {
+            font-size: 10px;
+            color: #64748b;
+        }
+        .f3 .card-body-rect,
+        .f3 .text-overflow-mask {
+            fill: #ffffff;
+        }
+    </style>
     <script>
         window.GENEA_API_CONFIG = window.GENEA_API_CONFIG || {
             baseUrl: "https://genealogie.onrender.com",
@@ -23,32 +87,32 @@
 </head>
 <body>
 <header id="header"></header>
-  <div id="menu"></div>
-  <div id="content-wrapper">
-      <div class="inner clearfix">
-          <section id="main-content">
-              <div class="timeline-layout">
-                  <div id="TimelineContainer" class="timeline-panel" aria-hidden="true">
-                      <div class="timeline-panel__header">
-                          <div class="timeline-panel__title">Frise chronologique</div>
-                          <div class="timeline-panel__subtitle">Nombre de personnes référencées vivantes à cette époque</div>
-                      </div>
-                      <svg id="TimelineSvg" class="timeline-svg" role="presentation"></svg>
-                  </div>
-                  <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgba(250,250,250,1);color:#fff;"></div>
-              </div>
-          </section>
-          <aside id="sidebar">
-              <div id="RecherchePersonne"></div>
-              <div id="EditPanel">
-                  <div id="EditPanelFormHost"></div>
+<nav id="menu" aria-label="Navigation principale"></nav>
+<main id="content-wrapper">
+    <div class="inner clearfix">
+        <section id="main-content">
+            <div class="timeline-layout">
+                <aside id="TimelineContainer" class="timeline-panel" aria-hidden="true">
+                    <div class="timeline-panel__header">
+                        <div class="timeline-panel__title">Frise chronologique</div>
+                        <div class="timeline-panel__subtitle">Nombre de personnes référencées vivantes à cette époque</div>
+                    </div>
+                    <svg id="TimelineSvg" class="timeline-svg" role="presentation"></svg>
+                </aside>
+                <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgb(248 250 252);"></div>
+            </div>
+        </section>
+        <aside id="sidebar">
+            <div id="RecherchePersonne"></div>
+            <div id="EditPanel">
+                <div id="EditPanelFormHost"></div>
                 <div id="SaveDataStatus" class="save-status" aria-live="polite"></div>
             </div>
             Légende
             <div id="sideTooltip"></div>
         </aside>
     </div>
-</div>
+</main>
 <script>
     $(function () {
       $("#header").load("includes/header.html");
