@@ -1,4 +1,5 @@
 import { setupTimeline } from "./timeline.js"
+import { setupChronologyTree } from "./chronology-tree.js"
 
 const FAMILY_CHART_SELECTOR = "#FamilyChart"
 const FAMILY_CHART_BOTTOM_PADDING = 16
@@ -66,6 +67,7 @@ function warmUpPersistenceBackend() {
       let pendingSavePayload = null
       const saveStatusElement = document.getElementById("SaveDataStatus")
       let timeline = null
+      let chronologyTree = null
       let currentPanelPersonId = null
 
       const f3Chart = f3.createChart('#FamilyChart', data)
@@ -110,6 +112,7 @@ function warmUpPersistenceBackend() {
                lastNameSuggestions = extractLastNames(updated_data)
                queueDataPersistence()
                timeline?.update()
+               chronologyTree?.update()
              })
         // .setNoEdit()  // if you want to just see info form
       setupEditPanel()
@@ -120,10 +123,21 @@ function warmUpPersistenceBackend() {
         getData: () => getCurrentDataset(),
         endYear: TIMELINE_END_YEAR
       })
+      chronologyTree = setupChronologyTree({
+        containerSelector: "#ChronologyTree",
+        layoutSelector: ".timeline-layout",
+        chartSelector: FAMILY_CHART_SELECTOR,
+        sideTimelineSelector: "#TimelineContainer",
+        getData: () => getCurrentDataset(),
+        getActivePersonId: () => currentPanelPersonId || f3Chart.getMainDatum()?.id,
+        onPersonSelect: personId => updateTreeWithNewMainPerson(personId, true)
+      })
+      setupTreeViewToggle(chronologyTree)
 
       if (typeof f3Chart.setAfterUpdate === "function") {
         f3Chart.setAfterUpdate(() => {
           timeline?.update()
+          chronologyTree?.update()
         })
       }
 
@@ -132,6 +146,7 @@ function warmUpPersistenceBackend() {
       f3EditTree.open(f3Chart.getMainDatum())
       f3Chart.updateTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
       timeline?.update()
+      chronologyTree?.update()
 
       function handleCardClick(e, d) {
         const datum = d?.data || d
@@ -147,6 +162,7 @@ function warmUpPersistenceBackend() {
         } else {
           currentPanelPersonId = datum.id
           f3EditTree.open(datum)
+          chronologyTree?.update()
         }
       }
 
@@ -283,7 +299,7 @@ function warmUpPersistenceBackend() {
         }
 
         function updateTreeWithNewMainPerson(personId, shouldCenter = false) {
-          const target = data.find(d => d.id === personId)
+          const target = getCurrentDataset().find(d => String(d.id) === String(personId))
           if (!target) {
             console.warn(`Impossible de trouver la personne ${personId}`)
             return
@@ -291,9 +307,40 @@ function warmUpPersistenceBackend() {
           f3Chart.updateMainId(target.id)
           currentPanelPersonId = target.id
           const tree_position = shouldCenter ? 'main_to_middle' : 'inherit'
-          f3Chart.updateTree({tree_position})
+          if (!chronologyTree?.isChronologyVisible()) {
+            f3Chart.updateTree({tree_position})
+          }
           const currentMain = f3Chart.getMainDatum()
           if (currentMain) f3EditTree.open(currentMain)
+          chronologyTree?.update()
+        }
+
+        function setupTreeViewToggle(chronology) {
+          const buttons = Array.from(document.querySelectorAll("[data-tree-view]"))
+          if (!buttons.length || !chronology) return
+
+          buttons.forEach(button => {
+            if (button.dataset.viewToggleAttached === "true") return
+            button.dataset.viewToggleAttached = "true"
+            button.setAttribute("aria-pressed", String(button.classList.contains("is-active")))
+            button.addEventListener("click", () => {
+              const view = button.dataset.treeView
+              buttons.forEach(candidate => {
+                const isActive = candidate === button
+                candidate.classList.toggle("is-active", isActive)
+                candidate.setAttribute("aria-pressed", String(isActive))
+              })
+
+              if (view === "chronology") {
+                chronology.showChronology()
+              } else {
+                chronology.showTree()
+                resizeFamilyChartHeight()
+                f3Chart.updateTree({tree_position: "main_to_middle"})
+                timeline?.update()
+              }
+            })
+          })
         }
 
         function setupEditPanel() {

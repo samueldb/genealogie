@@ -99,7 +99,14 @@
                     </div>
                     <svg id="TimelineSvg" class="timeline-svg" role="presentation"></svg>
                 </aside>
-                <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgb(248 250 252);"></div>
+                <div class="tree-view-area">
+                    <div class="tree-view-toggle" role="group" aria-label="Mode de visualisation">
+                        <button type="button" class="tree-view-toggle__button is-active" data-tree-view="tree">Arbre familial</button>
+                        <button type="button" class="tree-view-toggle__button" data-tree-view="chronology">Frise de vie</button>
+                    </div>
+                    <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgb(248 250 252);"></div>
+                    <section id="ChronologyTree" class="chronology-tree is-hidden" aria-label="Frise chronologique verticale de l'arbre"></section>
+                </div>
             </div>
         </section>
         <aside id="sidebar">
