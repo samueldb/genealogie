@@ -3033,15 +3033,17 @@
     "data": {
       "first name": "Denise Alexandrine",
       "last name": "PONT",
-      "birthday": "1925-05-14T16:47:37.000Z",
-      "lastday": "1970-01-01T00:00:00.000Z",
+      "birthday": "14/05/1925",
+      "lastday": "06/12/2020",
       "job": null,
       "avatar": "https://raw.githubusercontent.com/samueldb/samueldb.github.io/master/images/portraits/7.jpg",
       "gender": "F",
       "geom": "POINT(6.568344 45.489178)",
-      "commentaire": "",
+      "commentaire": "décédée du covid",
       "geometry_lng": 6.568344,
-      "geometry_lat": 45.489178
+      "geometry_lat": 45.489178,
+      "weddingday": "",
+      "address": "montfort, 73600 saint marcel"
     }
   },
   {
