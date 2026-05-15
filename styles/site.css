@@ -466,6 +466,11 @@
   gap: 0.5rem;
 }
 
+.mobile-profile__handle,
+.mobile-profile__summary {
+  display: none;
+}
+
 #EditPanelFormHost {
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -1214,6 +1219,390 @@
   }
 }
 
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    background: #f8fafc;
+  }
+
+  body[data-mobile-profile-state="collapsed"] {
+    padding-bottom: 82px;
+  }
+
+  body[data-mobile-profile-state="peek"] {
+    padding-bottom: min(48svh, 300px);
+  }
+
+  body[data-mobile-profile-state="expanded"],
+  body[data-mobile-profile-state="desktop"] {
+    padding-bottom: 0;
+  }
+
+  #content-wrapper {
+    padding-top: 10px;
+  }
+
+  .inner {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #main-content,
+  aside#sidebar {
+    float: none;
+    width: 100% !important;
+  }
+
+  #main-content {
+    order: 1;
+  }
+
+  aside#sidebar {
+    order: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background-image: none;
+    border: 0;
+    font-size: 13px;
+  }
+
+  #RecherchePersonne {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    max-height: none;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #RecherchePersonne.is-masked {
+    max-height: none;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #RecherchePersonne .search-card {
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(12, 21, 39, 0.24);
+  }
+
+  #RecherchePersonne .search-card__header {
+    display: none;
+  }
+
+  #RecherchePersonne .search-card__input-row {
+    min-height: 42px;
+    padding: 8px 10px;
+    border-radius: 9px;
+  }
+
+  #RecherchePersonne .search-card__meta {
+    font-size: 0.76rem;
+  }
+
+  #RecherchePersonne .search-card__hint {
+    display: none;
+  }
+
+  #RecherchePersonne .search-card__dropdown {
+    max-height: 42svh;
+  }
+
+  .timeline-layout {
+    min-height: 0;
+    gap: 10px;
+  }
+
+  .timeline-panel {
+    display: none;
+  }
+
+  .tree-view-area {
+    gap: 8px;
+  }
+
+  .tree-view-toggle {
+    position: sticky;
+    top: 72px;
+    z-index: 12;
+    align-self: stretch;
+    border-radius: 10px;
+  }
+
+  .tree-view-toggle__button {
+    min-height: 38px;
+    padding: 0 8px;
+    font-size: 0.86rem;
+  }
+
+  .tree-view-toggle__button[data-tree-view="chronology"] {
+    display: none;
+  }
+
+  #FamilyChart {
+    min-height: 420px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .f3 div.card-image-rect {
+    width: 180px;
+    min-height: 56px;
+    padding: 5px;
+    gap: 4px;
+  }
+
+  .f3 div.card-image-rect .person-icon,
+  .f3 div.card-image-rect img {
+    width: 48px;
+    height: 48px;
+    padding: 3px;
+  }
+
+  .f3 div.card-image-rect div.card-label {
+    min-width: 0;
+  }
+
+  .f3 div.card-image-rect div.card-label > div {
+    max-width: 112px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .f3 div.card-image-rect div.card-label > div:nth-child(1) {
+    font-size: 9px;
+  }
+
+  .f3 div.card-image-rect div.card-label > div:nth-child(2) {
+    font-size: 11px;
+  }
+
+  .f3 div.card-image-rect div.card-label > div:nth-child(n+3) {
+    font-size: 8.5px;
+  }
+
+  .chronology-tree {
+    display: none !important;
+  }
+
+  #EditPanel {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 60;
+    gap: 0;
+    max-height: calc(100svh - 12px);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    border-bottom: 0;
+    border-radius: 18px 18px 0 0;
+    background: #fff;
+    box-shadow: 0 -18px 46px rgba(15, 23, 42, 0.24);
+    overflow: hidden;
+    transition: height 180ms ease, max-height 180ms ease;
+  }
+
+  #EditPanel:not([data-mobile-profile-state]),
+  #EditPanel[data-mobile-profile-state="collapsed"] {
+    height: 74px;
+  }
+
+  #EditPanel[data-mobile-profile-state="peek"] {
+    height: min(48svh, 300px);
+  }
+
+  #EditPanel[data-mobile-profile-state="expanded"],
+  #EditPanel.is-editing {
+    height: calc(100svh - 12px);
+  }
+
+  .mobile-profile__handle {
+    width: 100%;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  .mobile-profile__handle-bar {
+    width: 42px;
+    height: 4px;
+    border-radius: 999px;
+    background: #cbd5e1;
+  }
+
+  .mobile-profile__summary {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px 10px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .mobile-profile__summary-main {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 0;
+    background: transparent;
+    color: #0f172a;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .mobile-profile__summary-name {
+    overflow: hidden;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1.18;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-profile__summary-meta {
+    color: #64748b;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .mobile-profile__summary-action {
+    min-width: 58px;
+    min-height: 34px;
+    border: 1px solid #dbe3ef;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #1e293b;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  #EditPanel:not([data-mobile-profile-state]) #EditPanelFormHost,
+  #EditPanel[data-mobile-profile-state="collapsed"] #EditPanelFormHost,
+  #EditPanel:not([data-mobile-profile-state]) .save-status,
+  #EditPanel[data-mobile-profile-state="collapsed"] .save-status {
+    display: none;
+  }
+
+  #EditPanelFormHost {
+    flex: 1;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #EditPanel[data-mobile-profile-state="peek"] #EditPanelFormHost {
+    max-height: calc(min(48svh, 300px) - 76px);
+  }
+
+  #EditPanel[data-mobile-profile-state="expanded"] #EditPanelFormHost,
+  #EditPanel.is-editing #EditPanelFormHost {
+    max-height: calc(100svh - 88px);
+  }
+
+  #EditPanelFormHost .f3-form-cont,
+  #EditPanelFormHost .f3-form-cont.opened {
+    height: auto;
+    min-height: 0;
+  }
+
+  #EditPanelFormHost .f3-form {
+    padding: 0 14px 18px;
+  }
+
+  .person-panel-actions {
+    top: 0;
+    justify-content: flex-start;
+    margin: 0 -14px 10px;
+    padding: 8px 14px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  #familyForm .person-form-header {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+    padding: 4px 0 10px;
+  }
+
+  #familyForm .person-form-header__avatar {
+    flex: 0 0 116px;
+  }
+
+  #familyForm .person-form-header__avatar .person-media {
+    padding: 6px;
+  }
+
+  #familyForm .person-form-header__avatar .person-media__preview img {
+    width: 98px;
+    height: 98px;
+  }
+
+  #familyForm .person-form-header__details {
+    min-height: 98px;
+    gap: 4px;
+  }
+
+  #EditPanelFormHost .person-form-header__details .f3-info-field-label,
+  #EditPanelFormHost .person-form-header__details .f3-form-field label {
+    font-size: 0.58rem;
+  }
+
+  #EditPanelFormHost .person-form-header__details .f3-info-field-value,
+  #EditPanelFormHost .person-form-header__details input {
+    font-size: 0.82rem;
+  }
+
+  .person-life-timeline {
+    margin: 10px 0;
+    padding: 14px 4px 16px;
+  }
+
+  .person-life-timeline__axis {
+    min-height: 150px;
+    margin: 0;
+  }
+
+  .person-details-grid {
+    gap: 7px;
+    margin: 10px 0;
+  }
+
+  #EditPanelFormHost .person-details-grid .person-detail-field {
+    padding: 8px 10px;
+  }
+
+  .person-map__canvas {
+    height: 180px;
+  }
+
+  #EditPanelFormHost .person-date-picker {
+    width: 50%;
+    max-width: none;
+  }
+}
+
 /* Card layout tweaks */
 .f3 div.card-image-rect {
   width: 270px;
@@ -1261,4 +1650,31 @@
   stroke: #000;
   stroke-width: 8px;
   /*stroke-linejoin: round;*/
+}
+
+@media (max-width: 767px) {
+  .f3 div.card-image-rect {
+    width: 180px;
+    min-height: 56px;
+    padding: 5px;
+    gap: 4px;
+  }
+
+  .f3 div.card-image-rect .person-icon,
+  .f3 div.card-image-rect img {
+    width: 48px;
+    height: 48px;
+    padding: 3px;
+  }
+
+  .f3 div.card-image-rect div.card-label {
+    min-width: 0;
+  }
+
+  .f3 div.card-image-rect div.card-label > div {
+    max-width: 112px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

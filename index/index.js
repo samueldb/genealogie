@@ -4,13 +4,24 @@ import { setupChronologyTree } from "./chronology-tree.js"
 const FAMILY_CHART_SELECTOR = "#FamilyChart"
 const FAMILY_CHART_BOTTOM_PADDING = 16
 const TIMELINE_END_YEAR = 2025
+const MOBILE_QUERY = "(max-width: 767px)"
+const DESKTOP_CARD_SPACING = {x: 300, y: 150}
+const MOBILE_CARD_SPACING = {x: 245, y: 118}
+
+const isMobileLayout = () => {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") return false
+  return window.matchMedia(MOBILE_QUERY).matches
+}
 
 const resizeFamilyChartHeight = () => {
   const chart = document.querySelector(FAMILY_CHART_SELECTOR)
   if (!chart) return
 
   const { top } = chart.getBoundingClientRect()
-  const availableHeight = window.innerHeight - top - FAMILY_CHART_BOTTOM_PADDING
+  const viewportHeight = window.visualViewport?.height || window.innerHeight
+  const bottomPadding = isMobileLayout() ? 12 : FAMILY_CHART_BOTTOM_PADDING
+  const minimumHeight = isMobileLayout() ? 420 : 0
+  const availableHeight = Math.max(minimumHeight, viewportHeight - top - bottomPadding)
 
   if (availableHeight > 0) {
     chart.style.height = `${availableHeight}px`
@@ -18,7 +29,7 @@ const resizeFamilyChartHeight = () => {
 }
 
 const setupFamilyChartHeight = () => {
-  const observerTargets = ["header", "menu", "content-wrapper"]
+  const observerTargets = ["header", "content-wrapper"]
     .map(id => document.getElementById(id))
     .filter(Boolean)
 
@@ -69,11 +80,13 @@ function warmUpPersistenceBackend() {
       let timeline = null
       let chronologyTree = null
       let currentPanelPersonId = null
+      let mobileProfilePanel = null
+      let currentChartSpacingMode = null
 
       const f3Chart = f3.createChart('#FamilyChart', data)
               .setTransitionTime(100)
-              .setCardXSpacing(300)
-              .setCardYSpacing(150)
+              .setCardXSpacing(DESKTOP_CARD_SPACING.x)
+              .setCardYSpacing(DESKTOP_CARD_SPACING.y)
 
       const initialMainId = 31
       const initialMainDatum = data.find(person => person.id === initialMainId)
@@ -116,6 +129,8 @@ function warmUpPersistenceBackend() {
              })
         // .setNoEdit()  // if you want to just see info form
       setupEditPanel()
+      mobileProfilePanel = setupMobileProfilePanel()
+      setupResponsiveChartSpacing()
 
       timeline = setupTimeline({
         containerSelector: "#TimelineContainer",
@@ -145,6 +160,7 @@ function warmUpPersistenceBackend() {
       currentPanelPersonId = f3Chart.getMainDatum()?.id || currentPanelPersonId
       f3EditTree.open(f3Chart.getMainDatum())
       f3Chart.updateTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
+      mobileProfilePanel?.sync()
       timeline?.update()
       chronologyTree?.update()
 
@@ -157,11 +173,15 @@ function warmUpPersistenceBackend() {
         const isDouble = now - last < 300
         handleCardClick.lastClick = now
 
-        if (isDouble) {
+        if (isMobileLayout()) {
+          updateTreeWithNewMainPerson(datum.id, true)
+          mobileProfilePanel?.openPeek()
+        } else if (isDouble) {
           updateTreeWithNewMainPerson(datum.id, true)
         } else {
           currentPanelPersonId = datum.id
           f3EditTree.open(datum)
+          mobileProfilePanel?.sync()
           chronologyTree?.update()
         }
       }
@@ -306,13 +326,133 @@ function warmUpPersistenceBackend() {
           }
           f3Chart.updateMainId(target.id)
           currentPanelPersonId = target.id
-          const tree_position = shouldCenter ? 'main_to_middle' : 'inherit'
+          const tree_position = shouldCenter || isMobileLayout() ? 'main_to_middle' : 'inherit'
           if (!chronologyTree?.isChronologyVisible()) {
             f3Chart.updateTree({tree_position})
           }
           const currentMain = f3Chart.getMainDatum()
           if (currentMain) f3EditTree.open(currentMain)
+          mobileProfilePanel?.openPeek()
           chronologyTree?.update()
+        }
+
+        function setupResponsiveChartSpacing() {
+          const applySpacing = ({update = false} = {}) => {
+            const mobile = isMobileLayout()
+            const nextMode = mobile ? "mobile" : "desktop"
+            if (currentChartSpacingMode === nextMode) return
+            currentChartSpacingMode = nextMode
+            const spacing = mobile ? MOBILE_CARD_SPACING : DESKTOP_CARD_SPACING
+            f3Chart.setCardXSpacing(spacing.x)
+            f3Chart.setCardYSpacing(spacing.y)
+            if (mobile && chronologyTree?.isChronologyVisible()) {
+              chronologyTree.showTree()
+            }
+            if (update && !chronologyTree?.isChronologyVisible()) {
+              f3Chart.updateTree({tree_position: "main_to_middle"})
+            }
+            resizeFamilyChartHeight()
+            mobileProfilePanel?.sync()
+          }
+
+          applySpacing()
+
+          if (typeof window.matchMedia === "function") {
+            const mediaQuery = window.matchMedia(MOBILE_QUERY)
+            const onChange = () => applySpacing({update: true})
+            if (typeof mediaQuery.addEventListener === "function") {
+              mediaQuery.addEventListener("change", onChange)
+            } else if (typeof mediaQuery.addListener === "function") {
+              mediaQuery.addListener(onChange)
+            }
+          }
+
+          window.addEventListener("orientationchange", () => {
+            window.setTimeout(() => applySpacing({update: true}), 160)
+          })
+        }
+
+        function setupMobileProfilePanel() {
+          const editPanel = document.getElementById("EditPanel")
+          if (!editPanel) return null
+
+          editPanel.classList.add("mobile-profile")
+          editPanel.dataset.mobileProfileState = "collapsed"
+
+          let handle = editPanel.querySelector(".mobile-profile__handle")
+          if (!handle) {
+            handle = document.createElement("button")
+            handle.type = "button"
+            handle.className = "mobile-profile__handle"
+            handle.setAttribute("aria-label", "Ouvrir ou réduire le profil")
+            handle.innerHTML = `<span class="mobile-profile__handle-bar" aria-hidden="true"></span>`
+            editPanel.prepend(handle)
+          }
+
+          let summary = editPanel.querySelector(".mobile-profile__summary")
+          if (!summary) {
+            summary = document.createElement("div")
+            summary.className = "mobile-profile__summary"
+            summary.innerHTML = `
+              <button type="button" class="mobile-profile__summary-main" aria-label="Ouvrir le profil">
+                <span class="mobile-profile__summary-name">Profil</span>
+                <span class="mobile-profile__summary-meta">Sélectionnez une personne</span>
+              </button>
+              <button type="button" class="mobile-profile__summary-action" aria-label="Afficher le profil complet">Voir</button>
+            `
+            handle.after(summary)
+          }
+
+          const setState = (state) => {
+            const normalizedState = isMobileLayout() ? state : "desktop"
+            editPanel.dataset.mobileProfileState = normalizedState
+            document.body.dataset.mobileProfileState = normalizedState
+            resizeFamilyChartHeight()
+          }
+
+          const getState = () => editPanel.dataset.mobileProfileState || "collapsed"
+          const openPeek = () => setState("peek")
+          const openExpanded = () => setState("expanded")
+          const collapse = () => setState("collapsed")
+
+          const toggleFromHandle = () => {
+            if (!isMobileLayout()) return
+            const state = getState()
+            if (state === "collapsed") openPeek()
+            else if (state === "peek") openExpanded()
+            else collapse()
+          }
+
+          handle.addEventListener("click", toggleFromHandle)
+          summary.querySelector(".mobile-profile__summary-main")?.addEventListener("click", openPeek)
+          summary.querySelector(".mobile-profile__summary-action")?.addEventListener("click", openExpanded)
+
+          const sync = () => {
+            const person = getCurrentPanelPerson()
+            const nameEl = summary.querySelector(".mobile-profile__summary-name")
+            const metaEl = summary.querySelector(".mobile-profile__summary-meta")
+            const name = person ? getPersonDisplayName(person) : "Profil"
+            const age = person ? formatAgeForPanel(person.data?.birthday, person.data?.lastday) : ""
+            setTextContentIfChanged(nameEl, name)
+            setTextContentIfChanged(metaEl, age || "Sélectionnez une personne")
+
+            const form = editPanel.querySelector("form")
+            const isEditing = !!form && !form.classList.contains("non-editable")
+            editPanel.classList.toggle("is-editing", isMobileLayout() && isEditing)
+            if (isMobileLayout() && isEditing && getState() !== "expanded") {
+              openExpanded()
+            } else if (isMobileLayout() && getState() === "desktop") {
+              collapse()
+            } else if (!isMobileLayout()) {
+              setState("desktop")
+            }
+          }
+
+          window.addEventListener("resize", sync)
+          window.addEventListener("orientationchange", sync)
+          sync()
+
+          return {sync, openPeek, openExpanded, collapse}
         }
 
         function setupTreeViewToggle(chronology) {
@@ -392,6 +532,7 @@ function warmUpPersistenceBackend() {
           enhanceInfoReadability(formHost)
           enhanceLifeTimeline(formHost)
           enhanceMapField(formHost)
+          mobileProfilePanel?.sync()
         }
 
         function enhanceAvatarField(formHost) {
@@ -1544,6 +1685,13 @@ function warmUpPersistenceBackend() {
     function truncateFirstWords(value = "") {
       if (typeof value !== "string") return ""
       return value.trim().split(/\s+/).slice(0, 2).join(" ")
+    }
+
+    function getPersonDisplayName(person) {
+      return [person?.data?.["first name"], person?.data?.["last name"]]
+        .filter(Boolean)
+        .join(" ")
+        .trim() || "Profil sans nom"
     }
 
     // function resolveAvatar(datum) {
