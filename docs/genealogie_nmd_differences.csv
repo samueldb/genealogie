@@ -1,0 +1,73 @@
+id,profil,event,profil_date,source_date,status,score,ligne,source,detail,confidence
+206,Anthonia VIVET-CLERC,Décès,22-08-1718,29-08-1718,"même année, jour/mois différent",0.8,480,Anthonia Vivet-Clerc,Parents source: Aymé /  . Ou 22 août ?,corriger
+108,Antoine César DESCHAMPS-BERGER,Naissance,01-11-1882,09-11-1882,"même année, jour/mois différent",0.98,3171,Antoine-César Deschamps-Berger,Parents source: François-César de Antoine / Marie-Louise Tardivet. Baptême à Montfort,corriger
+159,Barbe DESCHAMPS-BERGER,Décès,26-03-1837,24-03-1837,"même année, jour/mois différent",1.0,1556,Barbe Deschamps-Berger,Parents source: Jean-Baptiste / Jeanne-Louise Vivet. Montfort,corriger
+128,Barbe DESCHAMPS-BERGER,Naissance,17-04-1807,16-04-1807,"même année, jour/mois différent",0.98,2369,Barbe Deschamps-Berger,Parents source: Gaspard de Bernard / Marguerite Borlet. ,corriger
+159,Barbe DESCHAMPS-BERGER,Naissance,11-08-1802,15-08-1802,"même année, jour/mois différent",1.0,2327,Barbe Deschamps-Berger,Parents source: Jean-Baptiste / Jeanne-Louise Vivet. 23 (ou 4 ?) Thermidor X,corriger
+135,Bernard DESCHAMPS-BERGER,Décès,01-01-1798,1798,"même année, jour/mois différent",1.0,1209,Bernard Deschamps-Berger,Parents source: Etienne (feu) /  . 3 vendémiaire IX,corriger
+135,Bernard DESCHAMPS-BERGER,Mariage,20-04-1788,20-04-1751,différent,0.95,318,Conjoint: Thomasse Raffort,,corriger
+209,Bona DESCHAMPS-BERGER,Mariage,vide,06-06-1682,manquant,0.95,94,Conjoint: Georges Thiaud,Test de Genetta en 1695,corriger
+127,Charles DESCHAMPS-BERGER,Naissance,26-10-1798,26-10-1799,différent,0.98,2302,Charles Deschamps-Berger,Parents source: Gaspard de Bernard / Marguerite Borlet. Jumeau de Jean-Marie - 4 brumaire VII,corriger
+137,Claude DESCHAMPS-BERGER,Décès,01-01-1798,1798,"même année, jour/mois différent",1.0,1211,Claude Deschamps-Berger,Parents source: Bernard / Thomasse Raffort. 10 pluviose IX,corriger
+84,Elise GOMBERT,Naissance,01-12-1910,03-01-1910,"même année, jour/mois différent",0.8,3312,Elise Gombert,Parents source:  /  . ,corriger
+167,Etienne (Stephani) DESCHAMPS-BERGER,Décès,30-05-1744,30-03-1744,"même année, jour/mois différent",0.8,715,Etienne Deschamps-Berger,Parents source:  /  . ,corriger
+53,François César DESCHAMPS-BERGER,Mariage,vide,01-02-1882,manquant,0.95,691,Conjoint: Marie-Louise Tardivet,,corriger
+211,François DESCHAMPS-BERGER,Mariage,10-09-1678,16-09-1678,"même année, jour/mois différent",1.0,85,Conjoint: Gyneta Vivet,,corriger
+117,Gaspard DESCHAMPS-BERGER,Décès,01-01-1827,18-12-1827,"même année, jour/mois différent",1.0,1433,Gaspard Deschamps-Berger,Parents source: Bernard /  . ,corriger
+212,Gyneta VIVET,Mariage,10-09-1678,16-09-1678,"même année, jour/mois différent",0.9,85,Conjoint: François Deschamps-Berger,,corriger
+41,Jean DESCHAMPS-BERGER,Mariage,vide,05-08-1823,manquant,0.91,503,Conjoint: Marie Charvey,,corriger
+41,Jean DESCHAMPS-BERGER,Naissance,27-10-1795,27-12-1795,"même année, jour/mois différent",0.98,2274,Jean Deschamps-Berger,Parents source: Gaspard de Bernard / Marguerite Borlet. Montfort (ou 27/11 ?),corriger
+175,Jean Pierre BORNET,Mariage,30-06-1732,30-04-1732,"même année, jour/mois différent",0.9,263,Conjoint: Marie Deschamps-Berger,(Ou 3 avril ?),corriger
+143,Jean-Baptiste DESCHAMPS-BERGER,Décès,22-10-1828,21-10-1828,"même année, jour/mois différent",1.0,1448,Jean-Baptiste Deschamps-Berger,Parents source: Bernard (feu) / Thomasse Raffort. Chute de cheval - Montfort,corriger
+126,Jean-Marie DESCHAMPS-BERGER,Décès,08-12-1798,1798,"même année, jour/mois différent",1.0,1213,Jean-Marie Deschamps-Berger,Parents source: Gaspard /  . 18 frimaire VII,corriger
+126,Jean-Marie DESCHAMPS-BERGER,Naissance,25-10-1798,26-10-1799,différent,0.98,2303,Jean-Marie Deschamps-Berger,Parents source: Gaspard de Bernard / Marguerite Borlet. Jumeau de Charles - 4 brumaire VII,corriger
+173,Joseph DESCHAMPS-BERGER,Naissance,04-10-1716,14-10-1716,"même année, jour/mois différent",0.98,1538,Joseph Deschamps-Berger,Parents source: Etienne de Antoine / Jeanne-Françoise Deschamps. ,corriger
+184,Joseph-Marcel DESCHAMPS-BERGER,Décès,17-06-1765,17-06-1755,différent,0.96,878,Joseph-Marcel Deschamps-Berger,Parents source: Claude / Nicole Charvoset. Enfant,corriger
+163,Laurence DESCHAMPS-BERGER,Naissance,30-09-1810,30-11-1810,"même année, jour/mois différent",1.0,2404,Laurence Deschamps-Berger,Parents source: Jean-Baptiste / Jeanne-Louise Vivet. ,corriger
+111,Marcel LAROCHAIX,Décès,20-03-1902,20-09-1902,"même année, jour/mois différent",0.8,1860,Marcel Larochaix,Parents source: Laurent / Agathe Charvay. Montfort,corriger
+152,Marie Antoinette CHARVAZ,Décès,29-08-1862,30-08-1862,"même année, jour/mois différent",0.8,1653,Marie-Antoinette Charvaz,Parents source:  /  . ,corriger
+174,Marie DESCHAMPS-BERGER,Mariage,30-06-1732,30-04-1732,"même année, jour/mois différent",1.0,263,Conjoint: Jean-Pierre Bornet,(Ou 3 avril ?),corriger
+141,Marie DESCHAMPS-BERGER,Naissance,22-10-1753,22-10-1757,différent,0.97,1972,Marie Deschamps-Berger,Parents source: Bernard de Etienne / Thomasse Raffort. ,corriger
+186,Marie DESCHAMPS-BERGER,Naissance,06-05-1759,01-05-1759,"même année, jour/mois différent",1.0,1991,Marie Deschamps-Berger,Parents source: Claude / Nicole Charvoset. ,corriger
+179,Marie DESCHAMPS-BERGER,Naissance,06-04-1698,06-06-1698,"même année, jour/mois différent",0.98,1243,Marie Deschamps-Berger,Parents source: Benoît de Antoine / Jeanne-Françoise Deschamps. Benoît dit Berger - Par-mar : Etienne Berger et Bartholoméa Martin,corriger
+187,Marie-Joseph DESCHAMPS-BERGER,Naissance,01-01-1761,12-01-1762,différent,1.0,2021,Marie-Joseph Deschamps-Berger,Parents source: Claude / Nicole Charvoset. ,corriger
+195,Pernette Monique DESCHAMPS-BERGER,Décès,19-08-1773,19-10-1773,"même année, jour/mois différent",0.89,1058,Petrea-Monica Deschamps-Berger,Parents source: Claude /  . 15 mois,corriger
+116,Philibert MILLION,Décès,08-10-1865,09-10-1865,"même année, jour/mois différent",0.8,1683,Philibert Million,"Parents source: Joseph / Thérèse (feue) Neyret. Natif de Myans, décédé à Montfort",corriger
+44,Théophile DESCHAMPS-BERGER,Décès,09-11-1907,06-11-1907,"même année, jour/mois différent",1.0,1899,Théophile Deschamps-Berger,Parents source: Antoine / Laurence Vionnet. ,corriger
+150,(marie) Catherine DESCHAMPS-BERGER,Naissance,23-08-1787,23-08-1781,différent,0.87,2200,Marie-Catherine Deschamps-Berger,Parents source: Jean-Claude de Bernard / Agnès Sarrazin. ,contrôler
+68,Alain DESCHAMPS-BERGER,Décès,vide,19-06-1750,manquant,0.78,806,Albin Deschamps,Parents source: Jean-Pierre /  . ,contrôler
+206,Anthonia VIVET-CLERC,Mariage,23-07-1632,23-07-1662,différent,0.81,40,Conjoint: Anthoine Deschamps-Berger,,contrôler
+108,Antoine César DESCHAMPS-BERGER,Décès,vide,20-08-1899,manquant,0.8,1843,Pierre-Marie-Antoine Deschamps-Berger,Parents source: César / Marie-Louise Tardivet. Montfort - âgé de 16 mois,contrôler
+39,Antoine DESCHAMPS-BERGER,Naissance,14-06-1829,04-11-1639,différent,0.82,499,Anthoine Deschamps-Berger,Parents source: Jean / Jeanne . ,contrôler
+128,Barbe DESCHAMPS-BERGER,Décès,22-09-1838,24-03-1837,différent,0.85,1556,Barbe Deschamps-Berger,Parents source: Jean-Baptiste / Jeanne-Louise Vivet. Montfort,contrôler
+127,Charles DESCHAMPS-BERGER,Décès,vide,1798,manquant,0.9,1210,Charles Deschamps-Berger,Parents source: Gaspard /  . 18 frimaire VII,contrôler
+76,Elie Jean-Francois DESCHAMPS-BERGER,Décès,vide,05-05-1904,manquant,0.8,1869,Laurent-Jean-Pierre (ou Jean-Pierre-Laurent) Deschamps-Berger,Parents source: César / Marie-Louise Tardivet. Montfort,contrôler
+76,Elie Jean-Francois DESCHAMPS-BERGER,Naissance,09-11-1911,10-11-1899,différent,0.85,3278,Laurent-Jean-Pierre Deschamps-Berger,Parents source: François-César de Antoine / Marie-Louise Tardivet. Montfort,contrôler
+53,François César DESCHAMPS-BERGER,Décès,01-02-1934,30-04-1869,différent,0.82,1715,Jean-François-Marcel Deschamps-Berger,"Parents source: Antoine / Laurence Vionnet. Cultivateur, Montfort",contrôler
+207,Jean DESCHAMPS-BERGER,Naissance,01-01-1605,17-05-1604,différent,0.8,111,Jean Deschamps-Berger,Parents source: Jean-Pierre / Ayma . ,contrôler
+151,Jean Marie DESCHAMPS-BERGER,Naissance,13-09-1801,11-09-1796,différent,0.87,2277,Marie-Antoinette Deschamps-Berger,Parents source: Claude de Bernard / Agnès Sarrazin. Déclarée le 18 novembre,contrôler
+66,Jean-max DESCHAMPS-BERGER,Décès,vide,30-09-1690,manquant,0.76,222,Jean Deschamps,Parents source: Pierre /  . ,contrôler
+139,Jeanne-Antoinette DESCHAMPS-BERGER,Décès,01-01-1801,14-05-1755,différent,0.83,876,Jeanne-Antonia Deschamps-Berger,Parents source: Bernard / Thomasse Raffor. ,contrôler
+139,Jeanne-Antoinette DESCHAMPS-BERGER,Naissance,23-07-1753,10-09-1768,différent,0.82,2074,Jean-Baptiste Deschamps-Berger,Parents source: Bernard de Etienne / Thomasse Raffort. Jean-Baptiste dit Berger et Bernard Berger-Deschamps dans 19/,contrôler
+170,Jeanne-Françoise DESCHAMPS,Mariage,05-04-1712,03-01-1694,différent,0.85,136,Conjoint: Benoît Deschamps-Berger,Contrat dotal 6E6763,contrôler
+178,Joseph DESCHAMPS-BERGER,Décès,vide,27-11-1750,manquant,0.9,815,Joseph Deschamps-Berger,Parents source: Benoît /  . ,contrôler
+34,Laurence DESCHAMPS-BERGER,Décès,30-05-1936,17-06-1872,différent,0.79,1737,Laurence Deschamps-Berger,Parents source: Jean-Baptiste (feu) / Jeanne-Louise (feue) Vivet. Montfort,contrôler
+34,Laurence DESCHAMPS-BERGER,Naissance,15-03-1915,30-11-1810,différent,0.79,2404,Laurence Deschamps-Berger,Parents source: Jean-Baptiste / Jeanne-Louise Vivet. ,contrôler
+174,Marie DESCHAMPS-BERGER,Décès,30-12-1792,13-11-1686,différent,0.84,177,Marie Deschamps,Parents source: Jean / Andréa de Jean-François Deschamps. ,contrôler
+179,Marie DESCHAMPS-BERGER,Décès,vide,13-11-1686,manquant,0.84,177,Marie Deschamps,Parents source: Jean / Andréa de Jean-François Deschamps. ,contrôler
+78,Marie DESCHAMPS-BERGER,Décès,vide,06-01-1806,manquant,0.84,1233,Marie Deschamps,Parents source: Pierre-François (feu) /  . Maison de Jean-Pierre Deschamps,contrôler
+78,Marie DESCHAMPS-BERGER,Naissance,vide,04-01-1891,manquant,0.8,3218,Marie-Louise Deschamps-Berger,Parents source: François-César de Antoine / Marie-Louise Tardivet. Montfort,contrôler
+110,Marie Jeanne DESCHAMPS-BERGER,Naissance,01-01-1824,01-08-1835,différent,0.84,2746,Marie-Josephte Deschamps-Berger,Parents source: Jean de Gaspard / Marie Charvay. ,contrôler
+154,Marie Josephte DESCHAMPS-BERGER,Décès,04-04-1898,05-05-1872,différent,0.85,1736,Marie-Josephte (ou Marie) Deschamps-Berger,Parents source: Jean (feu) / Marie (feu) Charvay. Montfort - Marie Charvay nommée par erreur Mélanie,contrôler
+46,Marie Josephte DESCHAMPS-BERGER,Décès,28-04-1928,14-06-1809,différent,0.8,1261,Marie-Josephte Deschamps-Berger,Parents source: Jean-Baptiste / Jeanne-Louise Vivet. 2 jours 1/2,contrôler
+154,Marie Josephte DESCHAMPS-BERGER,Naissance,14-12-1836,01-08-1835,différent,0.95,2746,Marie-Josephte Deschamps-Berger,Parents source: Jean de Gaspard / Marie Charvay. ,contrôler
+156,Marie Séraphine DESCHAMPS-BERGER,Décès,vide,14-04-1862,manquant,0.82,1651,Marie-Virginie Deschamps-Berger,Parents source: Jean-Marie / Marie-Antoinette Charvaz. Ménagère - Montmagny,contrôler
+123,Marie-Jeanne DESCHAMPS-BERGER,Décès,05-09-1865,20-04-1871,différent,0.92,1729,Marie-Peronne Deschamps-Berger,Parents source: Gaspard (feu) / Marguerite (feue) Borlet. Montfort,contrôler
+133,Marie-Péronne DESCHAMPS-BERGER,Naissance,01-01-1798,26-10-1799,différent,0.89,2303,Jean-Marie Deschamps-Berger,Parents source: Gaspard de Bernard / Marguerite Borlet. Jumeau de Charles - 4 brumaire VII,contrôler
+183,Martine DESCHAMPS-BERGER,Décès,vide,13-11-1686,manquant,0.79,177,Marie Deschamps,Parents source: Jean / Andréa de Jean-François Deschamps. ,contrôler
+57,Onésime Pierre DESCHAMPS-BERGER,Décès,01-01-1967,20-08-1899,différent,0.8,1843,Pierre-Marie-Antoine Deschamps-Berger,Parents source: César / Marie-Louise Tardivet. Montfort - âgé de 16 mois,contrôler
+57,Onésime Pierre DESCHAMPS-BERGER,Mariage,vide,09-07-1816,manquant,0.79,480,Conjoint: Marie-Josephte Vivet,(Ou Deschamps Jean-Antoine ?),contrôler
+57,Onésime Pierre DESCHAMPS-BERGER,Naissance,28-12-1912,10-11-1899,différent,0.85,3278,Laurent-Jean-Pierre Deschamps-Berger,Parents source: François-César de Antoine / Marie-Louise Tardivet. Montfort,contrôler
+195,Pernette Monique DESCHAMPS-BERGER,Naissance,15-03-1773,04-05-1772,différent,0.95,2110,Pernette (Petrea)-Monica Deschamps-Berger,Parents source: Claude / Nicole Charvoset. ,contrôler
+83,Sandrine DESCHAMPS-BERGER,Naissance,30-11-1972,12-03-1693,différent,0.76,1164,André Deschamps,Parents source: Jean / Andrée Deschamps. ,contrôler
+52,Yvonne DESCHAMPS-BERGER,Naissance,12-08-1899,12-08-1895,différent,0.87,3251,Yvonne-Marie-Louise Deschamps-Berger,"Parents source: Jean-Louis / Flavie Barry. Née (le 31 août ?) et ondoyée à Paris, baptisée à Montfort le 24 août 1897",contrôler
