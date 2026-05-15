@@ -156,10 +156,10 @@ function warmUpPersistenceBackend() {
         })
       }
 
-      f3Chart.updateTree({initial: true})
+      updateFamilyTree({initial: true})
       currentPanelPersonId = f3Chart.getMainDatum()?.id || currentPanelPersonId
       f3EditTree.open(f3Chart.getMainDatum())
-      f3Chart.updateTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
+      updateFamilyTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
       mobileProfilePanel?.sync()
       timeline?.update()
       chronologyTree?.update()
@@ -328,12 +328,44 @@ function warmUpPersistenceBackend() {
           currentPanelPersonId = target.id
           const tree_position = shouldCenter || isMobileLayout() ? 'main_to_middle' : 'inherit'
           if (!chronologyTree?.isChronologyVisible()) {
-            f3Chart.updateTree({tree_position})
+            updateFamilyTree({tree_position})
           }
           const currentMain = f3Chart.getMainDatum()
           if (currentMain) f3EditTree.open(currentMain)
           mobileProfilePanel?.openPeek()
           chronologyTree?.update()
+        }
+
+        function updateFamilyTree(props = {}) {
+          const restoreMobileDescendants = limitMobileDescendantsForRender()
+          try {
+            f3Chart.updateTree(props)
+          } finally {
+            restoreMobileDescendants?.()
+          }
+        }
+
+        function limitMobileDescendantsForRender() {
+          if (!isMobileLayout()) return null
+
+          const mainPersonId = currentPanelPersonId || f3Chart.getMainDatum()?.id
+          if (mainPersonId === undefined || mainPersonId === null) return null
+
+          const changedProfiles = []
+          const mainId = String(mainPersonId)
+          const dataset = f3Chart.store?.getData?.() || []
+
+          dataset.forEach(person => {
+            if (!person?.rels?.children?.length || String(person.id) === mainId) return
+            changedProfiles.push([person, person.rels.children])
+            person.rels.children = []
+          })
+
+          return () => {
+            changedProfiles.forEach(([person, children]) => {
+              person.rels.children = children
+            })
+          }
         }
 
         function setupResponsiveChartSpacing() {
@@ -349,7 +381,7 @@ function warmUpPersistenceBackend() {
               chronologyTree.showTree()
             }
             if (update && !chronologyTree?.isChronologyVisible()) {
-              f3Chart.updateTree({tree_position: "main_to_middle"})
+              updateFamilyTree({tree_position: "main_to_middle"})
             }
             resizeFamilyChartHeight()
             mobileProfilePanel?.sync()
@@ -476,7 +508,7 @@ function warmUpPersistenceBackend() {
               } else {
                 chronology.showTree()
                 resizeFamilyChartHeight()
-                f3Chart.updateTree({tree_position: "main_to_middle"})
+                updateFamilyTree({tree_position: "main_to_middle"})
                 timeline?.update()
               }
             })
@@ -972,7 +1004,7 @@ function warmUpPersistenceBackend() {
           if (!person?.id) return
           currentPanelPersonId = person.id
           f3Chart.updateMainId(person.id)
-          f3Chart.updateTree({tree_position: "main_to_middle"})
+          updateFamilyTree({tree_position: "main_to_middle"})
         }
 
         function enhanceInfoReadability(formHost) {
