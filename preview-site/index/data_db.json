@@ -4074,8 +4074,8 @@
     "data": {
       "first name": "Marie Louise",
       "last name": "TARDIVET",
-      "birthday": "1858-08-12T00:00:00.000Z",
-      "lastday": "1892-07-25T00:00:00.000Z",
+      "birthday": "12/08/1858",
+      "lastday": "25/07/1907",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
@@ -4083,7 +4083,8 @@
       "commentaire": "ML Tardivet mariage le 01/02/1882, Claudine Séraphine Cochet mariage le 28/01/1909. ",
       "geometry_lng": 6.56835,
       "geometry_lat": 45.489199,
-      "weddingday": "1882-02-01T00:00:00.000Z"
+      "weddingday": "01/02/1882",
+      "address": "montfort 73600 saint marcel"
     }
   },
   {
@@ -4290,7 +4291,8 @@
     "id": 53,
     "rels": {
       "spouses": [
-        54
+        54,
+        "6a680fc2-78f5-4657-b137-c40980e36b9c"
       ],
       "children": [
         77,
@@ -5267,6 +5269,25 @@
     "rels": {
       "father": 61,
       "mother": "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
+    }
+  },
+  {
+    "id": "6a680fc2-78f5-4657-b137-c40980e36b9c",
+    "data": {
+      "gender": "F",
+      "avatar": "",
+      "last name": "COCHET",
+      "first name": "Séraphine",
+      "birthday": "01/01/1871",
+      "weddingday": "28/01/1909",
+      "lastday": "01/01/1944",
+      "address": "montfort 73600 saint marcel",
+      "commentaire": "Premier mariage en 1886 à Alphonse BORLET (1858-1896) d’où sont nés 4 enfants "
+    },
+    "rels": {
+      "spouses": [
+        53
+      ]
     }
   }
 ]
