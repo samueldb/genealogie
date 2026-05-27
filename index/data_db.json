@@ -4074,8 +4074,8 @@
     "data": {
       "first name": "Marie Louise",
       "last name": "TARDIVET",
-      "birthday": "1858-08-12T00:00:00.000Z",
-      "lastday": "1892-07-25T00:00:00.000Z",
+      "birthday": "12/08/1858",
+      "lastday": "25/07/1907",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
@@ -4083,7 +4083,8 @@
       "commentaire": "ML Tardivet mariage le 01/02/1882, Claudine Séraphine Cochet mariage le 28/01/1909. ",
       "geometry_lng": 6.56835,
       "geometry_lat": 45.489199,
-      "weddingday": "1882-02-01T00:00:00.000Z"
+      "weddingday": "01/02/1882",
+      "address": "montfort 73600 saint marcel"
     }
   },
   {
