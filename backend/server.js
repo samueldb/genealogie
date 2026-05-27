@@ -92,6 +92,7 @@ async function commitDataset(dataset) {
   });
 
   const latestCommitSha = latestRef.data.object.sha;
+  const currentDataset = await fetchCurrentDataset(latestCommitSha);
   const commitData = await octokit.git.getCommit({
     owner: GITHUB_OWNER,
     repo: GITHUB_REPO,
@@ -113,7 +114,7 @@ async function commitDataset(dataset) {
     tree: treeEntries
   });
 
-  const message = buildCommitMessage(dataset.length);
+  const message = buildCommitMessage(currentDataset, dataset);
   const author = {
     name: COMMIT_AUTHOR_NAME,
     email: COMMIT_AUTHOR_EMAIL,
@@ -145,9 +146,122 @@ function formatDataset(dataset) {
   return `${JSON.stringify(dataset, null, 2)}\n`;
 }
 
-function buildCommitMessage(count) {
-  const timestamp = new Date().toISOString();
-  return `database: 🗞️ update data_db.json (${count} entries`;
+async function fetchCurrentDataset(ref) {
+  const filePath = getPrimaryDatasetPath();
+
+  try {
+    const response = await octokit.repos.getContent({
+      owner: GITHUB_OWNER,
+      repo: GITHUB_REPO,
+      path: filePath,
+      ref
+    });
+
+    if (Array.isArray(response.data) || response.data.type !== 'file') {
+      return [];
+    }
+
+    const content = await readGitHubFileContent(response.data, filePath, ref);
+    const parsed = JSON.parse(content);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    if (error.status === 404) {
+      return [];
+    }
+    throw error;
+  }
+}
+
+function getPrimaryDatasetPath() {
+  return TARGET_FILES.find(filePath => filePath.endsWith('data_db.json')) || TARGET_FILES[0];
+}
+
+async function readGitHubFileContent(fileData, filePath, ref) {
+  if (fileData.encoding === 'base64' || !fileData.encoding) {
+    return Buffer.from(fileData.content || '', 'base64').toString('utf8');
+  }
+
+  if (fileData.encoding === 'utf-8' || fileData.encoding === 'utf8') {
+    return fileData.content || '';
+  }
+
+  if (fileData.encoding === 'none') {
+    return fetchRawGitHubFileContent(filePath, ref);
+  }
+
+  throw new Error(`Unsupported GitHub content encoding: ${fileData.encoding}`);
+}
+
+async function fetchRawGitHubFileContent(filePath, ref) {
+  const response = await octokit.repos.getContent({
+    owner: GITHUB_OWNER,
+    repo: GITHUB_REPO,
+    path: filePath,
+    ref,
+    mediaType: {
+      format: 'raw'
+    }
+  });
+
+  return typeof response.data === 'string'
+    ? response.data
+    : Buffer.from(response.data).toString('utf8');
+}
+
+function buildCommitMessage(previousDataset, nextDataset) {
+  const change = detectProfileChange(previousDataset, nextDataset);
+  return `database: 🗞️  ${change.action} "${change.profileName}" in data_db.json`;
+}
+
+function detectProfileChange(previousDataset, nextDataset) {
+  const previousById = createProfileMap(previousDataset);
+  const nextById = createProfileMap(nextDataset);
+
+  for (const profile of nextDataset) {
+    const id = getProfileId(profile);
+    if (!previousById.has(id)) {
+      return { action: 'create', profileName: formatProfileName(profile) };
+    }
+  }
+
+  for (const profile of previousDataset) {
+    const id = getProfileId(profile);
+    if (!nextById.has(id)) {
+      return { action: 'delete', profileName: formatProfileName(profile) };
+    }
+  }
+
+  for (const profile of nextDataset) {
+    const id = getProfileId(profile);
+    const previousProfile = previousById.get(id);
+    if (JSON.stringify(previousProfile) !== JSON.stringify(profile)) {
+      return { action: 'update', profileName: formatProfileName(profile) };
+    }
+  }
+
+  return { action: 'update', profileName: 'data_db.json' };
+}
+
+function createProfileMap(dataset) {
+  return new Map(dataset.map(profile => [getProfileId(profile), profile]));
+}
+
+function getProfileId(profile) {
+  return String(profile?.id ?? '');
+}
+
+function formatProfileName(profile) {
+  const data = profile?.data || {};
+  const name = [data['first name'], data['last name']]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+
+  return escapeCommitProfileName(name || `profil ${getProfileId(profile)}`);
+}
+
+function escapeCommitProfileName(name) {
+  return String(name).replace(/"/g, '\\"');
 }
 
 app.listen(PORT, () => {
