@@ -3003,17 +3003,19 @@
       ]
     },
     "data": {
-      "first name": "?",
+      "first name": "Pierre",
       "last name": "DURANDARD",
-      "birthday": "1970-01-01T00:00:00.000Z",
-      "lastday": "1970-01-01T00:00:00.000Z",
+      "birthday": "",
+      "lastday": "",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "M",
       "geom": "POINT(6.568864 45.489524)",
       "commentaire": "",
       "geometry_lng": 6.568864,
-      "geometry_lat": 45.489524
+      "geometry_lat": 45.489524,
+      "weddingday": "",
+      "address": ""
     }
   },
   {
