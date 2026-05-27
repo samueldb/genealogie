@@ -161,7 +161,7 @@ async function fetchCurrentDataset(ref) {
       return [];
     }
 
-    const content = Buffer.from(response.data.content, response.data.encoding || 'base64').toString('utf8');
+    const content = await readGitHubFileContent(response.data, filePath, ref);
     const parsed = JSON.parse(content);
     return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
@@ -174,6 +174,38 @@ async function fetchCurrentDataset(ref) {
 
 function getPrimaryDatasetPath() {
   return TARGET_FILES.find(filePath => filePath.endsWith('data_db.json')) || TARGET_FILES[0];
+}
+
+async function readGitHubFileContent(fileData, filePath, ref) {
+  if (fileData.encoding === 'base64' || !fileData.encoding) {
+    return Buffer.from(fileData.content || '', 'base64').toString('utf8');
+  }
+
+  if (fileData.encoding === 'utf-8' || fileData.encoding === 'utf8') {
+    return fileData.content || '';
+  }
+
+  if (fileData.encoding === 'none') {
+    return fetchRawGitHubFileContent(filePath, ref);
+  }
+
+  throw new Error(`Unsupported GitHub content encoding: ${fileData.encoding}`);
+}
+
+async function fetchRawGitHubFileContent(filePath, ref) {
+  const response = await octokit.repos.getContent({
+    owner: GITHUB_OWNER,
+    repo: GITHUB_REPO,
+    path: filePath,
+    ref,
+    mediaType: {
+      format: 'raw'
+    }
+  });
+
+  return typeof response.data === 'string'
+    ? response.data
+    : Buffer.from(response.data).toString('utf8');
 }
 
 function buildCommitMessage(previousDataset, nextDataset) {
