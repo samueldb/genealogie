@@ -3640,15 +3640,17 @@
     "data": {
       "first name": "Tess",
       "last name": "de LAGASNERIE",
-      "birthday": "1970-01-01T00:00:00.000Z",
-      "lastday": "1970-01-01T00:00:00.000Z",
+      "birthday": "01/01/2003",
+      "lastday": "",
       "job": null,
       "avatar": "deschampsberger/images/profil_base.svg",
       "gender": "F",
       "geom": "POINT(5.374199 43.296359)",
       "commentaire": "",
       "geometry_lng": 5.374199,
-      "geometry_lat": 43.296359
+      "geometry_lat": 43.296359,
+      "weddingday": "",
+      "address": ""
     }
   },
   {
