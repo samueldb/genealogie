@@ -4291,7 +4291,8 @@
     "id": 53,
     "rels": {
       "spouses": [
-        54
+        54,
+        "6a680fc2-78f5-4657-b137-c40980e36b9c"
       ],
       "children": [
         77,
@@ -5268,6 +5269,25 @@
     "rels": {
       "father": 61,
       "mother": "f6d8bb2d-2018-4ac2-87ee-a57bb2e46126"
+    }
+  },
+  {
+    "id": "6a680fc2-78f5-4657-b137-c40980e36b9c",
+    "data": {
+      "gender": "F",
+      "avatar": "",
+      "last name": "COCHET",
+      "first name": "Séraphine",
+      "birthday": "01/01/1871",
+      "weddingday": "28/01/1909",
+      "lastday": "01/01/1944",
+      "address": "montfort 73600 saint marcel",
+      "commentaire": "Premier mariage en 1886 à Alphonse BORLET (1858-1896) d’où sont nés 4 enfants "
+    },
+    "rels": {
+      "spouses": [
+        53
+      ]
     }
   }
 ]
