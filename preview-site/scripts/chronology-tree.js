@@ -1,4 +1,4 @@
-const DEFAULT_AVATAR = "deschampsberger/images/profil_base.svg"
+const DEFAULT_AVATAR = "assets/images/profil_base.svg"
 const PLACEHOLDER_DATE = "1970-01-01"
 const MIN_YEAR_HEIGHT = 6
 const MAX_YEAR_HEIGHT = 10

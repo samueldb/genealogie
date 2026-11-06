@@ -755,6 +755,37 @@
   display: none;
 }
 
+.data-source-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.data-source-selector__label {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.data-source-selector__select {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 0.9rem;
+  padding: 8px 10px;
+}
+
+.data-source-selector__select:focus {
+  border-color: #5c929e;
+  box-shadow: 0 0 0 3px rgba(92, 146, 158, 0.18);
+  outline: none;
+}
+
 /* Media upload widget */
 .person-media {
   margin-top: 10px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -78,15 +78,34 @@
             fill: #ffffff;
         }
     </style>
+    <link rel="stylesheet" href="styles/mobile.css">
     <script>
         window.GENEA_API_CONFIG = window.GENEA_API_CONFIG || {
             baseUrl: "https://genealogie.onrender.com",
             apiKey: "mon_token_pour_ajouter_des_personnes_pls_dont_hack"
         };
+        window.GENEA_DATA_SOURCES = window.GENEA_DATA_SOURCES || [
+            {
+                id: "principal",
+                label: "Arbre DB",
+                dataUrl: "data/principal.json",
+                editable: true,
+                default: true
+            },
+            {
+                id: "racine",
+                label: "Généalogie Montfortaine",
+                dataUrl: "data/racine.json",
+                editable: true
+            }
+        ];
     </script>
 </head>
 <body>
 <header id="header"></header>
+<div id="MobileExplorerControls" class="mobile-explorer-controls">
+    <div class="mobile-explorer-heading"><span class="mobile-explorer-heading__eyebrow">Les liens qui nous relient</span><span class="mobile-explorer-heading__title">Notre famille</span></div>
+</div>
 <main id="content-wrapper">
     <div class="inner clearfix">
         <section id="main-content">
@@ -100,22 +119,27 @@
                 </aside>
                 <div class="tree-view-area">
                     <div class="tree-view-toggle" role="group" aria-label="Mode de visualisation">
+                        <button type="button" class="tree-view-toggle__button mobile-family-tab" data-tree-view="family">Les proches</button>
                         <button type="button" class="tree-view-toggle__button is-active" data-tree-view="tree">Arbre familial</button>
                         <button type="button" class="tree-view-toggle__button" data-tree-view="chronology">Frise de vie</button>
                     </div>
+                    <section id="MobileFamily" class="mobile-family" aria-label="Famille de la personne sélectionnée"></section>
+                    <div class="mobile-tree-tools"><span>Glissez pour explorer · pincez pour zoomer</span><button type="button" id="CenterTreeButton">Recentrer</button></div>
                     <div id="FamilyChart" class="f3" style="width:100%;margin:auto;background-color:rgb(248 250 252);"></div>
                     <section id="ChronologyTree" class="chronology-tree is-hidden" aria-label="Frise chronologique verticale de l'arbre"></section>
                 </div>
             </div>
         </section>
         <aside id="sidebar">
-            <div id="RecherchePersonne"></div>
+            <div id="DesktopExplorerControls">
+                <div id="DataSourceSelector"></div>
+                <div id="RecherchePersonne"></div>
+            </div>
             <div id="EditPanel">
                 <div id="EditPanelFormHost"></div>
                 <div id="SaveDataStatus" class="save-status" aria-live="polite"></div>
             </div>
-            Légende
-            <div id="sideTooltip"></div>
+            <div class="tree-legend">Légende<div id="sideTooltip"></div></div>
         </aside>
     </div>
 </main>
@@ -125,6 +149,6 @@
     });
 </script>
 <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
-<script src="index/index.js" type="module"></script>
+<script src="scripts/app.js" type="module"></script>
 </body>
 </html>
