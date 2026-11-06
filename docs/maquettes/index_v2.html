@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Deschamps Berger Family tree</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&family=Material+Icons+Round&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1e3a8a",
+            secondary: "#64748b",
+            "background-light": "#f8fafc",
+            "background-dark": "#0f172a",
+            "card-male": "#5c929e",
+            "card-female": "#c48a8a",
+            "accent-gold": "#d4af37"
+          },
+          fontFamily: {
+            display: ["Playfair Display", "serif"],
+            sans: ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+            xl: "1rem"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    .timeline-panel {
+      background: transparent;
+    }
+    .timeline-svg {
+      width: 100%;
+      height: 100%;
+    }
+    .index-v2 .f3 div.card-image-rect {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 12px;
+      gap: 12px;
+      border-left: 4px solid #cbd5e1;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      transition: box-shadow 200ms ease, transform 200ms ease;
+    }
+    .index-v2 .f3 .card-male div.card-image-rect {
+      border-left-color: #5c929e;
+    }
+    .index-v2 .f3 .card-female div.card-image-rect {
+      border-left-color: #c48a8a;
+    }
+    .index-v2 .f3 .card-body-rect,
+    .index-v2 .f3 .text-overflow-mask {
+      fill: #ffffff;
+    }
+    .index-v2 .f3 div.card-image-rect:hover {
+      box-shadow: 0 16px 28px rgba(15, 23, 42, 0.12);
+      transform: translateY(-2px);
+    }
+    .index-v2 .f3 div.card-image-rect img,
+    .index-v2 .f3 div.card-image-rect .person-icon {
+      height: 64px;
+      width: 64px;
+      object-fit: cover;
+      border-radius: 12px;
+      filter: grayscale(1);
+      transition: filter 200ms ease;
+    }
+    .index-v2 .f3 div.card-image-rect:hover img,
+    .index-v2 .f3 div.card-image-rect:hover .person-icon {
+      filter: grayscale(0);
+    }
+    .index-v2 .f3 div.card-image-rect div.card-label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-align: left;
+    }
+    .index-v2 .f3 div.card-image-rect div.card-label > div:nth-child(1) {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+    .index-v2 .f3 div.card-image-rect div.card-label > div:nth-child(2) {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2937;
+      line-height: 1.2;
+    }
+    .index-v2 .f3 div.card-image-rect div.card-label > div:nth-child(n+3) {
+      font-size: 10px;
+      color: #64748b;
+    }
+    .dark .index-v2 .f3 div.card-image-rect {
+      background: #1f2937;
+      box-shadow: 0 12px 22px rgba(2, 6, 23, 0.4);
+    }
+    .dark .index-v2 .f3 .card-body-rect,
+    .dark .index-v2 .f3 .text-overflow-mask {
+      fill: #1f2937;
+    }
+    .dark .index-v2 .f3 div.card-image-rect div.card-label > div:nth-child(2) {
+      color: #e2e8f0;
+    }
+  </style>
+  <script src="https://unpkg.com/d3@7"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="module" src="https://unpkg.com/family-chart@0.9.0"></script>
+  <link rel="stylesheet" href="https://unpkg.com/family-chart@0.9.0/dist/styles/family-chart.css">
+  <link rel="stylesheet" href="styles/family-chart.css">
+  <link rel="stylesheet" type="text/css" href="styles/decorum.css">
+  <link rel="stylesheet" href="styles/site.css">
+  <link href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script>
+    window.GENEA_API_CONFIG = window.GENEA_API_CONFIG || {
+      baseUrl: "https://genealogie.onrender.com",
+      apiKey: "mon_token_pour_ajouter_des_personnes_pls_dont_hack"
+    };
+  </script>
+</head>
+<body class="index-v2 bg-background-light dark:bg-background-dark font-sans text-slate-900 dark:text-slate-100 min-h-screen">
+  <header id="header"></header>
+  <div id="menu"></div>
+  <div id="content-wrapper" class="min-h-[calc(100vh-200px)]">
+    <div class="inner clearfix">
+      <main class="grid grid-cols-12 gap-0 min-h-[calc(100vh-200px)]">
+        <aside class="col-span-12 md:col-span-1 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 flex flex-col items-center py-6">
+          <div class="rotate-[-90deg] origin-center whitespace-nowrap mb-8">
+            <span class="text-[10px] uppercase tracking-[0.4em] font-bold text-slate-400">Frise chronologique</span>
+          </div>
+          <div id="TimelineContainer" class="timeline-panel flex-1 w-full px-2 overflow-y-auto custom-scrollbar" aria-hidden="true">
+            <div class="timeline-panel__header py-4 px-2 text-center">
+              <div class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Frise chronologique</div>
+              <div class="text-[10px] text-slate-400/80 mt-1">Nombre de personnes référencées vivantes à cette époque</div>
+            </div>
+            <svg id="TimelineSvg" class="timeline-svg" role="presentation"></svg>
+          </div>
+        </aside>
+        <section id="main-content" class="col-span-12 md:col-span-8 bg-background-light dark:bg-slate-900 relative overflow-hidden flex items-center justify-center p-6 md:p-12">
+          <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#64748b 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+          <div id="FamilyChart" class="f3 relative w-full h-full" style="width:100%;margin:auto;background-color:rgba(250,250,250,1);"></div>
+          <div class="absolute top-6 left-6">
+            <div class="flex items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-card-male"></span> Hommes</div>
+              <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-card-female"></span> Femmes</div>
+              <div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300"></span> Inconnu</div>
+            </div>
+          </div>
+        </section>
+        <aside id="sidebar" class="col-span-12 md:col-span-3 border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-y-auto custom-scrollbar flex flex-col">
+          <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+            <h2 class="font-display text-xl">Profil détaillé</h2>
+            <div class="flex gap-2">
+              <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-400 transition-all"><span class="material-icons-round text-lg">edit</span></button>
+              <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-400 transition-all"><span class="material-icons-round text-lg">close</span></button>
+            </div>
+          </div>
+          <div id="RecherchePersonne" class="p-6"></div>
+          <div id="EditPanel" class="px-6 pb-6">
+            <div id="EditPanelFormHost"></div>
+            <div id="SaveDataStatus" class="save-status" aria-live="polite"></div>
+          </div>
+          <div class="px-6 pb-6">
+            <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400 mb-2">Légende</p>
+            <div id="sideTooltip"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </div>
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-4 px-8 text-center text-[10px] text-slate-400 uppercase tracking-widest font-medium">
+    © 2024 Plateforme Patrimoniale — Propulsé par le Moteur Cartographique v4.2
+  </footer>
+  <script>
+    $(function () {
+      $("#header").load("includes/header.html");
+      $("#menu").load("includes/menu.html");
+    });
+  </script>
+  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
+  <script src="index/index.js" type="module"></script>
+</body>
+</html>

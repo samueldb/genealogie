@@ -1,29 +1,55 @@
-# Genealogie backend
+# Service de sauvegarde
 
-This lightweight Express server exposes a `/api/family-data` endpoint that accepts the edited dataset and commits it back to the GitHub repository. The server uses the GitHub REST API via [`@octokit/rest`](https://github.com/octokit/rest.js) and can be deployed to any Node-friendly host (Render, Railway, Fly.io, etc.).
+Ce serveur Express reçoit les arbres modifiés sur `POST /api/family-data` et crée un commit dans le dépôt GitHub. Le site GitHub Pages et ce service, hébergé notamment sur Render, sont déployés séparément.
 
 ## Configuration
 
-Copy `.env.example` to `.env` and fill in the values:
+Copier `backend/.env.example` vers `backend/.env`, puis renseigner les variables :
 
-| Variable | Description |
+| Variable | Rôle |
 | --- | --- |
-| `GITHUB_TOKEN` | Fine-grained PAT with `contents:write` permission on the repo. |
-| `GITHUB_OWNER` / `GITHUB_REPO` | Target repository coordinates. |
-| `GITHUB_BRANCH` | Branch to update (defaults to `dev`). |
-| `TARGET_DATA_FILES` | Comma-separated file paths to update with the new dataset. |
-| `API_AUTH_TOKEN` | (Optional) Shared secret required in `x-api-key` header. |
-| `CORS_ALLOW_ORIGIN` | Origins allowed to call the API (defaults to `*`). |
+| `GITHUB_TOKEN` | Jeton GitHub avec le droit `contents:write` sur le dépôt. |
+| `GITHUB_OWNER`, `GITHUB_REPO` | Propriétaire et nom du dépôt. |
+| `GITHUB_BRANCH` | Branche modifiée, `dev` par défaut. |
+| `DATA_SOURCES` | Liste autorisée `id:chemin`, relative à la racine du dépôt. |
+| `DEFAULT_DATA_SOURCE` | Source utilisée si le client n’en précise pas ; première source par défaut. |
+| `TARGET_DATA_FILES` | Ancienne configuration optionnelle ; préférer `DATA_SOURCES`. |
+| `API_AUTH_TOKEN` | Valeur optionnelle attendue dans l’en-tête `x-api-key`. |
+| `CORS_ALLOW_ORIGIN` | Origine autorisée, `*` par défaut. |
+| `PORT` | Port du serveur, `8788` par défaut. |
 
-## Running locally
+Sans configuration explicite des sources, les chemins sont :
+
+```text
+principal:site/data/principal.json,racine:site/data/racine.json
+```
+
+Le navigateur envoie uniquement l’identifiant de source ; le serveur choisit le chemin autorisé. `GET /health` expose les sources effectivement configurées pour vérifier le déploiement.
+
+## Exécution
+
+Depuis la racine du dépôt :
 
 ```bash
-npm install
+npm ci
 npm run backend
 ```
 
-The server listens on `http://localhost:8788` by default. When testing locally, update `window.GENEA_API_CONFIG.baseUrl` in `index.html` (or via devtools) to `http://localhost:8788` so the frontend sends requests to the local backend.
+Les dépendances du backend sont des dépendances de production ; une installation `npm ci --omit=dev` fonctionne aussi. Le serveur charge `backend/.env`, puis le `.env` du répertoire de lancement, sans remplacer les variables déjà définies dans l’environnement.
 
-## Deploying
+Pour utiliser ce backend depuis le site, renseigner `window.GENEA_API_CONFIG.baseUrl` dans `site/index.html` et, si nécessaire, `apiKey`. Le serveur de développement `npm run edit` utilise ses propres sauvegardes locales.
 
-Deploy `backend/server.js` to your hosting provider and set the same environment variables there. Point `window.GENEA_API_CONFIG.baseUrl` to the deployed URL and, if you enabled `API_AUTH_TOKEN`, also set `window.GENEA_API_CONFIG.apiKey` so the frontend can authenticate requests.
+## Migration sur Render
+
+Le point d’entrée reste `backend/server.js` et la commande de démarrage reste `npm run backend`. Le répertoire de travail doit être la racine du dépôt.
+
+Mettre les variables à jour avec :
+
+```text
+DATA_SOURCES=principal:site/data/principal.json,racine:site/data/racine.json
+DEFAULT_DATA_SOURCE=principal
+```
+
+Le module `data-sources.js` convertit également les anciennes valeurs `index/data_db.json`, `deschampsberger/index/data_db.json` et `data_db.json` vers les nouveaux chemins, y compris dans `TARGET_DATA_FILES`. Cette compatibilité évite de recréer les anciens fichiers après déplacement.
+
+Redéployer le backend avec cette version avant de reprendre l’édition en ligne : une ancienne instance du serveur ne connaît pas les nouveaux chemins. La branche configurée doit contenir elle aussi la nouvelle arborescence. GitHub Pages ne redéploie pas le service Render.

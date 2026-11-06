@@ -1,5 +1,10 @@
-/dist/
 /node_modules/
 /.idea/
-/tests/debugging/
-backend/.env
+.env
+.env.*
+!.env.example
+/public-site/
+/preview-site/
+/gh-pages-current/
+__pycache__/
+*.pyc

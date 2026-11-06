@@ -1,4 +1,4 @@
-name: Deploy Deschampsberger site
+name: Deploy genealogy site
 
 on:
   push:
@@ -6,61 +6,51 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+# Both workflows update gh-pages; serialize them to preserve the other site.
+concurrency:
+  group: genealogie-gh-pages
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
+  deploy:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check for source directory
-        id: src-check
-        run: |
-          if [ -d src ]; then
-            echo "found=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "found=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Setup Node.js
-        if: ${{ steps.src-check.outputs.found == 'true' }}
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: '22'
           cache: npm
 
-      - name: Install dependencies
-        if: ${{ steps.src-check.outputs.found == 'true' }}
-        run: npm install
+      - name: Install backend dependencies
+        run: npm ci --ignore-scripts
 
-      - name: Build library
-        if: ${{ steps.src-check.outputs.found == 'true' }}
-        run: npm run build
+      - name: Check site and test data routing
+        run: |
+          npm run check
+          npm test
 
       - name: Prepare GitHub Pages bundle
         run: |
           mkdir -p public-site
-          cp -R deschampsberger public-site/deschampsberger
-          cp -R index public-site/index
-          if [ -f index/timeline.js ]; then
-            cp index/timeline.js public-site/index/timeline.js
-          fi
-          cp -R styles public-site/styles
-          if [ -d dist ]; then
-            cp -R dist public-site/dist
-          fi
-          cp -R includes public-site/includes
-          cp -R utils public-site/utils
-          cp data_db.json public-site/data_db.json
-          cp index.html public-site/index.html
+          cp -R site/. public-site/
 
-      - name: Restore current preview-site bundle
+      - name: Preserve existing preview
         run: |
-          if git clone --depth 1 --branch gh-pages "https://github.com/${{ github.repository }}.git" gh-pages-current; then
-            if [ -d gh-pages-current/preview-site ]; then
-              rm -rf public-site/preview-site
-              cp -R gh-pages-current/preview-site public-site/preview-site
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
+            git fetch --depth=1 origin gh-pages
+            if git cat-file -e FETCH_HEAD:preview-site 2>/dev/null; then
+              git archive FETCH_HEAD preview-site | tar -x -C public-site
             fi
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
           fi
 
       - name: Deploy to GitHub Pages
@@ -69,3 +59,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: public-site
+          keep_files: false
