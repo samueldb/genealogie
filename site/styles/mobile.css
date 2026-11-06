@@ -1,0 +1,252 @@
+/* Search is shared by desktop and mobile; the explorer layout is mobile-only. */
+.mobile-explorer-controls,
+.mobile-family,
+.mobile-family-tab,
+.mobile-tree-tools {
+  display: none;
+}
+
+#RecherchePersonne input#SearchPersonInput { min-width: 0; }
+#RecherchePersonne [hidden] { display: none !important; }
+#RecherchePersonne .search-card__results-heading {
+  padding: 4px 2px 10px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+#RecherchePersonne .search-card__option-name,
+#RecherchePersonne .search-card__option-dates { display: block; }
+#RecherchePersonne .search-card__option-name { font-weight: 700; line-height: 1.4; }
+#RecherchePersonne .search-card__option-dates { font-size: 0.8rem; opacity: 0.75; margin-top: 3px; }
+#RecherchePersonne .search-card__option[aria-selected="true"] { background: rgba(142, 211, 150, 0.18); }
+#RecherchePersonne .search-card__dismiss {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+#RecherchePersonne .search-card__dismiss:focus-visible,
+.mobile-family button:focus-visible,
+.mobile-tree-tools button:focus-visible { outline: 3px solid #2563eb; outline-offset: 2px; }
+
+@media (max-width: 767px) {
+  html { height: 100%; overflow: hidden; }
+  body,
+  body[data-mobile-profile-state] {
+    height: var(--app-height, 100dvh);
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fa;
+    color: #23334b;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  #header { display: none; }
+
+  .mobile-explorer-controls {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(110px, 44%);
+    gap: 12px 8px;
+    padding: max(14px, env(safe-area-inset-top)) 16px 10px;
+    background: #fff;
+    border-bottom: 1px solid #e4eaf1;
+    position: relative;
+    z-index: 80;
+  }
+  .mobile-explorer-heading { display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+  .mobile-explorer-heading__eyebrow { color: #697b91; font-size: 9px; letter-spacing: 0.09em; text-transform: uppercase; }
+  .mobile-explorer-heading__title { color: #172b48; font-size: 23px; line-height: 1.2; font-weight: 750; letter-spacing: -0.6px; }
+  #MobileExplorerControls #DataSourceSelector { min-width: 0; align-self: center; }
+  #MobileExplorerControls .data-source-selector { margin: 0; }
+  #MobileExplorerControls .data-source-selector__label { display: none; }
+  #MobileExplorerControls .data-source-selector__select {
+    min-height: 44px;
+    appearance: auto;
+    text-overflow: ellipsis;
+    padding: 9px 6px;
+    border: 1px solid #e0e7ef;
+    border-radius: 10px;
+    background: #f5f8fc;
+    color: #324966;
+    font-size: 16px;
+    font-weight: 650;
+  }
+  #MobileExplorerControls #RecherchePersonne { grid-column: 1 / -1; position: relative; top: auto; z-index: 90; overflow: visible; }
+  #RecherchePersonne .search-card {
+    position: relative;
+    gap: 7px;
+    padding: 0;
+    background: #fff;
+    color: #23334b;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  #RecherchePersonne .search-card__input-row {
+    min-height: 48px;
+    padding: 0 12px;
+    border: 1px solid #dbe4ef;
+    border-radius: 12px;
+    background: #f3f6fa;
+    color: #59708e;
+    gap: 10px;
+  }
+  #RecherchePersonne .search-card__input-row:focus-within { border-color: #688fbd; background: #fff; box-shadow: 0 0 0 3px #eaf1fa; }
+  #RecherchePersonne input#SearchPersonInput { margin: 0; padding: 0; height: 46px; font-size: 16px; color: #172b48; }
+  #RecherchePersonne input#SearchPersonInput:focus { box-shadow: none; outline: none; }
+  #RecherchePersonne input#SearchPersonInput::placeholder { color: #748398; }
+  #RecherchePersonne input#SearchPersonInput::-webkit-search-cancel-button { display: none; }
+  #RecherchePersonne .search-card__clear { min-width: 40px; min-height: 40px; padding: 0; color: #45617e; background: #e5ecf5; font-size: 24px; }
+  #RecherchePersonne .search-card__meta { color: #758397; font-size: 11px; line-height: 1.4; padding: 0 2px; }
+  #RecherchePersonne .search-card__results {
+    display: flex;
+    flex-direction: column;
+    max-height: max(140px, calc(var(--app-height, 100dvh) - 166px));
+    box-sizing: border-box;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    padding: 12px;
+    border: 1px solid #dce5f1;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 16px 40px rgba(23, 43, 72, 0.22);
+  }
+  #RecherchePersonne .search-card__results.is-hidden { display: none; }
+  #RecherchePersonne .search-card__results-heading { flex: 0 0 auto; color: #59708e; font-weight: 650; }
+  #RecherchePersonne .search-card__dropdown {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: max(90px, calc(var(--app-height, 100dvh) - 270px));
+    border: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  #RecherchePersonne .search-card__option { flex: 0 0 auto; min-height: 66px; padding: 12px 8px; color: #23334b; border-bottom: 1px solid #edf1f7; }
+  #RecherchePersonne .search-card__option-name { font-size: 14px; }
+  #RecherchePersonne .search-card__option-dates { font-size: 12px; color: #667a93; opacity: 1; }
+  #RecherchePersonne .search-card__option:hover,
+  #RecherchePersonne .search-card__option:focus,
+  #RecherchePersonne .search-card__option[aria-selected="true"] { background: #edf4fd; }
+  #RecherchePersonne .search-card__empty { color: #667a93; font-size: 14px; line-height: 1.6; margin: 0; }
+  #RecherchePersonne .search-card__dismiss { flex: 0 0 auto; color: #345c8a; background: #f3f6fa; font-size: 13px; font-weight: 650; }
+
+  #content-wrapper { flex: 1; min-height: 0; width: 100%; margin: 0; display: flex; padding: 0 12px calc(86px + env(safe-area-inset-bottom)); box-sizing: border-box; }
+  #content-wrapper > .inner { flex: 1; width: 100%; min-height: 0; padding: 0; gap: 0; }
+  #main-content { display: flex; flex: 1; min-height: 0; margin: 0; padding: 0; }
+  #sidebar { flex: 0 0 0; }
+  #DesktopExplorerControls:empty,
+  .tree-legend { display: none; }
+  .timeline-layout { flex: 1; width: 100%; min-height: 0; }
+  .tree-view-area { width: 100%; min-height: 0; gap: 0; }
+  .tree-view-toggle { position: static; flex: 0 0 auto; margin: 12px 0; padding: 4px; border: 0; border-radius: 12px; background: #e7edf5; }
+  .tree-view-toggle__button { min-height: 42px; font-size: 14px; color: #63758e; }
+  .tree-view-toggle__button.is-active { color: #234c7e; box-shadow: 0 2px 5px #1e3a5f0c; }
+  .mobile-family-tab { display: block; }
+  .mobile-family {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    padding: 0 2px 18px;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    line-height: 1.4;
+  }
+  .mobile-family > * { flex: 0 0 auto; }
+  .mobile-family__intro { margin: 0; text-align: center; color: #758397; font-size: 11px; }
+  .mobile-family__group-title { margin: 0 0 8px !important; padding: 0 4px; font: 650 11px/1.4 system-ui !important; letter-spacing: 0.06em; text-transform: uppercase; color: #73839a !important; text-indent: 0; }
+  #main-content .mobile-family__group-title::before { content: none; }
+  .mobile-family__relatives { display: flex; flex-direction: column; gap: 8px; }
+  .mobile-family__relative {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 74px;
+    padding: 12px;
+    border: 1px solid #e2e8f1;
+    border-radius: 12px;
+    background: #fff;
+    color: #263c58;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mobile-family__relative:active { background: #eaf2fc; }
+  .mobile-family__relative img { width: 40px; height: 44px; flex: 0 0 auto; object-fit: cover; border-radius: 9px; background: #eef2f7; }
+  .mobile-family__relative-label { min-width: 0; flex: 1; }
+  .mobile-family__relative-name { display: block; font-size: 13px; font-weight: 650; line-height: 1.4; overflow-wrap: anywhere; }
+  .mobile-family__relative-dates { display: block; margin-top: 4px; color: #7b899e; font-size: 11px; line-height: 1.35; }
+  .mobile-family__arrow { color: #9aabc1; font-size: 25px; font-weight: 400; }
+  .mobile-family__relatives--parents { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mobile-family__relatives--parents .mobile-family__relative { display: block; padding: 10px; min-height: 124px; position: relative; }
+  .mobile-family__relatives--parents img { display: none; }
+  .mobile-family__relatives--parents .mobile-family__arrow { position: absolute; bottom: 8px; right: 10px; }
+  .mobile-family__focus {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid #abc5e7;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #eef5ff, #e4eefb);
+    box-shadow: 0 4px 16px #263c5808;
+  }
+  .mobile-family__focus > img { width: 62px; height: 76px; object-fit: cover; border-radius: 12px; background: #fff; }
+  .mobile-family__eyebrow { display: block; margin-bottom: 7px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.07em; color: #6882a4; }
+  #main-content .mobile-family__name { margin: 0; color: #193e6a; font: 750 18px/1.3 system-ui; letter-spacing: -0.3px; text-indent: 0; overflow-wrap: anywhere; }
+  #main-content .mobile-family__name:focus { outline: none; box-shadow: none; }
+  #main-content .mobile-family__name::before { content: none; }
+  .mobile-family__dates { margin: 7px 0 0; color: #607b9f; font-size: 12px; line-height: 1.4; }
+  .mobile-family__profile { grid-column: 1 / -1; min-height: 44px; border: 1px solid #b7cde8; border-radius: 10px; color: #2f5c91; background: #ffffffb8; font-size: 13px; font-weight: 650; cursor: pointer; }
+  .mobile-family__empty { margin: 0; padding: 12px; color: #73839a; font-size: 13px; line-height: 1.6; }
+
+  body[data-mobile-view="family"] #FamilyChart,
+  body[data-mobile-view="family"] .mobile-tree-tools { display: none; }
+  body[data-mobile-view="tree"] .mobile-family { display: none; }
+  body[data-mobile-view="tree"] .mobile-tree-tools { display: flex; }
+  .mobile-tree-tools { flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+  .mobile-tree-tools span { font-size: 10px; color: #7b899e; }
+  .mobile-tree-tools button { min-height: 44px; padding: 0 12px; border: 1px solid #d9e3f0; border-radius: 10px; background: #fff; color: #355c8b; font-size: 12px; font-weight: 650; }
+  #FamilyChart { min-height: 140px; flex: 1; touch-action: none; }
+  .f3 div.card-image-rect { width: 190px; min-height: 76px; padding: 8px; gap: 8px; border-radius: 12px; }
+  .f3 div.card-image-rect img,
+  .f3 div.card-image-rect .person-icon { width: 40px; height: 44px; padding: 0; border-radius: 8px; }
+  .f3 div.card-image-rect div.card-label { overflow: visible; }
+  .f3 div.card-image-rect div.card-label > div { max-width: 126px; white-space: normal; line-height: 1.3; }
+  .f3 div.card-image-rect div.card-label > div:nth-child(1) { font-size: 12px; color: #667a93; letter-spacing: 0; text-transform: none; }
+  .f3 div.card-image-rect div.card-label > div:nth-child(2) { font-size: 13px; color: #233c5e; overflow-wrap: anywhere; }
+  .f3 div.card-image-rect div.card-label > div:nth-child(n+3) { font-size: 10px; }
+
+  #EditPanelFormHost { overflow-x: hidden; }
+  #EditPanel { padding-bottom: env(safe-area-inset-bottom); box-sizing: border-box; max-height: calc(var(--app-height, 100dvh) - 8px); box-shadow: 0 -4px 22px #263c5814; }
+  #EditPanel:not([data-mobile-profile-state]),
+  #EditPanel[data-mobile-profile-state="collapsed"] { height: calc(78px + env(safe-area-inset-bottom)); }
+  #EditPanel[data-mobile-profile-state="expanded"],
+  #EditPanel.is-editing { height: calc(var(--app-height, 100dvh) - 8px); }
+  #EditPanel[data-mobile-profile-state="expanded"] #EditPanelFormHost,
+  #EditPanel.is-editing #EditPanelFormHost { max-height: calc(var(--app-height, 100dvh) - 88px); }
+  #EditPanel[data-mobile-profile-state="expanded"],
+  #EditPanel.is-editing { z-index: 100; }
+  .mobile-profile__summary-action { min-height: 44px; min-width: 64px; }
+  #EditPanelFormHost input,
+  #EditPanelFormHost textarea,
+  #EditPanelFormHost select { font-size: 16px !important; min-height: 44px; }
+}

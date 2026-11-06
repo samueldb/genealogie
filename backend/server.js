@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const { Octokit } = require('@octokit/rest');
 const dotenv = require('dotenv');
+const { normalizeSourceId, parseDataSources } = require('./data-sources');
 
 const localEnvPath = path.join(__dirname, '.env');
 dotenv.config({ path: localEnvPath });
@@ -13,10 +14,12 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_OWNER = process.env.GITHUB_OWNER;
 const GITHUB_REPO = process.env.GITHUB_REPO;
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH || 'dev';
-const TARGET_FILES = (process.env.TARGET_DATA_FILES || 'data_db.json,index/data_db.json')
+const TARGET_FILES = (process.env.TARGET_DATA_FILES || '')
   .split(',')
   .map(item => item.trim())
   .filter(Boolean);
+const DATA_SOURCES = parseDataSources(process.env.DATA_SOURCES, TARGET_FILES);
+const DEFAULT_SOURCE_ID = normalizeSourceId(process.env.DEFAULT_DATA_SOURCE) || DATA_SOURCES[0]?.id;
 const COMMIT_AUTHOR_NAME = process.env.COMMIT_AUTHOR_NAME || 'Genealogie Bot';
 const COMMIT_AUTHOR_EMAIL = process.env.COMMIT_AUTHOR_EMAIL || 'genealogie-bot@example.com';
 const ALLOWED_ORIGIN = process.env.CORS_ALLOW_ORIGIN || '*';
@@ -25,8 +28,8 @@ if (!GITHUB_TOKEN || !GITHUB_OWNER || !GITHUB_REPO) {
   throw new Error('Missing required GitHub configuration. Please set GITHUB_TOKEN, GITHUB_OWNER and GITHUB_REPO.');
 }
 
-if (!TARGET_FILES.length) {
-  throw new Error('TARGET_DATA_FILES must include at least one file path to update.');
+if (!DATA_SOURCES.length || !DATA_SOURCES.some(source => source.id === DEFAULT_SOURCE_ID)) {
+  throw new Error('DATA_SOURCES and DEFAULT_DATA_SOURCE must identify a valid source.');
 }
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
@@ -45,7 +48,12 @@ app.options('/api/family-data', (req, res) => {
 });
 
 app.get('/health', (req, res) => {
-  res.json({ ok: true, branch: GITHUB_BRANCH, targetFiles: TARGET_FILES });
+  res.json({
+    ok: true,
+    branch: GITHUB_BRANCH,
+    defaultSource: DEFAULT_SOURCE_ID,
+    sources: DATA_SOURCES.map(source => ({ id: source.id, path: source.path }))
+  });
 });
 
 app.post('/api/family-data', ensureAuthorizedRequest, async (req, res) => {
@@ -58,7 +66,12 @@ app.post('/api/family-data', ensureAuthorizedRequest, async (req, res) => {
       return res.status(400).json({ error: 'Received empty dataset. Nothing to persist.' });
     }
 
-    const commitSha = await commitDataset(payload.data);
+    const source = resolveDataSource(payload.source);
+    if (!source) {
+      return res.status(400).json({ error: 'Unknown data source.' });
+    }
+
+    const commitSha = await commitDataset(payload.data, source);
     res.json({ success: true, commit: commitSha });
   } catch (error) {
     console.error('Failed to persist dataset', error);
@@ -83,7 +96,12 @@ function ensureAuthorizedRequest(req, res, next) {
   return next();
 }
 
-async function commitDataset(dataset) {
+function resolveDataSource(sourceId) {
+  const normalizedId = normalizeSourceId(sourceId) || DEFAULT_SOURCE_ID;
+  return DATA_SOURCES.find(source => source.id === normalizedId) || null;
+}
+
+async function commitDataset(dataset, source) {
   const normalizedContent = formatDataset(dataset);
   const latestRef = await octokit.git.getRef({
     owner: GITHUB_OWNER,
@@ -92,7 +110,7 @@ async function commitDataset(dataset) {
   });
 
   const latestCommitSha = latestRef.data.object.sha;
-  const currentDataset = await fetchCurrentDataset(latestCommitSha);
+  const currentDataset = await fetchCurrentDataset(latestCommitSha, source);
   const commitData = await octokit.git.getCommit({
     owner: GITHUB_OWNER,
     repo: GITHUB_REPO,
@@ -100,12 +118,12 @@ async function commitDataset(dataset) {
   });
 
   const baseTreeSha = commitData.data.tree.sha;
-  const treeEntries = TARGET_FILES.map(filePath => ({
-    path: filePath,
+  const treeEntries = [{
+    path: source.path,
     mode: '100644',
     type: 'blob',
     content: normalizedContent
-  }));
+  }];
 
   const newTree = await octokit.git.createTree({
     owner: GITHUB_OWNER,
@@ -114,7 +132,7 @@ async function commitDataset(dataset) {
     tree: treeEntries
   });
 
-  const message = buildCommitMessage(currentDataset, dataset);
+  const message = buildCommitMessage(currentDataset, dataset, source);
   const author = {
     name: COMMIT_AUTHOR_NAME,
     email: COMMIT_AUTHOR_EMAIL,
@@ -146,8 +164,8 @@ function formatDataset(dataset) {
   return `${JSON.stringify(dataset, null, 2)}\n`;
 }
 
-async function fetchCurrentDataset(ref) {
-  const filePath = getPrimaryDatasetPath();
+async function fetchCurrentDataset(ref, source) {
+  const filePath = source.path;
 
   try {
     const response = await octokit.repos.getContent({
@@ -170,10 +188,6 @@ async function fetchCurrentDataset(ref) {
     }
     throw error;
   }
-}
-
-function getPrimaryDatasetPath() {
-  return TARGET_FILES.find(filePath => filePath.endsWith('data_db.json')) || TARGET_FILES[0];
 }
 
 async function readGitHubFileContent(fileData, filePath, ref) {
@@ -208,9 +222,9 @@ async function fetchRawGitHubFileContent(filePath, ref) {
     : Buffer.from(response.data).toString('utf8');
 }
 
-function buildCommitMessage(previousDataset, nextDataset) {
+function buildCommitMessage(previousDataset, nextDataset, source) {
   const change = detectProfileChange(previousDataset, nextDataset);
-  return `database: 🗞️  ${change.action} "${change.profileName}" in data_db.json`;
+  return `database: 🗞️  ${change.action} "${change.profileName}" in ${source.path}`;
 }
 
 function detectProfileChange(previousDataset, nextDataset) {
@@ -239,7 +253,7 @@ function detectProfileChange(previousDataset, nextDataset) {
     }
   }
 
-  return { action: 'update', profileName: 'data_db.json' };
+  return { action: 'update', profileName: 'dataset' };
 }
 
 function createProfileMap(dataset) {

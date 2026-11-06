@@ -1,4 +1,4 @@
-name: Deploy dev preview
+name: Deploy genealogy preview
 
 on:
   push:
@@ -6,61 +6,42 @@ on:
       - dev
   workflow_dispatch:
 
-jobs:
-  deploy-dev:
-    runs-on: ubuntu-latest
+permissions:
+  contents: write
 
+concurrency:
+  group: genealogie-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check for source directory
-        id: src-check
-        run: |
-          if [ -d src ]; then
-            echo "found=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "found=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Setup Node.js
-        if: ${{ steps.src-check.outputs.found == 'true' }}
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: '22'
           cache: npm
 
-      - name: Install dependencies
-        if: ${{ steps.src-check.outputs.found == 'true' }}
-        run: npm install
+      - name: Install backend dependencies
+        run: npm ci --ignore-scripts
 
-      - name: Build project
-        if: ${{ steps.src-check.outputs.found == 'true' }}
-        run: npm run build
-
-      - name: Assemble preview bundle
+      - name: Check site and test data routing
         run: |
-          mkdir -p preview-site
-          cp -R deschampsberger preview-site/deschampsberger
-          cp -R index preview-site/index
-          if [ -f index/timeline.js ]; then
-            cp index/timeline.js preview-site/index/timeline.js
-          fi
-          cp -R styles preview-site/styles
-          if [ -d dist ]; then
-            cp -R dist preview-site/dist
-          fi
-          cp -R includes preview-site/includes
-          cp -R utils preview-site/utils
-          cp data_db.json preview-site/data_db.json
-          cp index.html preview-site/index.html
+          npm run check
+          npm test
 
       - name: Publish preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: preview-site
+          publish_dir: site
           destination_dir: preview-site
-          keep_files: true
+          # Replace only this subdirectory, including removal of legacy files.
+          keep_files: false
           commit_message: "Deploy dev preview: ${{ github.sha }}"
