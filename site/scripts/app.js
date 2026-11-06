@@ -1,12 +1,14 @@
 import { setupTimeline } from "./timeline.js"
 import { setupChronologyTree } from "./chronology-tree.js"
+import { setupPersonSearch } from "./person-search.js"
+import { setupMobileFamily } from "./mobile-family.js"
 
 const FAMILY_CHART_SELECTOR = "#FamilyChart"
 const FAMILY_CHART_BOTTOM_PADDING = 16
 const TIMELINE_END_YEAR = 2025
 const MOBILE_QUERY = "(max-width: 767px)"
 const DESKTOP_CARD_SPACING = {x: 300, y: 150}
-const MOBILE_CARD_SPACING = {x: 245, y: 118}
+const MOBILE_CARD_SPACING = {x: 240, y: 145}
 const DATA_SOURCE_QUERY_PARAM = "source"
 const DATA_SOURCE_STORAGE_KEY = "geneaSourceId"
 const DEFAULT_DATA_SOURCES = [
@@ -37,8 +39,10 @@ const resizeFamilyChartHeight = () => {
   const { top } = chart.getBoundingClientRect()
   const viewportHeight = window.visualViewport?.height || window.innerHeight
   const bottomPadding = isMobileLayout() ? 12 : FAMILY_CHART_BOTTOM_PADDING
-  const minimumHeight = isMobileLayout() ? 420 : 0
-  const availableHeight = Math.max(minimumHeight, viewportHeight - top - bottomPadding)
+  const mobile = isMobileLayout()
+  const panel = document.getElementById("EditPanel")
+  const reservedHeight = mobile ? Math.min(panel?.getBoundingClientRect().height || 82, 300) : 0
+  const availableHeight = Math.max(mobile ? 140 : 0, viewportHeight - top - bottomPadding - reservedHeight)
 
   if (availableHeight > 0) {
     chart.style.height = `${availableHeight}px`
@@ -64,6 +68,7 @@ const setupFamilyChartHeight = () => {
   resizeFamilyChartHeight()
 }
 
+setupMobileLayout()
 setupFamilyChartHeight()
 const activeDataSource = getActiveDataSource()
 renderDataSourceSelector(activeDataSource)
@@ -79,6 +84,32 @@ fetch(activeDataSource.dataUrl, {cache: "no-store"})
     console.error(err)
     showDataSourceLoadError(activeDataSource, err)
   })
+
+function setupMobileLayout() {
+  const mobileControls = document.getElementById("MobileExplorerControls")
+  const desktopControls = document.getElementById("DesktopExplorerControls")
+  const source = document.getElementById("DataSourceSelector")
+  const search = document.getElementById("RecherchePersonne")
+  const placeControls = () => {
+    const host = isMobileLayout() ? mobileControls : desktopControls
+    if (host && source && search && source.parentElement !== host) host.append(source, search)
+  }
+  let resizeFrame = null
+  const resizeViewport = () => {
+    if (resizeFrame) return
+    resizeFrame = window.requestAnimationFrame(() => {
+      resizeFrame = null
+      document.documentElement.style.setProperty("--app-height", `${window.visualViewport?.height || window.innerHeight}px`)
+      resizeFamilyChartHeight()
+    })
+  }
+  const query = window.matchMedia(MOBILE_QUERY)
+  query.addEventListener("change", placeControls)
+  window.addEventListener("resize", resizeViewport)
+  window.visualViewport?.addEventListener("resize", resizeViewport)
+  placeControls()
+  resizeViewport()
+}
 
 function getConfiguredDataSources() {
   if (typeof window === "undefined") return DEFAULT_DATA_SOURCES
@@ -208,6 +239,8 @@ function warmUpPersistenceBackend() {
       let chronologyTree = null
       let currentPanelPersonId = null
       let mobileProfilePanel = null
+      let mobileFamily = null
+      let mobileView = "family"
       let currentChartSpacingMode = null
 
       const f3Chart = f3.createChart('#FamilyChart', data)
@@ -253,11 +286,27 @@ function warmUpPersistenceBackend() {
                if (canPersistData) queueDataPersistence()
                timeline?.update()
                chronologyTree?.update()
+               mobileFamily?.update()
              })
         // .setNoEdit()  // if you want to just see info form
       setupEditPanel()
       mobileProfilePanel = setupMobileProfilePanel()
       setupResponsiveChartSpacing()
+      mobileFamily = setupMobileFamily({
+        container: document.getElementById("MobileFamily"),
+        getData: getCurrentDataset,
+        getPersonId: () => currentPanelPersonId ?? f3Chart.getMainDatum()?.id,
+        onSelect: personId => updateTreeWithNewMainPerson(personId, true),
+        onOpenProfile: () => mobileProfilePanel?.openExpanded()
+      })
+      setupPersonSearch({
+        container: document.getElementById("RecherchePersonne"),
+        getData: getCurrentDataset,
+        onSelect: personId => updateTreeWithNewMainPerson(personId, true)
+      })
+      document.getElementById("CenterTreeButton")?.addEventListener("click", () => {
+        updateFamilyTree({tree_position: "main_to_middle", scale: 0.95})
+      })
 
       timeline = setupTimeline({
         containerSelector: "#TimelineContainer",
@@ -288,6 +337,7 @@ function warmUpPersistenceBackend() {
       f3EditTree.open(f3Chart.getMainDatum())
       updateFamilyTree(initialMainDatum ? {tree_position: 'main_to_middle'} : {initial: true})
       mobileProfilePanel?.sync()
+      mobileFamily?.update()
       timeline?.update()
       chronologyTree?.update()
 
@@ -313,138 +363,6 @@ function warmUpPersistenceBackend() {
         }
       }
 
-      /*
-      DROPDOWN SEARCH
-       */
-        // setup search dropdown
-        // this is basic showcase, please use some autocomplete component and style it as you want
-
-        const all_select_options = buildSearchOptions(data)
-        setupSearchPanel(all_select_options)
-
-        function buildSearchOptions(dataset) {
-          const options = []
-          dataset.forEach(d => {
-            if (options.find(option => option.value === d.id)) return
-            const birthDate = formatBirthDate(d.data["birthday"])
-            const labelSuffix = birthDate ? `, né(e) le ${birthDate}` : ''
-            options.push({
-              label: `${d.data["first name"]} ${d.data["last name"]}${labelSuffix}`,
-              value: d.id,
-              searchable: `${d.data["first name"]} ${d.data["last name"]} ${birthDate}`.toLowerCase()
-            })
-          })
-          return options.sort((a, b) => a.label.localeCompare(b.label))
-        }
-
-        function setupSearchPanel(options) {
-          const container = document.getElementById("RecherchePersonne")
-          if (!container) return
-
-          container.innerHTML = `
-            <div class="search-card">
-              <div class="search-card__header">
-                <span class="search-card__eyebrow">Navigation rapide</span>
-                <div class="search-card__title">Rechercher une personne</div>
-                <div class="search-card__subtitle">Prénom, nom ou date de naissance</div>
-              </div>
-              <label class="search-card__input-row" aria-label="Rechercher une personne">
-                <span class="search-card__icon" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="7"></circle>
-                    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
-                  </svg>
-                </span>
-                <input id="SearchPersonInput" type="text" placeholder="Ex: Antoine Deschamps" autocomplete="off" />
-                <button type="button" class="search-card__clear" data-search-clear aria-label="Effacer la recherche">×</button>
-              </label>
-              <div class="search-card__meta">
-                <span class="search-card__count" data-search-count></span>
-                <span class="search-card__hint">Entrée pour zoomer sur la fiche</span>
-              </div>
-              <div id="SearchDropdown" class="search-card__dropdown" role="listbox"></div>
-              <div class="search-card__empty is-hidden" data-search-empty>Aucun résultat</div>
-            </div>
-          `
-
-          const input = container.querySelector("#SearchPersonInput")
-          const dropdown = container.querySelector("#SearchDropdown")
-          const count = container.querySelector("[data-search-count]")
-          const emptyState = container.querySelector("[data-search-empty]")
-          const clearButton = container.querySelector("[data-search-clear]")
-
-          count.textContent = `${options.length} personnes`
-
-          container.addEventListener("focusout", () => {
-            setTimeout(() => {
-              if (!container.contains(document.activeElement)) closeDropdown()
-            }, 120)
-          })
-
-          input.addEventListener("focus", () => renderDropdown(input.value))
-          input.addEventListener("input", (event) => renderDropdown(event.target.value))
-          input.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-              event.preventDefault()
-              const firstResult = dropdown.querySelector("[data-value]")
-              if (firstResult) {
-                updateTreeWithNewMainPerson(Number(firstResult.dataset.value), true)
-                closeDropdown()
-                input.blur()
-              }
-            } else if (event.key === "Escape") {
-              closeDropdown()
-            }
-          })
-
-          clearButton.addEventListener("click", () => {
-            input.value = ""
-            renderDropdown("")
-            input.focus()
-          })
-
-          dropdown.addEventListener("wheel", (e) => e.stopPropagation())
-
-          function renderDropdown(rawValue = "") {
-            const query = rawValue.trim().toLowerCase()
-            const hasQuery = !!query
-            const filtered = hasQuery
-              ? options.filter(option => option.searchable.includes(query))
-              : options.slice(0, 20)
-
-            dropdown.innerHTML = ""
-
-            if (!filtered.length) {
-              emptyState.classList.remove("is-hidden")
-              count.textContent = "0 résultat"
-              return
-            }
-
-            emptyState.classList.add("is-hidden")
-            const countValue = hasQuery ? filtered.length : options.length
-            count.textContent = `${countValue} résultat${countValue > 1 ? "s" : ""}`
-
-            filtered.slice(0, 50).forEach(option => {
-              const row = document.createElement("button")
-              row.type = "button"
-              row.className = "search-card__option"
-              row.dataset.value = option.value
-              row.setAttribute("role", "option")
-              row.textContent = option.label
-              row.addEventListener("click", () => {
-                updateTreeWithNewMainPerson(option.value, true)
-                closeDropdown()
-              })
-              dropdown.appendChild(row)
-            })
-          }
-
-          function closeDropdown() {
-            dropdown.innerHTML = ""
-            emptyState.classList.add("is-hidden")
-          }
-        }
-
         function updateTreeWithNewMainPerson(personId, shouldCenter = false) {
           const target = getCurrentDataset().find(d => String(d.id) === String(personId))
           if (!target) {
@@ -459,40 +377,32 @@ function warmUpPersistenceBackend() {
           }
           const currentMain = f3Chart.getMainDatum()
           if (currentMain) f3EditTree.open(currentMain)
-          mobileProfilePanel?.openPeek()
+          if (isMobileLayout() && mobileView === "family") mobileProfilePanel?.collapse()
+          else mobileProfilePanel?.openPeek()
+          mobileFamily?.update()
+          if (isMobileLayout() && mobileView === "family") {
+            document.querySelector(".mobile-family__name")?.focus({preventScroll: true})
+          }
           chronologyTree?.update()
         }
 
         function updateFamilyTree(props = {}) {
-          const restoreMobileDescendants = limitMobileDescendantsForRender()
-          try {
-            f3Chart.updateTree(props)
-          } finally {
-            restoreMobileDescendants?.()
-          }
+          const nextProps = isMobileLayout()
+            ? {...props, initial: false, tree_position: props.initial ? "main_to_middle" : props.tree_position, scale: 0.95}
+            : props
+          f3Chart.updateTree(nextProps)
+          mobileFamily?.update()
         }
 
-        function limitMobileDescendantsForRender() {
-          if (!isMobileLayout()) return null
-
-          const mainPersonId = currentPanelPersonId || f3Chart.getMainDatum()?.id
-          if (mainPersonId === undefined || mainPersonId === null) return null
-
-          const changedProfiles = []
-          const mainId = String(mainPersonId)
-          const dataset = f3Chart.store?.getData?.() || []
-
-          dataset.forEach(person => {
-            if (!person?.rels?.children?.length || String(person.id) === mainId) return
-            changedProfiles.push([person, person.rels.children])
-            person.rels.children = []
+        function syncMobileView() {
+          const mobile = isMobileLayout()
+          document.body.dataset.mobileView = mobile ? mobileView : "desktop"
+          document.querySelectorAll("[data-tree-view]").forEach(button => {
+            const activeView = mobile ? mobileView : chronologyTree?.isChronologyVisible() ? "chronology" : "tree"
+            const active = button.dataset.treeView === activeView
+            button.classList.toggle("is-active", active)
+            button.setAttribute("aria-pressed", String(active))
           })
-
-          return () => {
-            changedProfiles.forEach(([person, children]) => {
-              person.rels.children = children
-            })
-          }
         }
 
         function setupResponsiveChartSpacing() {
@@ -504,6 +414,9 @@ function warmUpPersistenceBackend() {
             const spacing = mobile ? MOBILE_CARD_SPACING : DESKTOP_CARD_SPACING
             f3Chart.setCardXSpacing(spacing.x)
             f3Chart.setCardYSpacing(spacing.y)
+            f3Chart.setAncestryDepth(mobile ? 2 : undefined)
+            f3Chart.setProgenyDepth(mobile ? 1 : undefined)
+            syncMobileView()
             if (mobile && chronologyTree?.isChronologyVisible()) {
               chronologyTree.showTree()
             }
@@ -566,12 +479,22 @@ function warmUpPersistenceBackend() {
             const normalizedState = isMobileLayout() ? state : "desktop"
             editPanel.dataset.mobileProfileState = normalizedState
             document.body.dataset.mobileProfileState = normalizedState
+            const action = summary.querySelector(".mobile-profile__summary-action")
+            action.textContent = normalizedState === "expanded" ? "Réduire" : "Voir"
+            action.setAttribute("aria-label", normalizedState === "expanded" ? "Réduire le profil" : "Afficher le profil complet")
+            handle.setAttribute("aria-expanded", String(normalizedState === "expanded" || normalizedState === "peek"))
             resizeFamilyChartHeight()
           }
 
           const getState = () => editPanel.dataset.mobileProfileState || "collapsed"
-          const openPeek = () => setState("peek")
-          const openExpanded = () => setState("expanded")
+          const ensureProfileVisible = () => {
+            if (!editPanel.querySelector(".f3-form-cont.opened")) {
+              const person = getCurrentPanelPerson()
+              if (person) f3EditTree.open(person)
+            }
+          }
+          const openPeek = () => { ensureProfileVisible(); setState("peek") }
+          const openExpanded = () => { ensureProfileVisible(); setState("expanded") }
           const collapse = () => setState("collapsed")
 
           const toggleFromHandle = () => {
@@ -584,7 +507,13 @@ function warmUpPersistenceBackend() {
 
           handle.addEventListener("click", toggleFromHandle)
           summary.querySelector(".mobile-profile__summary-main")?.addEventListener("click", openPeek)
-          summary.querySelector(".mobile-profile__summary-action")?.addEventListener("click", openExpanded)
+          summary.querySelector(".mobile-profile__summary-action")?.addEventListener("click", () => {
+            if (getState() === "expanded") collapse()
+            else openExpanded()
+          })
+          editPanel.addEventListener("click", event => {
+            if (event.target.closest(".f3-close-btn")) collapse()
+          })
 
           const sync = () => {
             const person = getCurrentPanelPerson()
@@ -616,30 +545,26 @@ function warmUpPersistenceBackend() {
 
         function setupTreeViewToggle(chronology) {
           const buttons = Array.from(document.querySelectorAll("[data-tree-view]"))
-          if (!buttons.length || !chronology) return
-
           buttons.forEach(button => {
-            if (button.dataset.viewToggleAttached === "true") return
-            button.dataset.viewToggleAttached = "true"
-            button.setAttribute("aria-pressed", String(button.classList.contains("is-active")))
             button.addEventListener("click", () => {
               const view = button.dataset.treeView
-              buttons.forEach(candidate => {
-                const isActive = candidate === button
-                candidate.classList.toggle("is-active", isActive)
-                candidate.setAttribute("aria-pressed", String(isActive))
-              })
-
-              if (view === "chronology") {
+              if (isMobileLayout()) {
+                mobileView = view === "family" ? "family" : "tree"
+                chronology.showTree()
+                mobileProfilePanel?.collapse()
+              } else if (view === "chronology") {
                 chronology.showChronology()
               } else {
                 chronology.showTree()
-                resizeFamilyChartHeight()
-                updateFamilyTree({tree_position: "main_to_middle"})
-                timeline?.update()
               }
+              syncMobileView()
+              resizeFamilyChartHeight()
+              if (view === "tree") updateFamilyTree({tree_position: "main_to_middle"})
+              mobileFamily?.update()
+              timeline?.update()
             })
           })
+          syncMobileView()
         }
 
         function setupEditPanel() {
@@ -674,8 +599,9 @@ function warmUpPersistenceBackend() {
           const searchContainer = document.getElementById("RecherchePersonne")
           if (!searchContainer) return
           const updateMask = () => {
-            const hasOpenForm = formCont.classList.contains("opened") && !!formCont.querySelector("form")
-            searchContainer.classList.toggle("is-masked", hasOpenForm)
+            const form = formCont.querySelector("form")
+            const isEditing = formCont.classList.contains("opened") && !!form && !form.classList.contains("non-editable")
+            searchContainer.classList.toggle("is-masked", isEditing)
           }
           const observer = new MutationObserver(updateMask)
           observer.observe(formCont, {attributes: true, attributeFilter: ["class"], childList: true})

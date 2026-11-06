@@ -32,6 +32,12 @@ npm test
 
 Ces commandes vérifient les ressources locales, les relations entre personnes, la cohérence des chemins de données et les sauvegardes dans des fichiers temporaires. Il n’y a plus de compilation Rollup : la bibliothèque `family-chart@0.9.0` est chargée depuis un CDN.
 
+## Utilisation sur téléphone
+
+La vue « Les proches » présente les parents, les frères et sœurs, le conjoint et les enfants autour de la personne explorée. La fratrie comprend les personnes ayant au moins un parent connu en commun, y compris les demi-frères et demi-sœurs. Toucher un proche permet de parcourir sa famille ; « Voir la fiche » ouvre ses informations dans le panneau inférieur.
+
+La recherche reste en haut de l’écran et accepte les prénoms, noms et années, sans imposer les accents ni l’ordre des mots. Les résultats affichent les dates pour distinguer les homonymes. La vue « Arbre familial » reste disponible avec deux générations d’ascendants, une génération d’enfants et un bouton de recentrage. Les données complètes restent conservées.
+
 ## Données
 
 | Source | Fichier dans le dépôt | URL dans le site |
