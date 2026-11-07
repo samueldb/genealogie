@@ -5268,13 +5268,15 @@
     "data": {
       "gender": "F",
       "avatar": "assets/images/profil_base.svg",
-      "last name": "Flavie",
-      "first name": "?",
+      "last name": "Chauvin",
+      "first name": "Flavie",
       "birthday": "",
       "weddingday": "",
       "lastday": "",
       "address": "toulouse",
-      "commentaire": ""
+      "commentaire": "",
+      "geometry_lat": "43.604464",
+      "geometry_lng": "1.444243"
     },
     "rels": {
       "children": [
